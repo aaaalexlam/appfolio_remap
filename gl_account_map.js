@@ -1,3 +1,4 @@
+const fs = require('fs');
 
 const glCodeList = {
     data: [
@@ -6829,45 +6830,47 @@ const glCodeList = {
     ]
 }
 
-const glAccountList = {}
+const glAccountList = {
+    "order": [],
+    "data": []
+}
 
 glCodeList.data.forEach(data => {
 
     let childs = null;
     let parentGlaccount = null;
-    const parentId = data.attributes.parent_id;
-
-    // check if this is parent
-    if (parentId === null) {
-        // get the child by parent id
-        const results = glCodeList.data.filter(item => item.attributes.parent_id === data.id);
-        if (results.length !== 0) {
-            childs = results.reduce((child, item) => {
-                child[item.attributes.number] = {
-                    id: item.id,
-                    name: item.attributes.name,
-                    classification: item.attributes.gl_account_type_display,
-                    displayName: item.attributes.display_name,
-                };
-                return child;
-            }, {});
-        }
-    } else {
-        // get the parent GL account
-        parentGlaccount = glCodeList.data.find(item => item.id === parentId).attributes.number;
+    if(data.attributes.parent_id !== null){
+        parentGlaccount = glCodeList.data.find(item => item.id === data.attributes.parent_id).attributes.number;
+    }
+    const results = glCodeList.data.filter(item => item.attributes.parent_id === data.id);
+    if (results.length !== 0) {
+        childs = results.map(child => ({
+            "id": child.id,
+            "name": child.attributes.name,
+            "classification": child.attributes.gl_account_type_display,
+            "displayName": child.attributes.display_name
+        }));
     }
 
-    glAccountList[data.attributes.number] = {
-        id: data.id,
-        name: data.attributes.name,
-        classification: data.attributes.gl_account_type_display,
-        displayName: data.attributes.display_name,
-        parentId: parentId,
-        parentGlaccount: parentGlaccount,
-        childs: childs
-    }
+    glAccountList.data.push({
+        "id": data.id,
+        "order": [],
+        "glCode": data.attributes.number,
+        "name": data.attributes.name,
+        "classification": data.attributes.gl_account_type_display,
+        "displayName": data.attributes.gl_account_type_display,
+        "parentId": data.attributes.parent_id,
+        "parentGlaccount": parentGlaccount,
+        "childs": childs,
+    })
 })
 
-console.log(glAccountList)
+fs.writeFile('result.json', JSON.stringify(glAccountList, null, 2), (err) => {
+    if (err) {
+        console.error('Error writing to file', err);
+    } else {
+        console.log('Successfully wrote to result.json');
+    }
+});
 
 
