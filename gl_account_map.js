@@ -6839,11 +6839,16 @@ glCodeList.data.forEach(data => {
 
     let childs = null;
     let parentGlaccount = null;
+    let childsOrderList = [];
+    
+    glAccountList.order.push(data.id);
+
     if(data.attributes.parent_id !== null){
         parentGlaccount = glCodeList.data.find(item => item.id === data.attributes.parent_id).attributes.number;
     }
     const results = glCodeList.data.filter(item => item.attributes.parent_id === data.id);
     if (results.length !== 0) {
+        childsOrderList = results.map(item => item.id)
         childs = results.map(child => ({
             "id": child.id,
             "name": child.attributes.name,
@@ -6854,7 +6859,7 @@ glCodeList.data.forEach(data => {
 
     glAccountList.data.push({
         "id": data.id,
-        "order": [],
+        "order": childsOrderList,
         "glCode": data.attributes.number,
         "name": data.attributes.name,
         "classification": data.attributes.gl_account_type_display,
