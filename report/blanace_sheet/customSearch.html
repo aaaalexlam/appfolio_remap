@@ -4,6 +4,8 @@
 <head>
     <link rel="stylesheet" href="./customSearch.css">
     <link rel="stylesheet" href="./properties_selector.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -20,27 +22,80 @@
                     <div class="input_field">
                         <div>Properties</div>
                     </div>
-                    <div class="input_group_column">
+                    <div class="properties_input input_column">
                         <div class="properties_selector">
-                            <div id="selected_properties">
-
-                            </div>
-                            <input list="properties_selector_options" id="properties_input" type="text"
-                                placeholder="Search by property, group, portfolio, or owner">
+                            <div id="selected_properties"></div>
                             <div>
-                                <label><input type="radio" name="group1" checked> Option 1</label><br>
-                                <label><input type="radio" name="group1"> Option 2</label><br>
-                                <label><input type="radio" name="group1"> Option 3</label>
+                                <input id="properties_input" type="text"
+                                    placeholder="Search by property, group, portfolio, or owner">
                             </div>
+                            <div id="properties_selector_options"></div>
                         </div>
-
+                        <div id="properties_selector_remove_all"><i class="fa fa-close"></i></div>
                     </div>
                 </div>
+                <div class="input_group">
+                    <div class="input_field">
+                        <div>As of <span style="color: red;">*</span></div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <input type="radio" name="as_of_radio" id="as_of_radio_input_date" checked>
+                                <input type="date" id="as_of_date">
+                            </div>
+                            <div>
+                                <input type="radio" name="as_of_radio" id="as_of_radio_select_date">
+                                <select name="as_of_select" id="as_of_select_date">
+                                    <option value="today">Today</option>
+                                    <option value="end_of_last_week">End of Last Week</option>
+                                    <option value="end_of_last_month">End of Last Month</option>
+                                    <option value="end_of_last_quarter">End of Last Quarter</option>
+                                    <option value="end_of_this_quarter">End of This Quarter</option>
+                                    <option value="end_of_this_year">End of This Year</option>
+                                    <option value="yesterday">Yesterday</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_group">
+                    <div class="input_field">
+                        <div>Accounting Basis</div>
+                    </div>
+                    <div>
+                        <select name="accounting_basis" id="accounting_basis">
+                            <option value="cash">Cash</option>
+                            <option value="accural">Accural</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input_group">
+                    <div class="input_field">
+                        <div>Level of Detail</div>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="level_of_detail" value="deail_view" checked>
+                            <div>Detail View</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="level_of_detail" value="summary_view" checked>
+                            <div>Summary View</div>
+                        </label>
+                    </div>
+                </div>
+                <button id='post_form_btn'>Save</button>
             </div>
         </div>
     </div>
-    <script src="customSearch.js"></script>
 
+    <script src="customSearch.js"></script>
+    <script src="postCustomSearch.js"></script>
+
+    <script>
+        document.getElementById('as_of_date').value = new Date().toISOString().split('T')[0];
+    </script>
 </body>
 
 </html>

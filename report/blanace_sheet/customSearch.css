@@ -1,5 +1,6 @@
 :root {
     --bs-gutter-x: 1.5rem; /* or 32px, etc. */
+    --bs-body-font-size: 1rem;
 }
 
 .modal {
@@ -29,25 +30,39 @@
     flex-grow: 2;
     width: 100%;
     padding: 1px;
+    flex-direction: column;
 }
 
 .input_group {
     display: flex;
     width: 100%;
+    border: 1px solid;
+}
+
+.input_group input{
+    height: 2.35rem;
 }
 
 .input_field {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    align-items: end;
     font-family: inherit;
+    min-width: 200px;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    color: #637989;
+    
 }
-.input_group{
-    width: 100%;
-}
-.input_group_column {
+
+.properties_input {
     display: flex;
-    flex-direction: column;
     width: 100%;
+    border: 1px solid;
+    display: table-column;
+}
+
+.input_column {
+    border: 1px solid;
 }
 
