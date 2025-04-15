@@ -1,0 +1,53 @@
+:root {
+    --bs-gutter-x: 1.5rem; /* or 32px, etc. */
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom_search_container {
+    width: 70vw;
+    height: 70vh;
+    background-color: white;
+    padding-left: calc(var(--bs-gutter-x)*.5);
+    padding-right: calc(var(--bs-gutter-x)*.5);
+}
+
+.custom_search_container_header {
+    display: flex;
+    flex-grow: 1;
+}
+
+.custom_search_container_body {
+    display: flex;
+    flex-grow: 2;
+    width: 100%;
+    padding: 1px;
+}
+
+.input_group {
+    display: flex;
+    width: 100%;
+}
+
+.input_field {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    font-family: inherit;
+}
+.input_group{
+    width: 100%;
+}
+.input_group_column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
