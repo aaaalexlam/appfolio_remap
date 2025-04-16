@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="./root.css">
     <link rel="stylesheet" href="./customSearch.css">
     <link rel="stylesheet" href="./properties_selector.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,67 +15,72 @@
 <body>
     <div class="modal">
         <div class="custom_search_container">
-            <div class="custom_search_container_header">
-                <h3>Customize Report</h3>
-            </div>
-            <div class="custom_search_container_body">
-                <div class="input_group">
-                    <div class="input_field">
-                        <div>Properties</div>
-                    </div>
-                    <div class="properties_input input_column">
-                        <div class="properties_selector">
-                            <div id="selected_properties"></div>
-                            <div>
+
+            <table>
+                <tr>
+                    <th>Customize Report</th>
+                    <th></th>
+                </tr>
+                <tr class="tr-default">
+                    <td class="input_field" id="properties_field">Properties</td>
+                    <td class="input_column">
+                        <div class="properties_input_group">
+                            <div id="properties_select_group">
+                                <div id="selected_properties"></div>
                                 <input id="properties_input" type="text"
                                     placeholder="Search by property, group, portfolio, or owner">
+                                <div id="properties_selector_options"></div>
                             </div>
-                            <div id="properties_selector_options"></div>
+                            <div id="properties_selector_remove_all"><i class="fa fa-close"></i></div>
                         </div>
-                        <div id="properties_selector_remove_all"><i class="fa fa-close"></i></div>
-                    </div>
-                </div>
-                <div class="input_group">
-                    <div class="input_field">
-                        <div>As of <span style="color: red;">*</span></div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>
-                                <input type="radio" name="as_of_radio" id="as_of_radio_input_date" checked>
-                                <input type="date" id="as_of_date">
-                            </div>
-                            <div>
-                                <input type="radio" name="as_of_radio" id="as_of_radio_select_date">
-                                <select name="as_of_select" id="as_of_select_date">
-                                    <option value="today">Today</option>
-                                    <option value="end_of_last_week">End of Last Week</option>
-                                    <option value="end_of_last_month">End of Last Month</option>
-                                    <option value="end_of_last_quarter">End of Last Quarter</option>
-                                    <option value="end_of_this_quarter">End of This Quarter</option>
-                                    <option value="end_of_this_year">End of This Year</option>
-                                    <option value="yesterday">Yesterday</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="input_group">
-                    <div class="input_field">
-                        <div>Accounting Basis</div>
-                    </div>
-                    <div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="input_field"></td>
+                    <td class="input_column"> 
+                        <select name="show_properties" id="show_properties">
+                            <option value="today">Show Active Properties</option>
+                            <option value="end_of_last_week">Show Hidden Properties</option>
+                            <option value="end_of_last_month">Show All Properties</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="tr-default">
+                    <td class="input_field" id="as_of_field">As of <span style="color: red;">*</span></td>
+                    <td class="input_column">
+                        <input type="radio" name="as_of_radio" id="as_of_radio_input_date" checked>
+                        <input type="date" id="as_of_date">
+                    </td>
+                </tr>
+                <tr class="tr-default">
+                    <td class="input_field" id="as_of_field"></td>
+                    <td class="input_column">
+                        <input type="radio" name="as_of_radio" id="as_of_radio_select_date">
+                        <select name="as_of_select" id="as_of_select_date">
+                            <option value="today">Today</option>
+                            <option value="end_of_last_week">End of Last Week</option>
+                            <option value="end_of_last_month">End of Last Month</option>
+                            <option value="end_of_last_quarter">End of Last Quarter</option>
+                            <option value="end_of_this_quarter">End of This Quarter</option>
+                            <option value="end_of_this_year">End of This Year</option>
+                            <option value="yesterday">Yesterday</option>
+                        </select>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="tr-default">
+                    <td class="input_field" id="accounting_basis_field">Accounting Basis</td>
+                    <td class="input_column">
                         <select name="accounting_basis" id="accounting_basis">
                             <option value="cash">Cash</option>
                             <option value="accural">Accural</option>
                         </select>
-                    </div>
-                </div>
-                <div class="input_group">
-                    <div class="input_field">
-                        <div>Level of Detail</div>
-                    </div>
-                    <div>
+                    </td>
+                </tr>
+                <tr class="tr-default">
+                    <td class="input_field" id="level_of_detail_field">Level of Detail</td>
+                    <td class="input_column" id="level_of_detail">
                         <label>
                             <input type="radio" name="level_of_detail" value="deail_view" checked>
                             <div>Detail View</div>
@@ -83,11 +89,22 @@
                             <input type="radio" name="level_of_detail" value="summary_view" checked>
                             <div>Summary View</div>
                         </label>
-                    </div>
-                </div>
-                <button id='post_form_btn'>Save</button>
-            </div>
+                    </td>
+                </tr>
+                <tr class="tr-default">
+                    <td class="input_field"></td>
+                    <td class="input_column">
+                        <label style="cursor: pointer;"><input type="checkbox" > Include Zero Balance GL Account</label>
+                        
+                    </td>
+                </tr>
+                <tr class="tr-default">
+                    <td><button id='post_form_btn' class="default_btn">Update</button></td>
+                </tr>
+
+            </table>
         </div>
+    </div>
     </div>
 
     <script src="customSearch.js"></script>

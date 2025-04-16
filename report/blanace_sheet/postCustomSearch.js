@@ -1,18 +1,19 @@
 
-let form = {
-    "properties_value": [],
-    "as_of_date_value": "",
-    "accounting_basis_value": "",
-    "level_of_detail_value": ""
-}
 
 const post_form_btn = document.getElementById("post_form_btn");
 post_form_btn.addEventListener('click', handle_post_form_btn_click);
 
 function handle_post_form_btn_click() {
 
+    let form = {
+        "properties_value": [],
+        "as_of_date_value": "",
+        "accounting_basis_value": "",
+        "level_of_detail_value": ""
+    }
+
     // properties
-    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="properties"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="properties"]:checked');
 
     // as of Radio group
     const as_of_radio_input_date = document.getElementById("as_of_radio_input_date");

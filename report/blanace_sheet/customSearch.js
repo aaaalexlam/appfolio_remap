@@ -13,6 +13,11 @@ const properties_options_data = [
         "id": "3",
         "type": "owner",
         "address": "Everest Senior Living Management Inc - 801 S. Garfield Ave. #308 Alhambra, CA 91801"
+    },
+    {
+        "id": "4",
+        "type": "owner",
+        "address": "Everest Senior Living Management Inc - 801 S. Garfield Ave. #308 Alhambra, CA 91801"
     }
 ];
 const properties_options = document.getElementById("properties_selector_options")
@@ -86,13 +91,10 @@ properties_input.addEventListener('input', function () {
 properties_selector_remove_all.addEventListener('click', function () {
     const checkboxes = document.querySelectorAll('input[type="checkbox"][name="properties"]');
 
-    checkboxes.forEach(checkbox => {
+    checkboxes.forEach((checkbox) => {
         checkbox.checked = false;
-    });
-
-    checkboxes.forEach(checkbox => {
-        console.log(checkbox.checked)
-    });
+        checkbox.closest('label').style.display = 'none';
+    })
 });
 
 properties_input.addEventListener('keydown', (e) => {

@@ -1,8 +1,4 @@
-:root {
-    --bs-badge-padding-x: 0.375rem;
-    --bs-badge-padding-y: 0.25rem;
-    --bs-badge-border-radius: 0.33rem;
-}
+
 
 .properties_selector {
     flex-grow: 9;
