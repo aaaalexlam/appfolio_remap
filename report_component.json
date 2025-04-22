@@ -2980,7 +2980,7 @@
       }
     },
     {
-      "keysDetail":{
+      "keysDetail": {
         "columns": [
           {
             "name": "Key Quantity",
@@ -3036,7 +3036,7 @@
       }
     },
     {
-      "propertyDirectory":{
+      "propertyDirectory": {
         "columns": [
           {
             "name": "Property Name",
@@ -3091,7 +3091,7 @@
             "display": false
           },
           {
-            "name":"Premium Activation Date",
+            "name": "Premium Activation Date",
             "display": false
           },
           {
@@ -3179,7 +3179,7 @@
             "display": false
           },
           {
-            "name":"Property Created By",
+            "name": "Property Created By",
             "display": false
           },
           {
@@ -3187,7 +3187,7 @@
             "display": false
           },
           {
-            "name":"Accounting Basis",
+            "name": "Accounting Basis",
             "display": false
           },
           {
@@ -3227,7 +3227,7 @@
             "display": false
           },
           {
-            "name":"Management Start Date",
+            "name": "Management Start Date",
             "display": false
           },
           {
@@ -3265,7 +3265,7 @@
       }
     },
     {
-      "propertyGroupDirectory":{
+      "propertyGroupDirectory": {
         "columns": [
           {
             "name": "Property"
@@ -3306,7 +3306,6 @@
             "name": "Portfolio",
             "display": false
           }
-
         ],
         "customization": [
           "properties"
@@ -3314,14 +3313,2409 @@
       }
     },
     {
-      "rentRoll":{
-        "columns": [],
+      "rentRoll": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property ID",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Property Type",
+            "display": false
+          },
+          {
+            "name": "Occupancy ID",
+            "display": false
+          },
+          {
+            "name": "Unit ID",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Status by SF",
+            "display": false
+          },
+          {
+            "name": "Advertised Rent",
+            "display": false
+          },
+          {
+            "name": "Monthly Market Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Annual Market Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Annual Rent",
+            "display": false
+          },
+          {
+            "name": "Monthly Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Annual Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Deposit Authorized",
+            "display": false
+          },
+          {
+            "name": "Amenities",
+            "display": false
+          },
+          {
+            "name": "Additional Tenants",
+            "display": false
+          },
+          {
+            "name": "Monthly Charges",
+            "display": false
+          },
+          {
+            "name": "Rent Ready",
+            "display": false
+          },
+          {
+            "name": "Rent Status",
+            "display": false
+          },
+          {
+            "name": "Legal Rent",
+            "display": false
+          },
+          {
+            "name": "Preferential Rent",
+            "display": false
+          },
+          {
+            "name": "Last Rent Increase Date",
+            "display": false
+          },
+          {
+            "name": "Next Rent Increase Date",
+            "display": false
+          },
+          {
+            "name": "Next Rent Increase Amount",
+            "display": false
+          },
+          {
+            "name": "Eligible for Rent Increase",
+            "display": false
+          },
+          {
+            "name": "Application Fee",
+            "display": false
+          },
+          {
+            "name": "Amenities Price",
+            "display": false
+          },
+          {
+            "name": "Computed Market Rent",
+            "display": false
+          },
+          {
+            "name": "Property Group ID(s)",
+            "display": false
+          },
+          {
+            "name": "Portfolio ID",
+            "display": false
+          },
+          {
+            "name": "Tenant Tags",
+            "display": false
+          },
+          {
+            "name": "Lease Expires Month",
+            "display": false
+          },
+          {
+            "name": "Tenant ID",
+            "display": false
+          },
+          {
+            "name": "Additional Tenant ID(s)",
+            "display": false
+          },
+          {
+            "name": "Previous Occupancy Rent",
+            "display": false
+          },
+          {
+            "name": "Previous Rent",
+            "display": false
+          },
+          {
+            "name": "Last Move Out",
+            "display": false
+          },
+          {
+            "name": "Tenant Agent",
+            "display": false
+          },
+          {
+            "name": "Occupancy Import UID",
+            "display": false
+          },
+          {
+            "name": "Affordable Program",
+            "display": false
+          },
+          {
+            "name": "Building ID",
+            "display": false
+          },
+          {
+            "name": "Room Name",
+            "display": false
+          },
+          {
+            "name": "Bed Name",
+            "display": false
+          },
+          {
+            "name": "Square Feet Helper",
+            "display": false
+          },
+          {
+            "name": "Market Rent Helper",
+            "display": false
+          },
+          {
+            "name": "Advertised Rent Helper",
+            "display": false
+          }
+        ],
         "customization": [
           "properties",
           "units",
           "tags",
           "asOf",
           "includeNonRevenueUnits"
+        ]
+      }
+    },
+    {
+      "rentRollCommerical": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property ID",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Unit Name",
+            "display": false
+          },
+          {
+            "name": "Unit ID",
+            "display": false
+          },
+          {
+            "name": "Occupant ID",
+            "display": false
+          },
+          {
+            "name": "Group Name",
+            "display": false
+          },
+          {
+            "name": "Tenant Tags",
+            "display": false
+          },
+          {
+            "name": "Property Group ID(s)",
+            "display": false
+          },
+          {
+            "name": "Portfolio ID",
+            "display": false
+          },
+          {
+            "name": "Lease Option Dates",
+            "display": false
+          },
+          {
+            "name": "Lease Option Terms",
+            "display": false
+          },
+          {
+            "name": "Lease Option Descriptions",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "asOf",
+          "glAccounts",
+          "includeUnitsThathaveNoRecurringCharges"
+        ]
+      }
+    },
+    {
+      "rentRollItemized": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Property Type",
+            "display": false
+          },
+          {
+            "name": "Tags",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Tenant",
+            "display": false
+          },
+          {
+            "name": "Market Rent",
+            "display": false
+          },
+          {
+            "name": "Computed Market Rent",
+            "display": false
+          },
+          {
+            "name": "Advertised Rent",
+            "display": false
+          },
+          {
+            "name": "Monthly Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Annual Rent / SF",
+            "display": false
+          },
+          {
+            "name": "Deposit",
+            "display": false
+          },
+          {
+            "name": "Lease From",
+            "display": false
+          },
+          {
+            "name": "Lease To",
+            "display": false
+          },
+          {
+            "name": "Last Rent Increase Date",
+            "display": false
+          },
+          {
+            "name": "Next Rent Increase Date",
+            "display": false
+          },
+          {
+            "name": "Next Rent Increase Amount",
+            "display": false
+          },
+          {
+            "name": "Eligible for Rent Increase",
+            "display": false
+          },
+          {
+            "name": "Move-in",
+            "display": false
+          },
+          {
+            "name": "Move-out",
+            "display": false
+          },
+          {
+            "name": "Past Due",
+            "display": false
+          },
+          {
+            "name": "NSF Count",
+            "display": false
+          },
+          {
+            "name": "Late Count",
+            "display": false
+          },
+          {
+            "name": "Amenities",
+            "display": false
+          },
+          {
+            "name": "Additional Tenants",
+            "display": false
+          },
+          {
+            "name": "Monthly Charges",
+            "display": false
+          },
+          {
+            "name": "Rent Ready",
+            "display": false
+          },
+          {
+            "name": "Rent Status",
+            "display": false
+          },
+          {
+            "name": "Legal Rent",
+            "display": false
+          },
+          {
+            "name": "Preferential Rent",
+            "display": false
+          },
+          {
+            "name": "Tenant Tags",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "units",
+          "tags",
+          "glAccounts",
+          "asOf"
+        ]
+      }
+    },
+    {
+      "rentableItems": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Start Date",
+            "display": false
+          },
+          {
+            "name": "End Date",
+            "display": false
+          },
+          {
+            "name": "Unit",
+            "display": false
+          },
+          {
+            "name": "License Plates",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "glAccounts",
+          "availability"
+        ]
+      }
+    },
+    {
+      "unitDirectory": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Unit Address",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Unit City",
+            "display": false
+          },
+          {
+            "name": "Unit State",
+            "display": false
+          },
+          {
+            "name": "Unit Zip",
+            "display": false
+          },
+          {
+            "name": "Marketing Title",
+            "display": false
+          },
+          {
+            "name": "Marketing Description",
+            "display": false
+          },
+          {
+            "name": "Advertised Rent",
+            "display": false
+          },
+          {
+            "name": "Posted To Website",
+            "display": false
+          },
+          {
+            "name": "Posted To Internet",
+            "display": false
+          },
+          {
+            "name": "YouTube URL",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Created On",
+            "display": false
+          },
+          {
+            "name": "Rent Status",
+            "display": false
+          },
+          {
+            "name": "Legal Rent",
+            "display": false
+          },
+          {
+            "name": "Application Fee",
+            "display": false
+          },
+          {
+            "name": "Rent Ready",
+            "display": false
+          },
+          {
+            "name": "Computed Market Rent",
+            "display": false
+          },
+          {
+            "name": "Ready For Showing On",
+            "display": false
+          },
+          {
+            "name": "Rentable UID",
+            "display": false
+          },
+          {
+            "name": "Amenities",
+            "display": false
+          },
+          {
+            "name": "Appliances",
+            "display": false
+          },
+          {
+            "name": "Utilities",
+            "display": false
+          },
+          {
+            "name": "Billed As",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "units",
+          "tags"
+        ]
+      }
+    },
+    {
+      "unitInspection": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Revenue",
+            "display": false
+          },
+          {
+            "name": "Unit Tags",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "units",
+          "lastInspectionDateOlderThan",
+          "includeUnitsWithBlankInspectionDate"
+        ]
+      }
+    },
+    {
+      "owner1099Detail": {
+        "columns": [
+          {
+            "name": "Recipient Street Address",
+            "display": false
+          },
+          {
+            "name": "Recipient City",
+            "display": false
+          },
+          {
+            "name": "Recipient State",
+            "display": false
+          },
+          {
+            "name": "Recipient ZIP",
+            "display": false
+          },
+          {
+            "name": "Recipient Country",
+            "display": false
+          },
+          {
+            "name": "Recipient Address",
+            "display": false
+          },
+          {
+            "name": "Owner Email",
+            "display": false
+          },
+          {
+            "name": "Send 1099?",
+            "display": false
+          },
+          {
+            "name": "Owner Electronic Consent",
+            "display": false
+          },
+          {
+            "name": "Owner 1099 Preference",
+            "display": false
+          },
+          {
+            "name": "Federal Tax ID",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "owners",
+          "taxyear",
+          "showOnlyOwnersThathaveBeenDesignatedToReceiveA1099",
+          "amount"
+        ]
+      }
+    },
+    {
+      "owner1099Summary": {
+        "columns": [
+          {
+            "name": "Recipient Address",
+            "display": false
+          },
+          {
+            "name": "Owner Electronic Consent",
+            "display": false
+          },
+          {
+            "name": "Owner 1099 Preference",
+            "display": false
+          }
+        ],
+        "customization": [
+          "protities",
+          "owners",
+          "taxyear",
+          "showOnlyOwnersThathaveBeenDesignatedToReceiveA1099",
+          "amount"
+        ]
+      }
+    },
+    {
+      "vendor1099Detail": {
+        "columns": [
+          {
+            "name": "Bank Account Number",
+            "display": false
+          },
+          {
+            "name": "Cleared",
+            "display": false
+          },
+          {
+            "name": "Check Memo",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "1099 Payer Name",
+            "display": false
+          }
+        ],
+        "customization": [
+          "vendor",
+          "taxyear"
+        ]
+      }
+    },
+    {
+      "vendor1099Summary": {
+        "columns": [
+          {
+            "name": "Recipient Address",
+            "display": false
+          },
+          {
+            "name": "Payer Street Address",
+            "display": false
+          },
+          {
+            "name": "Payer City",
+            "display": false
+          },
+          {
+            "name": "Payer State",
+            "display": false
+          },
+          {
+            "name": "Payer ZIP",
+            "display": false
+          },
+          {
+            "name": "Payer Country",
+            "display": false
+          },
+          {
+            "name": "Payer Address",
+            "display": false
+          }
+        ],
+        "customization": [
+          "vendors",
+          "amount",
+          "taxyear"
+        ]
+      }
+    },
+    {
+      "debtCollectionsStatus": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Amount Forgiven",
+            "display": false
+          },
+          {
+            "name": "Date Cancelled",
+            "display": false
+          }
+        ],
+        "customization": [
+          "tenants",
+          "properties"
+        ]
+      }
+    },
+    {
+      "delinquency": {
+        "columns": [
+          {
+            "name": "Primary Tenant Email",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Not Yet Due",
+            "display": false
+          },
+          {
+            "name": "30-60",
+            "display": false
+          },
+          {
+            "name": "60+",
+            "display": false
+          },
+          {
+            "name": "60-90",
+            "display": false
+          },
+          {
+            "name": "90+",
+            "display": false
+          },
+          {
+            "name": "Prepayment Amount",
+            "display": false
+          },
+          {
+            "name": "NSF Count",
+            "display": false
+          },
+          {
+            "name": "Certified Funds Only",
+            "display": false
+          },
+          {
+            "name": "Rent",
+            "display": false
+          },
+          {
+            "name": "Delinquent Rent",
+            "display": false
+          },
+          {
+            "name": "Delinquency Notes",
+            "display": false
+          },
+          {
+            "name": "Monthly Charges",
+            "display": false
+          },
+          {
+            "name": "In Collections",
+            "display": false
+          },
+          {
+            "name": "Collections Agency",
+            "display": false
+          },
+          {
+            "name": "Payment Plan",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "delinquencyNoteRange",
+          "tenantStatus",
+          "tags",
+          "amountOwedInAccount",
+          "balance",
+          "includeFutureDatedCharges"
+        ]
+      }
+    },
+    {
+      "delinquencyAsOf": {
+        "columns": [
+          {
+            "name": "Primary Tenant Email",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "30-60",
+            "display": false
+          },
+          {
+            "name": "60+",
+            "display": false
+          },
+          {
+            "name": "60-90",
+            "display": false
+          },
+          {
+            "name": "90+",
+            "display": false
+          },
+          {
+            "name": "This Month",
+            "display": false
+          },
+          {
+            "name": "Last Month",
+            "display": false
+          },
+          {
+            "name": "Month Before Last",
+            "display": false
+          },
+          {
+            "name": "Delinquent Rent",
+            "display": false
+          },
+          {
+            "name": "Delinquency Notes",
+            "display": false
+          },
+          {
+            "name": "Certified Funds Only",
+            "display": false
+          },
+          {
+            "name": "In Collections",
+            "display": false
+          },
+          {
+            "name": "Collections Agency",
+            "display": false
+          }
+        ],
+        "customization": [
+          "protities",
+          "asOf",
+          "Delinquency Note Range",
+          "tenantStatus",
+          "tags",
+          "amountOwedInAccount",
+          "Balance"
+        ]
+      }
+    },
+    {
+      "eligibleDebtSummary": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          }
+        ],
+        "customization": [
+          "protities"
+        ]
+      }
+    },
+    {
+      "securityDepositFundsDetail": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Eligible for eCheck Security Deposit Return",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenant",
+          "tenantStatus",
+          "Liability Accounts",
+          "asOf",
+          "accountingBasis"
+        ]
+      }
+    },
+    {
+      "surveysResponses": {
+        "columns": [
+          {
+            "name": "Survey Type",
+            "display": false
+          },
+          {
+            "name": "Work Order Number",
+            "display": false
+          },
+          {
+            "name": "Job Description",
+            "display": false
+          },
+          {
+            "name": "Assigned User",
+            "display": false
+          },
+          {
+            "name": "Vendor Name",
+            "display": false
+          }
+        ],
+        "customization": [
+          "curveyType",
+          "properties",
+          "dataType",
+          "dateRange"
+        ]
+      }
+    },
+    {
+      "tenantDirectory": {
+        "columns": [
+          {
+            "name": "Tenant Address",
+            "display": false
+          },
+          {
+            "name": "Tenant Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Tenant Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Tenant City",
+            "display": false
+          },
+          {
+            "name": "Tenant State",
+            "display": false
+          },
+          {
+            "name": "Tenant Zip",
+            "display": false
+          },
+          {
+            "name": "Tenant Birthdate",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Certified Funds Only",
+            "display": false
+          },
+          {
+            "name": "Lease From",
+            "display": false
+          },
+          {
+            "name": "Last Lease Renewal",
+            "display": false
+          },
+          {
+            "name": "Move-out",
+            "display": false
+          },
+          {
+            "name": "Eligible for Rent Increase",
+            "display": false
+          },
+          {
+            "name": "Last Rent Increase",
+            "display": false
+          },
+          {
+            "name": "Next Rent Increase Date",
+            "display": false
+          },
+          {
+            "name": "Eligible for eCheck Security Deposit Return",
+            "display": false
+          },
+          {
+            "name": "Online Portal Activated",
+            "display": false
+          },
+          {
+            "name": "Online Payments Recurring Total",
+            "display": false
+          },
+          {
+            "name": "Online Payments Recurring Count",
+            "display": false
+          },
+          {
+            "name": "Online Portal Login",
+            "display": false
+          },
+          {
+            "name": "Tenant Notes",
+            "display": false
+          },
+          {
+            "name": "Send Rent Reminders",
+            "display": false
+          },
+          {
+            "name": "Unit Tags",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Late Fee Type",
+            "display": false
+          },
+          {
+            "name": "Late Fee Base Amount",
+            "display": false
+          },
+          {
+            "name": "Late Fee Daily Amount",
+            "display": false
+          },
+          {
+            "name": "Grace Period",
+            "display": false
+          },
+          {
+            "name": "Grace Period Fixed Day",
+            "display": false
+          },
+          {
+            "name": "Grace Balance",
+            "display": false
+          },
+          {
+            "name": "Max Daily Late Fees Amount",
+            "display": false
+          },
+          {
+            "name": "Insurance Provider",
+            "display": false
+          },
+          {
+            "name": "Insurance Expiration",
+            "display": false
+          },
+          {
+            "name": "Insurance Policy Number",
+            "display": false
+          },
+          {
+            "name": "Transaction Fee",
+            "display": false
+          },
+          {
+            "name": "Primary Tenant",
+            "display": false
+          },
+          {
+            "name": "First Name",
+            "display": false
+          },
+          {
+            "name": "Last Name",
+            "display": false
+          },
+          {
+            "name": "Company Name",
+            "display": false
+          },
+          {
+            "name": "License Plates",
+            "display": false
+          },
+          {
+            "name": "Pets",
+            "display": false
+          },
+          {
+            "name": "NSF Fee Amount",
+            "display": false
+          },
+          {
+            "name": "Require Online Payments In Full",
+            "display": false
+          },
+          {
+            "name": "Security Deposit Return Payment",
+            "display": false
+          },
+          {
+            "name": "Commercial Lease Type",
+            "display": false
+          }
+        ],
+        "customization": [
+          "tenants",
+          "tenantStatus",
+          "tenantType",
+          "properties"
+        ]
+      }
+    },
+    {
+      "tenantLedger": {
+        "columns": [],
+        "customization": [
+          "tenants",
+          "dateRange",
+          "transactionsShown"
+        ]
+      }
+    },
+    {
+      "tenantTickler": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Tenant Tags",
+            "display": false
+          },
+          {
+            "name": "Move Out Date",
+            "display": false
+          },
+          {
+            "name": "Move Out Reason",
+            "display": false
+          },
+          {
+            "name": "Move In Date",
+            "display": false
+          },
+          {
+            "name": "Lease Sign Date",
+            "display": false
+          },
+          {
+            "name": "Assigned User",
+            "display": false
+          },
+          {
+            "name": "Tenant Status",
+            "display": false
+          },
+          {
+            "name": "Security Deposit Return Payment",
+            "display": false
+          },
+          {
+            "name": "Eligible for eCheck Security Deposit Return",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "occurredRange",
+          "events"
+        ]
+      }
+    },
+    {
+      "tenantTransactionsSummary": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          }
+        ],
+        "customization": [
+          "tenants",
+          "properties",
+          "monthOf"
+        ]
+      }
+    },
+    {
+      "tenantUnpaidChargesSummary": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Account Name",
+            "display": false
+          },
+          {
+            "name": "Account Number",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenantStatus",
+          "asOf",
+          "balance"
+        ]
+      }
+    },
+    {
+      "tenantVehicleInfo": {
+        "columns": [
+          {
+            "name": "Rentable Item"
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenants",
+          "tenantStatus"
+        ]
+      }
+    },
+    {
+      "aged_payables_summary": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "31+",
+            "display": false
+          },
+          {
+            "name": "61+",
+            "display": false
+          },
+          {
+            "name": "Payee ID",
+            "display": false
+          },
+          {
+            "name": "Payee Type",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "asOf",
+          "payee",
+          "balance"
+        ]
+      }
+    },
+    {
+      "agedReceivablesDetail": {
+        "columns": [
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Future Charges",
+            "display": false
+          },
+          {
+            "name": "31+",
+            "display": false
+          },
+          {
+            "name": "61+",
+            "display": false
+          },
+          {
+            "name": "Unit & Payer Name",
+            "display": false
+          },
+          {
+            "name": "GL Account",
+            "display": false
+          },
+          {
+            "name": "Unit Address",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Unit City",
+            "display": false
+          },
+          {
+            "name": "Unit State",
+            "display": false
+          },
+          {
+            "name": "Unit Zip",
+            "display": false
+          },
+          {
+            "name": "Unit Name",
+            "display": false
+          },
+          {
+            "name": "Unit Type",
+            "display": false
+          },
+          {
+            "name": "Unit Tags",
+            "display": false
+          },
+          {
+            "name": "Tenant Status",
+            "display": false
+          },
+          {
+            "name": "Payment Plan",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tags",
+          "amountReceivable",
+          "tenantStatus",
+          "asOf"
+        ]
+      }
+    },
+    {
+      "billDetail": {
+        "columns": [
+          {
+            "name": "Posting Date",
+            "display": false
+          },
+          {
+            "name": "GL Account Name",
+            "display": false
+          },
+          {
+            "name": "GL Account Number",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Work Order #",
+            "display": false
+          },
+          {
+            "name": "Cash Account",
+            "display": false
+          },
+          {
+            "name": "Quantity",
+            "display": false
+          },
+          {
+            "name": "Rate",
+            "display": false
+          },
+          {
+            "name": "Work Order Assignee",
+            "display": false
+          },
+          {
+            "name": "Approval Status",
+            "display": false
+          },
+          {
+            "name": "Approved By",
+            "display": false
+          },
+          {
+            "name": "Last Approver",
+            "display": false
+          },
+          {
+            "name": "Next Approvers",
+            "display": false
+          },
+          {
+            "name": "Days Pending Approval",
+            "display": false
+          },
+          {
+            "name": "Board Approval Status",
+            "display": false
+          },
+          {
+            "name": "Created At",
+            "display": false
+          },
+          {
+            "name": "Last Edited At",
+            "display": false
+          },
+          {
+            "name": "Created By",
+            "display": false
+          },
+          {
+            "name": "Bank Account",
+            "display": false
+          },
+          {
+            "name": "Vendor Account Number",
+            "display": false
+          },
+          {
+            "name": "Service From",
+            "display": false
+          },
+          {
+            "name": "Service To",
+            "display": false
+          },
+          {
+            "name": "Other Payment Type",
+            "display": false
+          },
+          {
+            "name": "Purchase Order #",
+            "display": false
+          },
+          {
+            "name": "Cost Center Name",
+            "display": false
+          },
+          {
+            "name": "Cost Center Number",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "payee",
+          "paymentType",
+          "createdBy",
+          "glAccounts",
+          "billStatus",
+          "dateType",
+          "dateRange",
+          "showReversedTransactions"
+        ]
+      }
+    },
+    {
+      "chargeDetail": {
+        "columns": [
+          {
+            "name": "Unit Address",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Unit City",
+            "display": false
+          },
+          {
+            "name": "Unit State",
+            "display": false
+          },
+          {
+            "name": "Unit Zip",
+            "display": false
+          },
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Charge Description",
+            "display": false
+          },
+          {
+            "name": "Receipt Type",
+            "display": false
+          },
+          {
+            "name": "Receipt Date",
+            "display": false
+          },
+          {
+            "name": "Receipt Reference",
+            "display": false
+          },
+          {
+            "name": "Owner(s) - Phone Number - Email",
+            "display": false
+          },
+          {
+            "name": "Owner(s)",
+            "display": false
+          },
+          {
+            "name": "Posting Date",
+            "display": false
+          },
+          {
+            "name": "Created By",
+            "display": false
+          },
+          {
+            "name": "Created At",
+            "display": false
+          },
+          {
+            "name": "Last Edited At",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenants",
+          "tenantStatus",
+          "glAccounts",
+          "dateType",
+          "chargeStatus",
+          "chargeDateRange",
+          "receiptType",
+          "receiptDateRange"
+        ]
+      }
+    },
+    {
+      "checkRegister": {
+        "columns": [
+          {
+            "name": "Bank Account Number",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "dateRange",
+          "bankAccounts",
+          "payee",
+          "paymentType",
+          "checkNumbers",
+          "includeVoiedChecks",
+          "excludeClearedChecks"
+        ]
+      }
+    },
+    {
+      "checkRegisterDetail": {
+        "columns": [
+          {
+            "name": "Bank Account Number",
+            "display": false
+          },
+          {
+            "name": "ACH Batch Generation Date",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "dateRange",
+          "bankAccounts",
+          "payee",
+          "paymentType",
+          "checkNumbers",
+          "includeVoiedChecks",
+          "groupGLTotalsPerCheck"
+        ]
+      }
+    },
+    {
+      "depositRegister": {
+        "columns": [
+          {
+            "name": "Receipt Description",
+            "display": false
+          },
+          {
+            "name": "Unit",
+            "display": false
+          }
+        ],
+        "customization": [
+          "dateRange",
+          "bankAccounts"
+        ]
+      }
+    },
+    {
+      "expenseRegister": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Due Date",
+            "display": false
+          },
+          {
+            "name": "Expense Account Name",
+            "display": false
+          },
+          {
+            "name": "Expense Account Number",
+            "display": false
+          },
+          {
+            "name": "Cash Account Name",
+            "display": false
+          },
+          {
+            "name": "Cash Account Number",
+            "display": false
+          },
+          {
+            "name": "Check Amount",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "payee",
+          "billStatus",
+          "billDateRange"
+        ]
+      }
+    },
+    {
+      "incomeRegister": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "receiptDateRange",
+          "payer"
+        ]
+      }
+    },
+    {
+      "journalEntryRegister": {
+        "columns": [],
+        "customization": []
+      }
+    },
+    {
+      "paymentPlans": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenantsAndHomeowners",
+          "tags",
+          "originalChargePeriodRange",
+          "showReversedTransactions"
+        ]
+      }
+    },
+    {
+      "receivablesActivity": {
+        "columns": [
+          {
+            "name": "Property Name",
+            "display": false
+          },
+          {
+            "name": "Property Address",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Property Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Property City",
+            "display": false
+          },
+          {
+            "name": "Property State",
+            "display": false
+          },
+          {
+            "name": "Property Zip",
+            "display": false
+          },
+          {
+            "name": "Online Payments Recurring Count",
+            "display": false
+          },
+          {
+            "name": "Online Payments Recurring Total",
+            "display": false
+          },
+          {
+            "name": "Move-in",
+            "display": false
+          },
+          {
+            "name": "Emails",
+            "display": false
+          },
+          {
+            "name": "Phone Numbers",
+            "display": false
+          },
+          {
+            "name": "Certified Funds Only",
+            "display": false
+          },
+          {
+            "name": "Opted Out Of Portal",
+            "display": false
+          },
+          {
+            "name": "Payment Type",
+            "display": false
+          },
+          {
+            "name": "Require Online Payments In Full",
+            "display": false
+          },
+          {
+            "name": "Portfolio",
+            "display": false
+          }
+        ],
+        "customization": [
+          "tenants",
+          "tenantStatus",
+          "properties",
+          "receiptDateRange",
+          "showManuallyEnteredReceiptsOnly"
+        ]
+      }
+    },
+    {
+      "residentFinancialActivity": {
+        "columns": [
+          {
+            "name": "Account",
+            "display": false
+          },
+          {
+            "name": "Account Number",
+            "display": false
+          },
+          {
+            "name": "Unit Address",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 1",
+            "display": false
+          },
+          {
+            "name": "Unit Street Address 2",
+            "display": false
+          },
+          {
+            "name": "Unit City",
+            "display": false
+          },
+          {
+            "name": "Unit State",
+            "display": false
+          },
+          {
+            "name": "Unit Zip",
+            "display": false
+          },
+          {
+            "name": "Unit & Payer Name",
+            "display": false
+          },
+          {
+            "name": "Unit",
+            "display": false
+          },
+          {
+            "name": "Property",
+            "display": false
+          },
+          {
+            "name": "Payer",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenantStatus",
+          "dateRange"
+        ]
+      }
+    },
+    {
+      "unpaidBalancesByMonth":{
+        "columns":[
+          {
+            "name":"Tags",
+            "display": false
+          }
+        ],
+        "customization": [
+          "properties",
+          "tenants",
+          "tenantStatus",
+          "tags",
+          "glAccounts",
+          "periodRange",
+          "accountingBasis",
+          "totalBalance"
         ]
       }
     }
