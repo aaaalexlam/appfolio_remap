@@ -1,45 +1,63 @@
-:root {
-    --bs-badge-padding-x: 0.375rem;
-    --bs-badge-padding-y: 0.25rem;
-}
+
 
 .properties_selector {
-    border: 1px solid;
+    flex-grow: 9;
+}
+
+#properties_selector_remove_all{
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
-}
-
-.properties_selector input {
-    width: 100%;
-}
-
-#properties_selector_options {
-    cursor: pointer;
-}
-
-#properties_selector_options :hover {
-    background-color: blueviolet;
-    color: white;
-}
-
-.selected_properties_box {
-    background-color: #eeeff1 !important;
-    display: flex;
-    border-radius: 0.33rem;
-    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
-}
-
-.selected_properties {
-    width: 95%;
-}
-
-.cross {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 5%;
     cursor: pointer;
 }
 
-#properties_selector_options div {
+.properties_selector input {
+    width: 95%;
+}
+
+.properties_selector_options_label{
+    cursor: pointer;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+}
+
+#properties_input{
+    border: none;
+    outline: none;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+}
+
+#properties_input:focus{
+    border: none;
+    outline: none;
+}
+#properties_selector_options input[type="radio"]{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#selected_properties input[type="checkbox"]{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Change label background when radio is checked */
+#properties_selector_options input[type="radio"]:checked + .properties_selector_options_label{
+    background-color: #006eb7;  /* Green when checked */
+    color: white;
+}
+#selected_properties{
+    display: flex;
+    flex-direction: column;
+}
+
+#selected_properties div{
+    background-color: #eeeff1!important;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    cursor: pointer;
+    border-radius: var(--bs-badge-border-radius);
+    margin: 0.25rem;
+    width: auto;
 }
