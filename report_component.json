@@ -33,7 +33,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "glAccount",
           "dateRange",
           "accountingBasis"
@@ -53,7 +53,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "accountingBasis",
           "levelOfDetail",
@@ -70,7 +70,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "compareTo",
           "accountingBasis",
@@ -91,7 +91,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "accountingBasis",
           "levelOfDetail"
@@ -172,7 +172,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis",
           "additionalCashGLaccount",
@@ -191,7 +191,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "accountingBasis",
           "levelOfDetail",
@@ -209,7 +209,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis",
           "additionalCashGLaccount",
@@ -236,7 +236,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis",
           "excludeSuppressedFees"
@@ -275,7 +275,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "payee",
           "billDateRange"
         ]
@@ -386,7 +386,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "createBy",
           "glAccounts",
           "excludeZeroDollarReceiptsFromCashAccounts",
@@ -418,7 +418,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "accountingBasis",
           "levelOfDetail",
@@ -435,7 +435,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "fundType",
           "periodRange",
           "accountingBasis",
@@ -461,7 +461,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "accountingBasis",
           "levelOfDetail",
@@ -478,7 +478,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis",
           "levelOfDetail",
@@ -495,7 +495,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis",
           "levelOfDetail",
@@ -556,7 +556,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "showHiddenLoans"
         ]
@@ -566,7 +566,7 @@
       "trailBalance": {
         "columns": [],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis"
         ]
@@ -576,7 +576,7 @@
       "trailBalanceByProperty": {
         "columns": [],
         "customization": [
-          "protities",
+          "properties",
           "dateRange",
           "accountingBasis"
         ]
@@ -643,7 +643,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "date",
           "accountingBasis",
           "operatingBankAccounts",
@@ -744,7 +744,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "cashAccount",
           "dateRange",
           "showReversedTransactions"
@@ -765,7 +765,7 @@
         ],
         "customization": [
           "category",
-          "protities",
+          "properties",
           "sentAtRange"
         ]
       }
@@ -802,7 +802,7 @@
           "tenants",
           "tenantStatus",
           "tenantType",
-          "protities",
+          "properties",
           "lateFeepolicyEffectiveAsOf"
         ]
       }
@@ -884,7 +884,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "source",
           "status",
           "leadType",
@@ -923,7 +923,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "source",
           "status",
           "leadType",
@@ -953,7 +953,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "source",
           "leadType",
           "interestReceivedRange"
@@ -1065,7 +1065,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "tags",
           "filterDateRangeBy",
@@ -1108,7 +1108,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "leaseEndsFrom"
         ]
       }
@@ -1214,7 +1214,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "tenants",
           "filterLeasesBy",
@@ -1257,7 +1257,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "interestReceivedRange",
           "assignedUser"
         ]
@@ -1284,7 +1284,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "dateRange"
         ]
@@ -1303,7 +1303,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "date"
         ]
@@ -1326,7 +1326,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "receivedRange",
           "includeUnitsWhichAreNotRentReady",
           "includeUnitsWhichAreHiddenFromTheVacanciesDashBoard"
@@ -1342,7 +1342,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "month"
         ]
       }
@@ -1351,7 +1351,7 @@
       "prospectSourceTracking": {
         "columns": [],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "receivedRange"
         ]
@@ -1430,7 +1430,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "leaseRange",
           "statuses",
@@ -1727,7 +1727,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "status",
           "filterDateRangeBy",
           "dateRange"
@@ -1804,7 +1804,7 @@
         ],
         "customization": [
           "showingTimeRange",
-          "protities",
+          "properties",
           "statuses",
           "assignedUser"
         ]
@@ -1887,7 +1887,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "units",
           "tags"
         ]
@@ -1912,7 +1912,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "status",
           "projects",
           "startDateRange",
@@ -1989,7 +1989,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "glAccounts",
           "vendor",
           "approvalStatus",
@@ -2008,7 +2008,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "moveOutDateRange",
           "unitTurnStatus"
         ]
@@ -2215,7 +2215,7 @@
         ],
         "customization": [
           "payee",
-          "protities",
+          "properties",
           "billDateRange",
           "showReversedTransactions"
         ]
@@ -2366,7 +2366,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "tenants",
           "vendor",
           "assignedUser",
@@ -2431,7 +2431,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "vendor",
           "assignedUser",
           "itemCreatedDateRange",
@@ -2467,7 +2467,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "maintenanceTech",
           "currentWorkOrderStatus",
           "dateRange"
@@ -2523,7 +2523,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "tags",
           "owners",
           "createBy"
@@ -2559,7 +2559,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "owner",
           "dateRange",
           "showOutOfStateOwnersOnly",
@@ -2640,7 +2640,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "tenantsHomeownersOwnersAndApplicants",
           "activityStatus",
           "AssignedUser",
@@ -2689,7 +2689,7 @@
           }
         ],
         "customization": [
-          "protities"
+          "properties"
         ]
       }
     },
@@ -2726,7 +2726,7 @@
           }
         ],
         "customization": [
-          "protities"
+          "properties"
         ]
       }
     },
@@ -2747,7 +2747,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "asOf",
           "additionalAccountTypes",
           "accountingBasis",
@@ -2772,7 +2772,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "consolidate",
           "accountingBasis"
@@ -2788,7 +2788,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "comparisonPeriodRange",
           "additionalAccountTypes",
@@ -2822,7 +2822,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "additionalAccountTypes",
           "accountingBasis",
@@ -2847,7 +2847,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "periodRange",
           "consolidate",
           "includeZeroBalanceGLAccount"
@@ -2867,7 +2867,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "includeProperyLevelFixedAssets",
           "AssetTypes",
           "Status"
@@ -4090,7 +4090,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "owners",
           "taxyear",
           "showOnlyOwnersThathaveBeenDesignatedToReceiveA1099",
@@ -4421,7 +4421,7 @@
           }
         ],
         "customization": [
-          "protities",
+          "properties",
           "asOf",
           "Delinquency Note Range",
           "tenantStatus",
@@ -4468,7 +4468,7 @@
           }
         ],
         "customization": [
-          "protities"
+          "properties"
         ]
       }
     },
