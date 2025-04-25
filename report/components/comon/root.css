@@ -26,3 +26,15 @@
     font-weight: 400;
     font-size:1rem;
 }
+
+#search_column{
+    width: 20vw;
+    border: 1px solid;
+}
+
+#search_column label {
+    cursor: pointer;
+}
+#report_table tr {
+    border: 1px solid
+}

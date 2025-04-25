@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,49 @@
     <link rel="stylesheet" href="../components/asOf/asOf.css">
     <link rel="stylesheet" href="../components//levelOfDetail/levelOfDetail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <title>Balance Sheet</title>
 </head>
+
 <body>
     <h1>Balance Sheet</h1>
-    
+
+    <div id="report_table">
+        <table>
+            <thead>
+                <tr id="report_table_header">
+                    <th>Account Name</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody id="report_table_body">
+                <tr>
+                    <td>Transfer Fund</td>
+                    <td>500.000</td>
+                    <td id="report_table_body_accountNumber">9910</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="search_checkboxes">
+        <div>
+            <label>
+                <input type="checkbox" name="" id="search_checkboxes_accountName" checked>
+                <span>Account Name</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="" id="search_checkboxes_balance" checked>
+                <span>Balance</span>
+            </label>
+        </div>
+    </div>
+
     <div id="modal">
 
     </div>
+
 
     <script src="../components/comon/componentRouter.js"></script>
     <script src="../components/properties/propertiesComponent.js"></script>
@@ -25,8 +60,9 @@
     <script src="../components/accountingBasis/accountingBasisComponent.js"></script>
     <script src="../components/levelOfDetail/levelOfDetailComponent.js"></script>
     <script src="../components/comon/reportComponent.js"></script>
-    <script src="balanceSheet.js" ></script>
+    <script src="balanceSheet.js"></script>
     <script src="../components/properties//properties.js"></script>
 
 </body>
+
 </html>
