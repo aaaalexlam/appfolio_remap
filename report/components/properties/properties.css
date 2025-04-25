@@ -1,4 +1,12 @@
+.properties_input_group {
+    display: flex;
+    width: 100%;
+    border: 1px solid;
+}
 
+#properties_select_group{
+    width: 100%;
+}
 
 .properties_selector {
     flex-grow: 9;
@@ -60,4 +68,12 @@
     border-radius: var(--bs-badge-border-radius);
     margin: 0.25rem;
     width: auto;
+}
+
+.properties_input_group input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
 }
