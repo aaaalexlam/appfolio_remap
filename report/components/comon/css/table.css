@@ -1,0 +1,40 @@
+#report_table {
+    border: 1px solid #ccc;
+    overflow: scroll;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Important for resizing columns */
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 8px;
+    text-align: left;
+    position: relative; /* Needed for resizer handle */
+
+    /* 👇 Add these lines for ellipsis effect */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+th .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateY(50%);
+    width: 5px;
+    height: 50%;
+    background-color: rgb(133, 133, 133);
+    cursor: col-resize;
+    user-select: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+

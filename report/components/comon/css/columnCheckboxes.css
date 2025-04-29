@@ -1,0 +1,21 @@
+#search_checkboxes{
+    border: 1px solid;
+    width: 20vw;
+    height: 40vh;
+    overflow-y: scroll;
+    padding: 0.5rem;
+}
+
+#search_checkboxes div label{
+    padding: 0.1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+#search_checkboxes div label span{
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

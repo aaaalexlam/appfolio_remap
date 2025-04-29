@@ -1,5 +1,5 @@
-function getComponentByKey(key){
-    switch(key){
+function getComponentByKey(key) {
+    switch (key) {
         case "properties":
             return createPropertiesHTML();
         case "asOf":

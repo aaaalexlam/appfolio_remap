@@ -1,6 +1,9 @@
 const balanceSheetObject = window.reportComponent.data.find(item => item.hasOwnProperty('balanceSheet'));
+
+console.log(balanceSheetObject)
 const columns = balanceSheetObject.balanceSheet.columns;
 const customization = balanceSheetObject.balanceSheet.customization;
+
 
 generateCustomizationForm();
 generateSearchCheckBoxes();
@@ -54,7 +57,7 @@ function generateSearchCheckBoxes() {
         </div>
     `;
 
-        headerComponent += `<th id='report_table_header_${toCamelCase(column.name)}'>${column.name}</th>`;
+        headerComponent += `<th id='report_table_header_${toCamelCase(column.name)}'>${column.name} </th>`;
 
     });
     searchCheckboxes.innerHTML += columnsContnet;
