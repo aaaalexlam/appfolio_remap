@@ -37,11 +37,9 @@ function addAsOfEventListener() {
     const as_of_date = document.getElementById('as_of_date');
     const as_of_select_date = document.getElementById('as_of_select_date');
 
-
     radios.forEach(radio => {
         radio.addEventListener("change", () => {
             if (radio.checked) {
-
                 if (radio.id === "as_of_radio_input_date") {
                     as_of_date.disabled = false;
                     as_of_select_date.disabled = true;
