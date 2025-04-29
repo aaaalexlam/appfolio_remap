@@ -1,13 +1,17 @@
 const balanceSheetObject = window.reportComponent.data.find(item => item.hasOwnProperty('balanceSheet'));
-
-console.log(balanceSheetObject)
 const columns = balanceSheetObject.balanceSheet.columns;
 const customization = balanceSheetObject.balanceSheet.customization;
-
 
 generateCustomizationForm();
 generateSearchCheckBoxes();
 
+document.getElementById('balance_sheet_post_form_btn').onclick = function () {
+
+};
+
+function initCustomizeSearchEventListerner() {
+
+}
 
 function generateCustomizationForm() {
     const propertiesElement = document.getElementById("modal");
@@ -30,12 +34,16 @@ function generateCustomizationForm() {
     customizationComponents +=
         `
                 <tr class="tr-single-right">
-                    <td><button id='post_form_btn' class="default_btn">Update</button></td>
+                    <td><button id='balance_sheet_post_form_btn' class="default_btn" type="submit">Update</button></td>
                 </tr>
             </table>
         </div>
     `
-    propertiesElement.innerHTML = customizationComponents
+    propertiesElement.innerHTML = customizationComponents;
+
+    customization.forEach(key => {
+        addEventListenerBykey(key);
+    });
 }
 
 function generateSearchCheckBoxes() {
