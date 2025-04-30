@@ -45,15 +45,18 @@ window.reportComponent = {
                 "columns": [
                     {
                         "name": "Account Name",
-                        "display": true
+                        "display": true,
+                        "inLineCss": "width:100px"
                     },
                     {
                         "name": "Balance",
-                        "display": true
+                        "display": true,
+                        "inLineCss": "flex-grow: 1; text-align: right; min-width:150px;"
                     },
                     {
                         "name": "Account Number",
-                        "display": false
+                        "display": false,
+                        "inLineCss": ""
                     }
                 ],
                 "customization": [
@@ -67,15 +70,15 @@ window.reportComponent = {
                     },
                     {
                         "inputType": "accountingBasis",
-                        "displayName": "Accounting Basis"                       
+                        "displayName": "Accounting Basis"
                     },
                     {
                         "inputType": "levelOfDetail",
-                        "displayName": "Level Of Detail"            
+                        "displayName": "Level Of Detail"
                     },
                     {
                         "inputType": "checkBox",
-                        "displayName": "Include Zero Balance GL Account" 
+                        "displayName": "Include Zero Balance GL Account"
                     }
                 ]
             }

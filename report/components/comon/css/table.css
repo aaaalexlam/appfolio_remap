@@ -6,10 +6,7 @@
 }
 
 #report_table {
-    border: 1px solid;
-    width: 100vw;
     overflow-x: scroll;
-    padding: 10px;
 }
 
 #report_table table {
@@ -29,6 +26,12 @@
     min-width: 100px;
 }
 
+#report_table tr{
+    display:flex;
+    align-items: center;
+}
+
+
 
 #report_table th {
     background-color: #f1f1f1;
@@ -44,8 +47,7 @@
     background-color: rgb(133, 133, 133);
     cursor: col-resize;
     user-select: none;
-    margin-left: 5px;
-    margin-right: 5px;
+
     border-radius: 10px;
 }
 

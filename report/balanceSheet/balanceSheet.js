@@ -105,7 +105,7 @@ function initSearchCheckBoxes() {
 
         headerComponent +=
             `
-            <th style="width:100px;  ${column.display ? 'table-cell;' : 'display:none;'}" id='report_table_header_${toSnakeCase(column.name)}'>
+            <th style="${column.inLineCss}  ${column.display ? 'table-cell;' : 'display:none;'}" id='report_table_header_${toSnakeCase(column.name)}'>
                 ${column.name}
                 <div class="resizer">
             </th>

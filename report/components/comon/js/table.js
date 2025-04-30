@@ -15,7 +15,8 @@ function initResizeTable(){
 
             function mousemoveHandler(e) {
                 const newWidth = startWidth + (e.pageX - startX);
-                if (newWidth > 100) {
+                if (newWidth > 40) {
+                    th.style.flexGrow = null;
                     th.style.width = newWidth + "px";
                 }
             }
