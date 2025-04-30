@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initCustomizationForm();
     initSearchCheckBoxes();
     initColumnCheckboxes();
-
+    initResizeTable();
+    
     document.addEventListener('click', function (event) {
         // hide modal onClicked
         const clickedElement = event.target;

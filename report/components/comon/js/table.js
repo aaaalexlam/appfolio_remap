@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initResizeTable(){
+
     const table = document.querySelector("table");
     const resizers = table.querySelectorAll(".resizer");
     let currentResizer;
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function mousemoveHandler(e) {
                 const newWidth = startWidth + (e.pageX - startX);
-                if(newWidth > 100){
+                if (newWidth > 100) {
                     th.style.width = newWidth + "px";
                 }
             }
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-});
+}
 
 
 function toSnakeCase(str) {
