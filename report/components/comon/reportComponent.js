@@ -44,6 +44,14 @@ window.reportComponent = {
             "balanceSheet": {
                 "columns": [
                     {
+                        "name": "Account Name",
+                        "display": true
+                    },
+                    {
+                        "name": "Balance",
+                        "display": true
+                    },
+                    {
                         "name": "Account Number",
                         "display": false
                     }

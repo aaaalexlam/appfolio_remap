@@ -1,17 +1,21 @@
+.main_container{
+    display: flex;
+}
+
 #report_table {
-    border: 1px solid #ccc;
-    overflow: scroll;
+    border: 1px solid;
+    width: 100vw;
+    overflow-x: scroll;
     padding: 10px;
 }
 
-table {
+#report_table table {
+
     width: 100%;
-    border-collapse: collapse;
     table-layout: fixed; /* Important for resizing columns */
 }
 
-th, td {
-    border: 1px solid #888;
+#report_table th, #report_table td {
     padding: 8px;
     text-align: left;
     position: relative; /* Needed for resizer handle */
@@ -20,10 +24,15 @@ th, td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
+    min-width: 100px;
 }
 
-th .resizer {
+
+#report_table th{
+    background-color: #f1f1f1;
+}
+
+#report_table th .resizer {
     position: absolute;
     right: 0;
     top: 0;

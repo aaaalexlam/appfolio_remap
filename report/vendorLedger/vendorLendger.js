@@ -26,8 +26,8 @@ function generateSearchCheckBoxes() {
         headerComponent +=
         `
             <th style='width:100px; display:none;' id='report_table_header_${toSnakeCase(column.name)}'>
-                ${column.name}
-                <div class="resizer">
+                <p>${column.name}</p>
+                <div class="resizer"></div>
             </th>
         `;
 

@@ -1,8 +1,9 @@
 #search_checkboxes{
     border: 1px solid;
-    width: 20vw;
-    height: 40vh;
+    min-width: 350px;
+    height: calc(100vh - 100px);
     overflow-y: scroll;
+    overflow-x: visible;
     padding: 0.5rem;
 }
 

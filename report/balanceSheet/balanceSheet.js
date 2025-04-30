@@ -15,8 +15,8 @@ document.getElementById('balance_sheet_post_form_btn').onclick = function () {
     document.getElementById('custom_search_summary_properties').innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);
     document.getElementById('custom_search_summary_asOf').innerText = dateTime;
     document.getElementById('custom_search_summary_accounting_basis').innerText = accountingBasis;
-    document.getElementById('custom_search_summary_level_of_detail').innerText = formatCustomSearchStr("custom_search_summary_level_of_detail",selectedRadio);
-};  
+    document.getElementById('custom_search_summary_level_of_detail').innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
+};
 
 function generateCustomizationForm() {
     const propertiesElement = document.getElementById("modal");
@@ -60,17 +60,24 @@ function generateSearchCheckBoxes() {
     const reportTableHeader = document.getElementById("report_table_header");
 
     columns.forEach(column => {
+
         columnsContnet +=
             `
         <div>
             <label>
-                <input type="checkbox" checked name="" id="" value=${toCamelCase(column.name)}>
+                <input type="checkbox" name="" id="" ${column.display ? 'checked' : ''} value=${toSnakeCase(column.name)}>
                 <span>${column.name}</span>
             </label>
         </div>
     `;
 
-        headerComponent += `<th id='report_table_header_${toCamelCase(column.name)}'>${column.name} </th>`;
+        headerComponent +=
+            `
+            <th style="width:100px;  ${column.display ? 'table-cell;' : 'display:none;'}" id='report_table_header_${toSnakeCase(column.name)}'>
+                ${column.name}
+                <div class="resizer">
+            </th>
+        `;
 
     });
     searchCheckboxes.innerHTML += columnsContnet;
@@ -92,23 +99,16 @@ checkboxes.forEach((checkbox, index) => {
 });
 
 function hideColumn(key) {
-    document.getElementById(`report_table_header_${key}`).style.display = 'none';
-    document.getElementById(`report_table_body_${key}`).style.display = 'none';
+    document.getElementById(`report_table_header_${key}`).style.display = 'none';;
 }
 
 function showColumn(key) {
-    document.getElementById(`report_table_header_${key}`).style.display = 'block';
-    document.getElementById(`report_table_body_${key}`).style.display = 'block';
+    document.getElementById(`report_table_header_${key}`).style.display = 'table-cell';
 }
 
-function toCamelCase(label) {
-    return label
-        .toLowerCase()
-        .split(' ')
-        .map((word, index) =>
-            index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
-        )
-        .join('');
+function toSnakeCase(str) {
+    return str
+        .trim()                   // remove leading/trailing spaces
+        .toLowerCase()            // convert to lowercase
+        .replace(/\s+/g, '_');    // replace spaces with underscores
 }
-
-
