@@ -16,52 +16,63 @@
 </head>
 
 <body>
-    <h1>Balance Sheet</h1>
-    <div id="custom_search_summary">
-        <div>
-            <b>Properties:</b>
-            <span id="custom_search_summary_properties"></span>
+
+    <div class="body_container">
+
+        <div class="header_container">
+            <div>
+                <h2>Balance Sheet</h2>
+            </div>
+            <div>
+                <button class="default_btn" id="customization_btn">Customization</button>
+            </div>
         </div>
-        <div>
-            <b>As of:</b>
-            <span id="custom_search_summary_asOf"></span>
+        <div id="custom_search_summary">
+            <div>
+                <b>Properties:</b>
+                <span id="custom_search_summary_properties"></span>
+            </div>
+            <div>
+                <b>As of:</b>
+                <span id="custom_search_summary_asOf"></span>
+            </div>
+            <div>
+                <b>Accounting Basis:</b>
+                <span id="custom_search_summary_accounting_basis"></span>
+            </div>
+            <div>
+                <b>Level Of Detail:</b>
+                <span id="custom_search_summary_level_of_detail"></span>
+            </div>
+
         </div>
-        <div>
-            <b>Accounting Basis:</b>
-            <span id="custom_search_summary_accounting_basis"></span>
+
+        <div class="main_container">
+            <div id="report_table">
+                <table>
+                    <thead>
+                        <tr id="report_table_header">
+
+                        </tr>
+                    </thead>
+                    <tbody id="report_table_body">
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="search_checkboxes">
+
+            </div>
         </div>
-        <div>
-            <b>Level Of Detail:</b>
-            <span id="custom_search_summary_level_of_detail"></span>
+
+
+        <div id="modal">
+
         </div>
 
     </div>
-
-    <div class="main_container">
-        <div id="report_table">
-            <table>
-                <thead>
-                    <tr id="report_table_header">
-
-                    </tr>
-                </thead>
-                <tbody id="report_table_body">
-                    <tr>
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="search_checkboxes">
-
-        </div>
-    </div>
-
-
-    <div id="modal">
-
-    </div>
-
 
     <script src="../components/comon/componentRouter.js"></script>
     <script src="../components/properties/propertiesComponent.js"></script>
@@ -69,6 +80,7 @@
     <script src="../components/accountingBasis/accountingBasisComponent.js"></script>
     <script src="../components/levelOfDetail/levelOfDetailComponent.js"></script>
     <script src="../components/comon/reportComponent.js"></script>
+    <script src="../components/checkBox/checkBoxComponent.js"></script>
     <script src="../components/comon/js/table.js"></script>
 
     <script src="balanceSheet.js"></script>

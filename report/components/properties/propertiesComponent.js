@@ -16,10 +16,10 @@ const properties_options_data = [
     }
 ];
 
-function createPropertiesHTML() {
+function createPropertiesHTML(displayName) {
     return `
                 <tr class="tr-default">
-                    <td class="input_field" id="properties_field">Properties</td>
+                    <td class="input_field" id="properties_field">${displayName}</td>
                     <td class="input_column">
                         <div class="properties_input_group">
                             <div id="properties_select_group">

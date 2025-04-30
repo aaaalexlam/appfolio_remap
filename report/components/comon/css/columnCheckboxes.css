@@ -1,10 +1,13 @@
 #search_checkboxes{
     border: 1px solid;
-    min-width: 350px;
-    height: calc(100vh - 100px);
+    min-width: 250px;
     overflow-y: scroll;
     overflow-x: visible;
     padding: 0.5rem;
+}
+
+#search_checkboxes div{
+    margin-top: 3px;
 }
 
 #search_checkboxes div label{

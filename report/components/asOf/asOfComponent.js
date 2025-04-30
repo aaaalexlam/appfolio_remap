@@ -1,4 +1,4 @@
-function createAsOfHTML() {
+function createAsOfHTML(displayName) {
     // Get the last day of the current month
     const today = new Date();
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0); // 0 = last day of previous month
@@ -7,7 +7,7 @@ function createAsOfHTML() {
     const formatted = lastDay.toISOString().split("T")[0];
     return `
                 <tr class="tr-default">
-                    <td class="input_field" id="as_of_field">As of <span style="color: red;">*</span></td>
+                    <td class="input_field" id="as_of_field">${displayName} <span style="color: red;">*</span></td>
                     <td class="input_column">
                         <input type="radio" name="as_of_radio" id="as_of_radio_input_date" checked>
                         <input type="date" id="as_of_date" value=${formatted}>

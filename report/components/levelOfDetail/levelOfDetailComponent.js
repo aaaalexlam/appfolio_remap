@@ -1,7 +1,7 @@
-function createLevelOfDetailHTML() {
+function createLevelOfDetailHTML(displayName) {
     return `
                 <tr class="tr-default">
-                    <td class="input_field" id="level_of_detail_field">Level of Detail</td>
+                    <td class="input_field" id="level_of_detail_field">${displayName}</td>
                     <td class="input_column" id="level_of_detail">
                         <label>
                             <input type="radio" name="level_of_detail" value="deailView" checked>

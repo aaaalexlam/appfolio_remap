@@ -1,5 +1,8 @@
-.main_container{
+.main_container {
     display: flex;
+    margin-top: 10px;
+    height: 100%;
+    flex: 1;
 }
 
 #report_table {
@@ -10,17 +13,16 @@
 }
 
 #report_table table {
-
     width: 100%;
-    table-layout: fixed; /* Important for resizing columns */
+    table-layout: fixed;
+    /* Important for resizing columns */
 }
 
-#report_table th, #report_table td {
+#report_table th,
+#report_table td {
     padding: 8px;
     text-align: left;
-    position: relative; /* Needed for resizer handle */
-
-    /* 👇 Add these lines for ellipsis effect */
+    position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -28,7 +30,7 @@
 }
 
 
-#report_table th{
+#report_table th {
     background-color: #f1f1f1;
 }
 
@@ -47,3 +49,7 @@
     border-radius: 10px;
 }
 
+.column_row label {
+    display: flex;
+    cursor: pointer;
+}

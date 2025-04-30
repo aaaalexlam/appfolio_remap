@@ -1,14 +1,15 @@
-function getComponentByKey(key) {
+function getComponentByKey(key, displayName) {
     switch (key) {
         case "properties":
-            return createPropertiesHTML();
+            return createPropertiesHTML(displayName);
         case "asOf":
-            return createAsOfHTML();
-
+            return createAsOfHTML(displayName);
         case "accountingBasis":
-            return createAccountingBasisHTML();
+            return createAccountingBasisHTML(displayName);
         case "levelOfDetail":
-            return createLevelOfDetailHTML();
+            return createLevelOfDetailHTML(displayName);
+        case "checkBox":
+            return createCheckBoxHTML(key, displayName);
     }
 }
 
@@ -22,10 +23,8 @@ function addEventListenerBykey(key){
             break;
         case "accountingBasis":
             break;
-          
         case "levelOfDetail":
             break;
-            
     }
 }
 

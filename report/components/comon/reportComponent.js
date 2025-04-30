@@ -57,11 +57,26 @@ window.reportComponent = {
                     }
                 ],
                 "customization": [
-                    "properties",
-                    "asOf",
-                    "accountingBasis",
-                    "levelOfDetail",
-                    "includeZeroGLAccount"
+                    {
+                        "inputType": "properties",
+                        "displayName": "Properties"
+                    },
+                    {
+                        "inputType": "asOf",
+                        "displayName": "As of"
+                    },
+                    {
+                        "inputType": "accountingBasis",
+                        "displayName": "Accounting Basis"                       
+                    },
+                    {
+                        "inputType": "levelOfDetail",
+                        "displayName": "Level Of Detail"            
+                    },
+                    {
+                        "inputType": "checkBox",
+                        "displayName": "Include Zero Balance GL Account" 
+                    }
                 ]
             }
         },

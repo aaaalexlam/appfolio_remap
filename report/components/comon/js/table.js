@@ -30,3 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+function toSnakeCase(str) {
+    return str
+        .trim()                   // remove leading/trailing spaces
+        .toLowerCase()            // convert to lowercase
+        .replace(/\s+/g, '_');    // replace spaces with underscores
+}
