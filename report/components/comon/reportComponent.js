@@ -46,12 +46,12 @@ window.reportComponent = {
                     {
                         "name": "Account Name",
                         "display": true,
-                        "inLineCss": "width:100px"
+                        "inLineCss": "width:110px;"
                     },
                     {
                         "name": "Balance",
                         "display": true,
-                        "inLineCss": "flex-grow: 1; text-align: right; min-width:150px;"
+                        "inLineCss": "width:1200px; text-align: right; min-width:150px;"
                     },
                     {
                         "name": "Account Number",

@@ -12,7 +12,8 @@
 #report_table table {
     width: 100%;
     table-layout: fixed;
-    /* Important for resizing columns */
+
+    border-spacing: 0px;
 }
 
 #report_table th,
@@ -26,14 +27,12 @@
     min-width: 100px;
 }
 
-#report_table tr{
-    display:flex;
-    align-items: center;
+thead{
+    background-color: #f1f1f1;
 }
 
 
-
-#report_table th {
+#report_table th, #report_table_header {
     background-color: #f1f1f1;
 }
 
@@ -47,7 +46,6 @@
     background-color: rgb(133, 133, 133);
     cursor: col-resize;
     user-select: none;
-
     border-radius: 10px;
 }
 

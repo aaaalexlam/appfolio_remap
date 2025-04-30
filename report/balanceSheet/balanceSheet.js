@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initSearchCheckBoxes();
     initColumnCheckboxes();
     initResizeTable();
-    
+
     document.addEventListener('click', function (event) {
         // hide modal onClicked
         const clickedElement = event.target;
@@ -112,6 +112,12 @@ function initSearchCheckBoxes() {
         `;
 
     });
+    headerComponent +=
+    `
+        <th style="table-cell;">
+            <div style="display:none;" class="resizer">
+        </th>
+    `;
     searchCheckboxes.innerHTML += columnsContnet;
     reportTableHeader.innerHTML += headerComponent;
 }

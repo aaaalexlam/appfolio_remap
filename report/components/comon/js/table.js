@@ -10,11 +10,15 @@ function initResizeTable(){
         function mousedownHandler(e) {
             currentResizer = resizer;
             let th = currentResizer.parentElement;
+            console.log('th::: ', th);
             let startX = e.pageX;
+            console.log('startX::: ', startX);
             let startWidth = th.offsetWidth;
+            console.log('startWidth::: ', startWidth);
 
             function mousemoveHandler(e) {
                 const newWidth = startWidth + (e.pageX - startX);
+                console.log('newWidth::: ', newWidth);
                 if (newWidth > 40) {
                     th.style.flexGrow = null;
                     th.style.width = newWidth + "px";
