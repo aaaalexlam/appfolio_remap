@@ -93,7 +93,7 @@ function addPropertiesEventListener() {
     });
 
     properties_selector_remove_all.addEventListener('click', function () {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="properties"]');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="properties_checkbox"]');
 
         checkboxes.forEach((checkbox) => {
             checkbox.checked = false;
