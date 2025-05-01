@@ -159,8 +159,8 @@ function createCash() {
         newRow.innerHTML =
             `
             <td class="report_table_chell_account_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${component.accountName}</td>
-            <td style="text-align: right; color:#005892">0.00</td>
-            <td>${component.number}</td>
+            <td style="text-align: right; color:#005892" class="report_table_chell_balance">0.00</td>
+            <td class="report_table_chell_account_number" style="display:none">${component.number}</td>
         `;
 
         fragment.appendChild(newRow);
@@ -170,7 +170,7 @@ function createCash() {
     totalCahsRow.innerHTML =
         `
         <td><b>Total Cash<b></td>
-        <td style="text-align: right; border-top: 2px solid color:#005892"><b>0.00</b></td>
+        <td style="text-align: right; border-top: 2px solid color:#005892" class="report_table_chell_balance"><b>0.00</b></td>
         <td></td>
     `;
     fragment.appendChild(totalCahsRow);
@@ -188,8 +188,8 @@ function createAsset() {
         newRow.innerHTML =
             `
             <td class="report_table_chell_account_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${component.accountName}</td>
-            <td style="text-align: right; color:#005892">0.00</td>
-            <td>${component.number}</td>
+            <td style="text-align: right; color:#005892" class="report_table_chell_balance">0.00</td>
+            <td class="report_table_chell_account_number" style="display:none">${component.number}</td>
         `;
 
         fragment.appendChild(newRow);
@@ -199,7 +199,7 @@ function createAsset() {
     totalCahsRow.innerHTML =
         `
         <td><b>TOTAL ASSET<b></td>
-        <td style="text-align: right; border-top: 2px solid"><b>0</b></td>
+        <td style="text-align: right; border-top: 2px solid" class="report_table_chell_balance"><b>0</b></td>
         <td></td>
     `;
     fragment.appendChild(totalCahsRow);
@@ -217,8 +217,8 @@ function createLiabilities(){
         newRow.innerHTML =
             `
             <td class="report_table_chell_account_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${component.accountName}</td>
-            <td style="text-align: right; color:#005892">0.00</td>
-            <td>${component.number}</td>
+            <td style="text-align: right; color:#005892" class="report_table_chell_balance">0.00</td>
+            <td class="report_table_chell_account_number" style="display:none">${component.number}</td>
         `;
 
         fragment.appendChild(newRow);
@@ -228,7 +228,7 @@ function createLiabilities(){
     totalCahsRow.innerHTML =
         `
         <td><b>Total Liabilities<b></td>
-        <td style="text-align: right; border-top: 2px solid"><b>0.00</b></td>
+        <td style="text-align: right; border-top: 2px solid" class="report_table_chell_balance"><b>0.00</b></td>
         <td></td>
     `;
     fragment.appendChild(totalCahsRow);
@@ -246,8 +246,8 @@ function createCapital(){
         newRow.innerHTML =
         `
             <td class="report_table_chell_account_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${component.accountName}</td>
-            <td style="text-align: right; color:#005892">0.00</td>
-            <td>${component.number}</td>
+            <td style="text-align: right; color:#005892" class="report_table_chell_balance">0.00</td>
+            <td class="report_table_chell_account_number" style="display:none">${component.number}</td>
         `;
 
         fragment.appendChild(newRow);
@@ -257,7 +257,7 @@ function createCapital(){
     totalCahsRow.innerHTML =
         `
         <td><b>Total Capital<b></td>
-        <td style="text-align: right; border-top: 2px solid"><b>0.00</b></td>
+        <td style="text-align: right; border-top: 2px solid" class="report_table_chell_balance"><b>0.00</b></td>
         <td></td>
     `;
     fragment.appendChild(totalCahsRow);

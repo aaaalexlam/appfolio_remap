@@ -45,18 +45,21 @@ window.reportComponent = {
                 "columns": [
                     {
                         "name": "Account Name",
+                        "key": "account_name",
                         "display": true,
                         "inLineCss": "width:200px;",
                         "checkBoxDisable": true
                     },
                     {
                         "name": "Balance",
+                        "key": "balance",
                         "display": true,
                         "inLineCss": "width:600px; text-align: right; min-width:150px;",
                         "checkBoxDisable": false
                     },
                     {
                         "name": "Account Number",
+                        "key": "account_number",
                         "display": false,
                         "inLineCss": "",
                         "checkBoxDisable": false
