@@ -46,17 +46,20 @@ window.reportComponent = {
                     {
                         "name": "Account Name",
                         "display": true,
-                        "inLineCss": "width:110px;"
+                        "inLineCss": "width:200px;",
+                        "checkBoxDisable": true
                     },
                     {
                         "name": "Balance",
                         "display": true,
-                        "inLineCss": "width:1200px; text-align: right; min-width:150px;"
+                        "inLineCss": "width:600px; text-align: right; min-width:150px;",
+                        "checkBoxDisable": false
                     },
                     {
                         "name": "Account Number",
                         "display": false,
-                        "inLineCss": ""
+                        "inLineCss": "",
+                        "checkBoxDisable": false
                     }
                 ],
                 "customization": [
