@@ -1,24 +1,24 @@
-#search_checkboxes{
+#column_checkbox{
     min-width: 250px;
     overflow-y: scroll;
     overflow-x: visible;
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-left: 0.5rem;
+    margin-left: 5px;
 }
 
-#search_checkboxes div{
+#column_checkbox div{
     margin-top: 3px;
 }
 
-#search_checkboxes div label{
+#column_checkbox div label{
     padding: 0.1rem;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-#search_checkboxes div label span{
+#column_checkbox div label span{
     overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -1,57 +1,69 @@
-const vendorLedgerObject = window.reportComponent.data.find(item => item.hasOwnProperty('vendorLedger'));
-const columns = vendorLedgerObject.vendorLedger.columns;
+// get the customization components
+const vendorLedgerComponents = window.reportComponent.data.find(item => item.hasOwnProperty('vendorLedger')).vendorLedger;
+const columns = vendorLedgerComponents.columns;
+const customization = vendorLedgerComponents.customization;
 
-generateSearchCheckBoxes();
-
-function generateSearchCheckBoxes() {
-
-    let columnsContnet = '';
-    let headerComponent = '';
-
-    const searchCheckboxes = document.getElementById("search_checkboxes");
-    const reportTableHeader = document.getElementById("report_table_header");
-
-    columns.forEach(column => {
-
-        columnsContnet +=
-            `
-        <div>
-            <label>
-                <input type="checkbox" name="" id="" value=${toSnakeCase(column.name)}>
-                <span>${column.name}</span>
-            </label>
-        </div>
-    `;
-
-        headerComponent +=
-        `
-            <th style='width:100px; display:none;' id='report_table_header_${toSnakeCase(column.name)}'>
-                <p>${column.name}</p>
-                <div class="resizer"></div>
-            </th>
-        `;
-
-    });
-    searchCheckboxes.innerHTML += columnsContnet;
-    reportTableHeader.innerHTML += headerComponent;
-}
-
-const checkboxes = document.querySelectorAll('#search_checkboxes input[type="checkbox"]');
-checkboxes.forEach((checkbox, index) => {
-    checkbox.addEventListener('click', () => {
-        if (checkbox.checked) {
-            showColumn(checkbox.value);
-        } else {
-            hideColumn(checkbox.value);
-        }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    initTable();
 });
 
-function hideColumn(key) {
-    document.getElementById(`report_table_header_${key}`).style.display = 'none';;
+
+function initTable() {
+    const table = document.getElementById("main_container");
+    const columnCheckbox = document.getElementById("column_checkbox");
+
+    columns.forEach((column) => {
+        table.innerHTML += columnHeaderTemplate(column.name);
+        columnCheckbox.innerHTML += columnCheckboxTemplate(column.name);
+
+    });
+
+
+    const resizers = document.querySelectorAll(".resize_div");
+    let currentResizer;
+
+    resizers.forEach(resizer => {
+        resizer.addEventListener("mousedown", mousedownHandler);
+
+        function mousedownHandler(e) {
+            currentResizer = resizer;
+            let main_container_header = currentResizer.parentElement;
+            let startX = e.pageX;
+            let startWidth = main_container_header.offsetWidth;
+
+            function mousemoveHandler(e) {
+                const newWidth = startWidth + (e.pageX - startX);
+                main_container_header.style.width = newWidth + "px";
+            }
+
+            function mouseupHandler() {
+                document.removeEventListener("mousemove", mousemoveHandler);
+                document.removeEventListener("mouseup", mouseupHandler);
+            }
+
+            document.addEventListener("mousemove", mousemoveHandler);
+            document.addEventListener("mouseup", mouseupHandler);
+        }
+    })
 }
 
-function showColumn(key) {
-    document.getElementById(`report_table_header_${key}`).style.display = 'table-cell';
+function handleCheckboxClick(event) {
+    const isChecked = event.target.checked;
+    const value = event.target.value;
+    const column = document.getElementById(`main_container_${toSnakeCase(value)}`)
+
+    if (isChecked) {
+        column.style.display = 'none'
+    } else {
+        column.style.display = 'block'
+    }
 }
 
+
+
+function toSnakeCase(str) {
+    return str
+        .trim()                   // remove leading/trailing spaces
+        .toLowerCase()            // convert to lowercase
+        .replace(/\s+/g, '_');    // replace spaces with underscores
+}

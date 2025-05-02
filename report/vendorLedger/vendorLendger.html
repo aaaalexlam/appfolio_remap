@@ -5,52 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../components/comon/css/columnCheckboxes.css">
-    <link rel="stylesheet" href="../components/comon/css/table.css">
+    <link rel="stylesheet" href="./vendorLendger.css">
+    <link rel="stylesheet" href="../components/comon/css/columnCheckboxRemap.css">
+    <link rel="stylesheet" href="../components/comon/css/tableRemap.css">
 </head>
 
 <body>
     <h1>Vendor Ledger</h1>
+    <div id="table_container">
+        <div id="main_container">
+            <div>
+                <div class="main_container_header">
+                    <div class="main_container_header_text">Template header</div>
+                    <div class="resize_div">
+                        <div class="resize_btn"></div>
+                    </div>
+                </div>
+                <div class="main_container_body">
 
-    <div id="report_table">
-        <table>
-
-            <thead>
-                <tr id="report_table_header">
-                    <th>Reference<div class="resizer"></div>
-                    </th>
-                    <th>Bill Date<div class="resizer"></div>
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="report_table_body">
-                <tr>
-                    <td>Transfer Fund </td>
-                    <td>200</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="search_checkboxes">
-        <div>
-            <label>
-                <input type="checkbox" name="" id="search_checkboxes_accountName" checked disabled>
-                <span>Reference</span>
-            </label>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>
-                <input type="checkbox" name="" id="search_checkboxes_balance" checked disabled>
-                <span>Bill Date</span>
-            </label>
+        <div id="column_checkbox">
+
         </div>
     </div>
 
-    <script src="../components/comon/reportComponent.js"></script>
-    <script src="../components/comon/componentRouter.js"></script>
-    <script src="../components/properties/propertiesComponent.js"></script>
-    <script src="../components/comon/js/table.js"></script>
+    <script src="../components/comon/data/reportComponent.js"></script>
+    <script src="../components/comon/js/comonComponent.js"></script>
     <script src="./vendorLendger.js"></script>
 </body>
 
