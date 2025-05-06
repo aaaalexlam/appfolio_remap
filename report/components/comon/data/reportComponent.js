@@ -56,7 +56,7 @@ window.reportComponent = {
                         "key": "balance",
                         "display": true,
                         "width": "600px",
-                        "inLineCss": "width:100%; display:flex; justify-content:end; min-width:150px;",
+                        "inLineCss": "display:flex; flex-grow:1; justify-content:end; margin-right:7px;",
                         "checkBoxDisable": false
                     },
                     {

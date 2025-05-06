@@ -1,14 +1,16 @@
-function columnCheckboxTemplate(name) {
+function columnCheckboxTemplate(column) {
     return `
          <div>
             <label>
                 <input 
                     type="checkbox" 
-                    value="${toSnakeCase(name)}" 
-                    id="column_check_box_${toSnakeCase(name)}"
+                    value="${column.key}" 
+                    id="column_check_box_${toSnakeCase(column.name)}"
+                    ${column.checkBoxDisable ? 'disabled' : ''}
+                    ${column.display ? 'checked' : ''}
                     onclick="handleCheckboxClick(event)"
                 >
-                <span>${name}</span>
+                <span>${column.name}</span>
             </label>
         </div>
     `
@@ -17,7 +19,8 @@ function columnCheckboxTemplate(name) {
 function getHeaderTemplate(column) {
     return `
         <div 
-            id="column_${toSnakeCase(column.name)}"
+            id="column_${column.key}"
+            class="column_${column.key}"
             style="display:${column.display ? 'block' : 'none'}; width:${column.width}"
         > 
             <div class="header_container">
@@ -30,4 +33,20 @@ function getHeaderTemplate(column) {
     `
 }
 
+function initHeader() {
+    const table_header = document.getElementById('table_header');
+    const balance_sheet_checkbox = document.getElementById('balance_sheet_checkbox');
+    columns.forEach((column) => {
+        table_header.innerHTML += getHeaderTemplate(column);
+        balance_sheet_checkbox.innerHTML += columnCheckboxTemplate(column)
+    });
+
+    // for css dispay only
+    table_header.innerHTML +=
+        `
+           <div class="end_header">
+               <div>&nbsp;</div>
+           </div>
+       `
+}
 

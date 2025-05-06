@@ -6,33 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./balanceSheet.css">
+    <link rel="stylesheet" href="../components/comon/root.css">
+
+    <!-- customization form -->
+    <link rel="stylesheet" href="../components//comon//modal.css">
+    <link rel="stylesheet" href="../components/properties/properties.css">
+    <link rel="stylesheet" href="../components/asOf/asOf.css">
+    <link rel="stylesheet" href="../components//levelOfDetail/levelOfDetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="table_container" id="balance_sheet_table">
+    <div class="header_container">
+        <div>
+            <h2>Balance Sheet</h2>
+        </div>
+        <div>
+            <button class="default_btn" id="customization_btn">Customization</button>
+        </div>
+    </div>
 
-        <div class="table_header" id="table_header">
-
+    <div id="custom_search_summary">
+        <div>
+            <b>Properties:</b>
+            <span id="custom_search_summary_properties"></span>
+        </div>
+        <div>
+            <b>As of:</b>
+            <span id="custom_search_summary_asOf"></span>
+        </div>
+        <div>
+            <b>Accounting Basis:</b>
+            <span id="custom_search_summary_accounting_basis"></span>
+        </div>
+        <div>
+            <b>Level Of Detail:</b>
+            <span id="custom_search_summary_level_of_detail"></span>
         </div>
 
-        <div class="table_content">
-            <div class="column_account_name table_column">LIABILITIES & CAPITAL</div>
-            <div class="column_account_name table_column">Liabilities</div>
-            <div id="liabilities_and_capital_div"></div>
-            <div class="column_account_name table_column">Total Liabilities</div>
-            <div class="column_account_name table_column">Capital</div>
-            <div class="column_account_name table_column" id="capital_div"></div>
-            <div class="column_account_name table_column">Total Capital</div>
+    </div>  
+
+    <div class="body_containerr">
+
+        <div class="table_container" id="balance_sheet_table">
+
+            <div class="table_header" id="table_header">
+
+            </div>
+
+            <div class="table_content">
+                <div class="column_account_name table_column"><b>ASSETS</b></div>
+                <div class="column_account_name table_column"><b>Cash</b></div>
+                <div id="cash_div"></div>
+                <div class="column_account_name table_column"><b>Total Cash</b></div>
+                <div id="asset_div"></div>
+                <div class="column_account_name table_column"><b>TOTAL ASSETS</b></div>
+                <div class="column_account_name table_column"><b>LIABILITIES & CAPITAL</b></div>
+                <div class="column_account_name table_column"><b>Liabilities</b></div>
+                <div id="liabilities_and_capital_div"></div>
+                <div class="column_account_name table_column"><b>Total Liabilities</b></div>
+                <div class="column_account_name table_column"><b>Capital</b></div>
+                <div class="column_account_name table_column" id="capital_div"></div>
+                <div class="column_account_name table_column"><b>Total Capital</b></div>
+                <div class="column_account_name table_column"><b>TOTAL LIABILITIES & CAPITAL</b></div>
+                <div><b>Total (52 Results)</b></div>
+            </div>
+
         </div>
+        <div id="balance_sheet_checkbox">
+
+        </div>
+    </div>
+
+    <div id="modal">
 
     </div>
-    <div id="balance_sheet_checkbox">
 
-    </div>
     <script src="../components/comon/data/reportComponent.js"></script>
     <script src="../components/comon/js/comonFunction.js"></script>
     <script src="../components/comon/js/comonComponent.js"></script>
     <script src="../components/comon/glAccountComponent.js"></script>
+
+    <!-- customization form -->
+    <script src="../components/accountingBasis/accountingBasisComponent.js"></script>
+    <script src="../components/levelOfDetail/levelOfDetailComponent.js"></script>
+    <script src="../components/checkBox/checkBoxComponent.js"></script>
+    <script src="../components/comon/componentRouter.js"></script>
+    <script src="../components/properties/propertiesComponent.js"></script>
+    <script src="../components/asOf/asOfComponent.js"></script>
 
     <script src="./balanceSheet.js"></script>
 </body>
