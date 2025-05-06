@@ -16,6 +16,38 @@ document.addEventListener("DOMContentLoaded", function () {
     initHeader();
     initTable();
     initResizeColumn();
+
+    document.addEventListener('click', function (event) {
+        // hide modal onClicked
+        const clickedElement = event.target;
+        if (clickedElement.id !== '' && clickedElement.id === 'modal') {
+            document.getElementById("modal").style.display = "none";
+        }
+    });
+
+    // handel customization search update
+    document.getElementById('balance_sheet_post_form_btn').onclick = function () {
+
+        const selectedProperties = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked')).map(cb => cb.value);
+        const dateTime = document.getElementById("as_of_radio_input_date").checked ? document.getElementById('as_of_date').value : document.getElementById('as_of_select_date').value;
+        const accountingBasis = document.getElementById("accounting_basis").value;
+        const selectedRadio = document.querySelector('input[name="level_of_detail"]:checked').value;
+
+        document.getElementById('custom_search_summary_properties').innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);
+        document.getElementById('custom_search_summary_asOf').innerText = dateTime;
+        document.getElementById('custom_search_summary_accounting_basis').innerText = accountingBasis;
+        document.getElementById('custom_search_summary_level_of_detail').innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
+
+        document.getElementById("modal").style.display = "none";
+    };
+
+    document.getElementById('balance_sheet_post_form_btn_cancel').onclick = function () {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    document.getElementById("customization_btn").onclick = function () {
+        document.getElementById("modal").style.display = "flex";
+    }
 })
 
 
@@ -46,6 +78,7 @@ function createAccountRow(account, level) {
     const row = document.createElement('div');
     row.style.display = 'flex';
     row.style.alignItems = 'center';
+    row.className = 'table_row';
 
     columns.forEach((column) => {
         row.innerHTML += getDataDiv(account, column, level)

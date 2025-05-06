@@ -65,7 +65,7 @@ window.reportComponent = {
                         "display": false,
                         "inLineCss": "",
                         "checkBoxDisable": false,
-                        "width": "100px",
+                        "width": "300px",
                     }
                 ],
                 "customization": [

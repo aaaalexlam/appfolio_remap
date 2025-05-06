@@ -21,6 +21,8 @@
 
 body {
     margin: 0;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 .body_container {
@@ -62,10 +64,13 @@ body {
 }
 
 .header_container {
-    width: 100%;
-    justify-content: space-between;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 99%;
+
 }
 
 #custom_search_summary div {
@@ -80,4 +85,10 @@ body {
 #search_column label {
     cursor: pointer;
     display: table-cell;
+}
+
+#main{
+    width: 99%;
+    padding: 5px;
+    padding-left: 5px;
 }

@@ -17,69 +17,73 @@
 </head>
 
 <body>
-    <div class="header_container">
-        <div>
-            <h2>Balance Sheet</h2>
-        </div>
-        <div>
-            <button class="default_btn" id="customization_btn">Customization</button>
-        </div>
-    </div>
+    <div id="main">
 
-    <div id="custom_search_summary">
-        <div>
-            <b>Properties:</b>
-            <span id="custom_search_summary_properties"></span>
-        </div>
-        <div>
-            <b>As of:</b>
-            <span id="custom_search_summary_asOf"></span>
-        </div>
-        <div>
-            <b>Accounting Basis:</b>
-            <span id="custom_search_summary_accounting_basis"></span>
-        </div>
-        <div>
-            <b>Level Of Detail:</b>
-            <span id="custom_search_summary_level_of_detail"></span>
-        </div>
 
-    </div>  
-
-    <div class="body_containerr">
-
-        <div class="table_container" id="balance_sheet_table">
-
-            <div class="table_header" id="table_header">
-
+        <div class="header_container">
+            <div>
+                <h2>Balance Sheet</h2>
             </div>
+            <div>
+                <button class="default_btn" id="customization_btn">Customization</button>
+            </div>
+        </div>
 
-            <div class="table_content">
-                <div class="column_account_name table_column"><b>ASSETS</b></div>
-                <div class="column_account_name table_column"><b>Cash</b></div>
-                <div id="cash_div"></div>
-                <div class="column_account_name table_column"><b>Total Cash</b></div>
-                <div id="asset_div"></div>
-                <div class="column_account_name table_column"><b>TOTAL ASSETS</b></div>
-                <div class="column_account_name table_column"><b>LIABILITIES & CAPITAL</b></div>
-                <div class="column_account_name table_column"><b>Liabilities</b></div>
-                <div id="liabilities_and_capital_div"></div>
-                <div class="column_account_name table_column"><b>Total Liabilities</b></div>
-                <div class="column_account_name table_column"><b>Capital</b></div>
-                <div class="column_account_name table_column" id="capital_div"></div>
-                <div class="column_account_name table_column"><b>Total Capital</b></div>
-                <div class="column_account_name table_column"><b>TOTAL LIABILITIES & CAPITAL</b></div>
-                <div><b>Total (52 Results)</b></div>
+        <div id="custom_search_summary">
+            <div>
+                <b>Properties:</b>
+                <span id="custom_search_summary_properties"></span>
+            </div>
+            <div>
+                <b>As of:</b>
+                <span id="custom_search_summary_asOf"></span>
+            </div>
+            <div>
+                <b>Accounting Basis:</b>
+                <span id="custom_search_summary_accounting_basis"></span>
+            </div>
+            <div>
+                <b>Level Of Detail:</b>
+                <span id="custom_search_summary_level_of_detail"></span>
             </div>
 
         </div>
-        <div id="balance_sheet_checkbox">
+
+        <div class="body_containerr">
+
+            <div class="table_container" id="balance_sheet_table">
+
+                <div class="table_header" id="table_header">
+
+                </div>
+
+                <div class="table_content">
+                    <div class="column_account_name table_column"><b>ASSETS</b></div>
+                    <div class="column_account_name table_column"><b>Cash</b></div>
+                    <div id="cash_div"></div>
+                    <div class="column_account_name table_column"><b>Total Cash</b></div>
+                    <div id="asset_div"></div>
+                    <div class="column_account_name table_column"><b>TOTAL ASSETS</b></div>
+                    <div class="column_account_name table_column"><b>LIABILITIES & CAPITAL</b></div>
+                    <div class="column_account_name table_column"><b>Liabilities</b></div>
+                    <div id="liabilities_and_capital_div"></div>
+                    <div class="column_account_name table_column"><b>Total Liabilities</b></div>
+                    <div class="column_account_name table_column"><b>Capital</b></div>
+                    <div class="column_account_name table_column" id="capital_div"></div>
+                    <div class="column_account_name table_column"><b>Total Capital</b></div>
+                    <div class="column_account_name table_column"><b>TOTAL LIABILITIES & CAPITAL</b></div>
+                    <div id="talve_totoal_result"><b>Total (52 Results)</b></div>
+                </div>
+
+            </div>
+            <div id="balance_sheet_checkbox">
+
+            </div>
+        </div>
+
+        <div id="modal">
 
         </div>
-    </div>
-
-    <div id="modal">
-
     </div>
 
     <script src="../components/comon/data/reportComponent.js"></script>
