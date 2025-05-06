@@ -1,19 +1,3 @@
-function columnHeaderTemplate(name) {
-    return `
-        <div id="main_container_${toSnakeCase(name)}"> 
-            <div class="main_container_header">
-                <div class="main_container_header_text">${name}</div>
-                <div class="resize_div">
-                    <div class="resize_btn"></div>
-                </div>
-            </div>
-            <div class="main_container_body">
-                    
-            </div>
-        </div>
-    `
-}
-
 function columnCheckboxTemplate(name) {
     return `
          <div>
@@ -26,6 +10,22 @@ function columnCheckboxTemplate(name) {
                 >
                 <span>${name}</span>
             </label>
+        </div>
+    `
+}
+
+function getHeaderTemplate(column) {
+    return `
+        <div 
+            id="column_${toSnakeCase(column.name)}"
+            style="display:${column.display ? 'block' : 'none'}; width:${column.width}"
+        > 
+            <div class="header_container">
+                <div class="header_text" style="${column.inLineCss}">${column.name}</div>
+                <div class="resize_div">
+                        <div class="resize_btn"></div>
+                </div>
+            </div>
         </div>
     `
 }

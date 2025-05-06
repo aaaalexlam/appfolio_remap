@@ -7,13 +7,20 @@ function initResizeColumn(){
 
         function mousedownHandler(e) {
             currentResizer = resizer;
-            let main_container_header = currentResizer.parentElement;
+
+            let headerComponent  = currentResizer.parentElement.parentElement;
+            let headerId = headerComponent .id;
+            let column_account_name = document.querySelectorAll(`.${headerId}`);
+
             let startX = e.pageX;
-            let startWidth = main_container_header.offsetWidth;
+            let startWidth = headerComponent .offsetWidth;
 
             function mousemoveHandler(e) {
                 const newWidth = startWidth + (e.pageX - startX);
-                main_container_header.style.width = newWidth + "px";
+                column_account_name.forEach(el => {
+                    el.style.width = newWidth+"px"; // or any desired value
+                });
+                headerComponent .style.width = newWidth + "px";
             }
 
             function mouseupHandler() {
@@ -30,12 +37,15 @@ function initResizeColumn(){
 function handleCheckboxClick(event) {
     const isChecked = event.target.checked;
     const value = event.target.value;
-    const column = document.getElementById(`main_container_${toSnakeCase(value)}`)
 
     if (isChecked) {
-        column.style.display = 'none'
+        [...document.getElementsByClassName(`column_${value}`)].forEach(header => {
+            header.style.display = 'none';
+        });
     } else {
-        column.style.display = 'block'
+        [...document.getElementsByClassName(`column_${value}`)].forEach(header => {
+            header.style.display = 'flex';
+        });
     }
 }
 
@@ -45,3 +55,10 @@ function toSnakeCase(str) {
         .toLowerCase()            // convert to lowercase
         .replace(/\s+/g, '_');    // replace spaces with underscores
 }
+
+function toCamelCase(input) {
+    return input
+      .toLowerCase()
+      .replace(/[_\s]+(.)?/g, (_, chr) => chr ? chr.toUpperCase() : '')
+      .replace(/^[A-Z]/, chr => chr.toLowerCase());
+  }

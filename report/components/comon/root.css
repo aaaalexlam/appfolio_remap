@@ -79,4 +79,5 @@ body {
 
 #search_column label {
     cursor: pointer;
+    display: table-cell;
 }

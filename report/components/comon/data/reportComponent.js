@@ -47,22 +47,25 @@ window.reportComponent = {
                         "name": "Account Name",
                         "key": "account_name",
                         "display": true,
-                        "inLineCss": "width:200px;",
-                        "checkBoxDisable": true
+                        "inLineCss": "width:400px;",
+                        "checkBoxDisable": true,
+                        "width": "400px",
                     },
                     {
                         "name": "Balance",
                         "key": "balance",
                         "display": true,
-                        "inLineCss": "width:600px; text-align: right; min-width:150px;",
+                        "width": "600px",
+                        "inLineCss": "width:100%; display:flex; justify-content:end; min-width:150px;",
                         "checkBoxDisable": false
                     },
                     {
                         "name": "Account Number",
-                        "key": "account_number",
+                        "key": "number",
                         "display": false,
                         "inLineCss": "",
-                        "checkBoxDisable": false
+                        "checkBoxDisable": false,
+                        "width": "100px",
                     }
                 ],
                 "customization": [
