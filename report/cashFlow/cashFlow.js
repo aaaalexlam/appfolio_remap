@@ -21,87 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
     initResizeColumn();
 });
 
-function getDataDiv(account, column, level) {
-    
-    let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
-    let style = '';
-
-    if(column.key === 'account_name'){
-        displayName = '&nbsp;'.repeat(level * 5) + account[toCamelCase(column.key)];
-
-        if(account.children.length > 0){
-            style = 'font-weight:bold;';
-        }
-    }
-
-    return `
-        <div class="column_${column.key} table_column" style="width:${column.width}; ${style} display:${column.display ? 'block' : 'none'}">
-            ${displayName}
-        </div>
-    `
-}
-
-function buildAccountsDiv(accounts, level = 2) {
-    const container = document.createElement('div');
-
-    accounts.forEach(account => {
-        const accountRow = createAccountRow(account, level);
-        container.appendChild(accountRow);
-
-        if (Array.isArray(account.children) && account.children.length > 0) {
-            const childrenRows = buildAccountsDiv(account.children, level + 1);
-            container.appendChild(childrenRows);
-
-            const totalDiv = document.createElement('div');
-            const totalIndent = '&nbsp;'.repeat(level * 4);
-            totalDiv.className = "column_account_name table_column"
-            totalDiv.style.fontWeight = 'bold';
-            totalDiv.innerHTML = `${totalIndent}Total ${account.accountName}`;
-            container.appendChild(totalDiv);
-        }
-
-    });
-
-    return container;
-}
-
-function createAccountRow(account, level) {
-
-    const row = document.createElement('div');
-    row.style.display = 'flex';
-    row.style.alignItems = 'center';
-    row.className = 'table_row';
-
-    columns.forEach((column) => {
-        row.innerHTML += getDataDiv(account, column, level)
-    })
-
-    // for css dispay only
-    row.innerHTML +=
-        `
-        <div class="end_columnd">
-            <div>&nbsp;</div>
-        </div>
-    `
-    return row;
-}
 
 function initTable() {
     let income_div = document.getElementById("income_div");
-    income_div.appendChild(buildAccountsDiv(incomeData));
+    income_div.appendChild(buildAccountsDiv(incomeData, 2));
 
     let expense_div = document.getElementById("expense_div");
-    expense_div.appendChild(buildAccountsDiv(incomeData));
+    expense_div.appendChild(buildAccountsDiv(incomeData, 2));
 
     let other_income_div = document.getElementById("other_income_div");
-    other_income_div.appendChild(buildAccountsDiv(otherIncomeData));
+    other_income_div.appendChild(buildAccountsDiv(otherIncomeData, 2));
 
     let other_expense_div = document.getElementById("other_expense_div");
-    other_expense_div.appendChild(buildAccountsDiv(otherExpenseData));
+    other_expense_div.appendChild(buildAccountsDiv(otherExpenseData, 2));
 
     const windowHeight = window.innerHeight;
     const reportTable = document.getElementById(`${tablePrefix}table`);
     reportTable.style.height = windowHeight - reportTable.getBoundingClientRect().top+'px';
-
 
 }

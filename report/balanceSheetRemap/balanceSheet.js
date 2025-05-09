@@ -15,7 +15,7 @@ const assetData = toTree(balanceSheetTableData.filter(glAccount => glAccount.acc
 
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
-    initCustomizationForm();
+    initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initTable();
     initResizeColumn();
@@ -53,78 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 
-function buildAccountsDiv(accounts, level = 1) {
-    const container = document.createElement('div');
-
-    accounts.forEach(account => {
-        const accountRow = createAccountRow(account, level);
-        container.appendChild(accountRow);
-
-        if (Array.isArray(account.children) && account.children.length > 0) {
-            const childrenRows = buildAccountsDiv(account.children, level + 1);
-            container.appendChild(childrenRows);
-
-            const totalDiv = document.createElement('div');
-            const totalIndent = '&nbsp;'.repeat(level * 4);
-            totalDiv.className = "column_account_name table_column"
-            totalDiv.innerHTML = `${totalIndent}<b>Total ${account.accountName}</b>`;
-            container.appendChild(totalDiv);
-        }
-
-    });
-
-    return container;
-}
-
-function createAccountRow(account, level) {
-    const row = document.createElement('div');
-    row.style.display = 'flex';
-    row.style.alignItems = 'center';
-    row.className = 'table_row';
-
-    columns.forEach((column) => {
-        row.innerHTML += getDataDiv(account, column, level)
-    })
-
-    // for css dispay only
-    row.innerHTML +=
-        `
-        <div class="end_columnd">
-            <div>&nbsp;</div>
-        </div>
-    `
-    return row;
-}
-
-function getDataDiv(account, column, level) {
-    
-    let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
-    let style = '';
-
-    if(column.key === 'account_name'){
-        displayName = '&nbsp;'.repeat(level * 5) + account[toCamelCase(column.key)];
-
-        if(account.children.length > 0){
-            style = 'font-weight:bold;';
-        }
-    }
-
-    return `
-        <div class="column_${column.key} table_column" style="width:${column.width}; ${style} display:${column.display ? 'block' : 'none'}">
-            ${displayName}
-        </div>
-    `
-}
-
 function initTable() {
     let cash_div = document.getElementById("cash_div");
-    cash_div.appendChild(buildAccountsDiv(cashData));
+    cash_div.appendChild(buildAccountsDiv(cashData, 1));
 
     let asset_div = document.getElementById("asset_div");
-    asset_div.appendChild(buildAccountsDiv(assetData));
+    asset_div.appendChild(buildAccountsDiv(assetData, 1));
 
     let liabilities_and_capital_div = document.getElementById("liabilities_and_capital_div");
-    liabilities_and_capital_div.appendChild(buildAccountsDiv(liabilityData));
+    liabilities_and_capital_div.appendChild(buildAccountsDiv(liabilityData, 1));
 
     const windowHeight = window.innerHeight;
     const reportTable = document.getElementById(`${tablePrefix}table`);
@@ -132,40 +69,4 @@ function initTable() {
 }
 
 
-function initCustomizationForm() {
-
-    const propertiesElement = document.getElementById(`${tablePrefix}modal`);
-    propertiesElement.classList.add("modal");
-    let customizationComponents = '';
-    customizationComponents += `
-        <div class="custom_search_container"> 
-            <table> 
-                <tr> 
-                    <th>Customize Report</th> 
-                </tr>
-        `;
-
-    customization.forEach((obj) => {
-        const html = getComponentByKey(obj.inputType, obj.displayName);
-        if (html) {
-            customizationComponents += html;
-        }
-    })
-
-    customizationComponents +=
-        `
-                <tr class="tr-single-right">
-                    <td><button id='balance_sheet_post_form_btn_cancel' class="cancel_btn" type="button">Cancel</button></td>
-                    <td><button id='balance_sheet_post_form_btn' class="default_btn" type="submit">Update</button></td>
-                </tr>
-            </table>
-        </div>
-    `
-    propertiesElement.innerHTML = customizationComponents;
-
-    customization.forEach((obj) => {
-        addEventListenerBykey(obj.inputType);
-    });
-
-}
 
