@@ -4,24 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../components/comon/root.css">
-    <link rel="stylesheet" href="../components//comon//modal.css">
-    <link rel="stylesheet" href="../components/properties/properties.css">
+
+    <!-- comon form -->
+    <link rel="stylesheet" href="../components/comon/css/table.css">
+    <link rel="stylesheet" href="../components/comon/css/root.css">
+    <link rel="stylesheet" href="../components//comon/css/columnCheckboxes.css">
+
     <title>Document</title>
 </head>
 
 <body>
-    <h1>Cash Flow</h1>
-    <div id="modal">
+    <div class="main">
+        <div class="header_container">
+            <div>
+                <h2>Cash Flow</h2>
+            </div>
+            <div>
+                <button class="default_btn" id="balance_sheet_customization_btn">Customization</button>
+            </div>
+        </div>
+
+        <div id="cahs_flow_custom_search_summary">
+            <div>
+                <b>Properties:</b>
+                <span id=""></span>
+            </div>
+            <div>
+                <b>Date Range: </b>
+                <span id=""></span>
+            </div>
+            <div>
+                <b>Accounting Basis:</b>
+                <span id=""></span>
+            </div>
+            <div>
+                <b>Additional Cash GL Accounts:</b>
+                <span id=""></span>
+            </div>
+            <div>
+                <b>Level Of Detail:</b>
+                <span id=""></span>
+            </div>
+            <div>
+                <b>Include Zero Balance GL Accounts: </b>
+                <span id=""></span>
+            </div>
+        </div>
+
+        <div class="body_container" id="cash_flow_body_container">
+
+            <div class="table_container" id="cash_flow_table">
+
+                <div class="table_header" id="cash_flow_table_header">
+
+                </div>
+
+                <div class="table_content">
+                    <div class="column_account_name table_column"><b>Operating Income & Expense</b></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Income</b></div>
+                    <div id="income_div"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Total Operating Income</b></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Expense</b></div>
+                    <div id="expense_div"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Total Operating Expense</b></div>
+
+                    <div class="column_account_name table_column indent_level_1"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>NOI - Net Operating Income</b></div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+
+                    <div class="column_account_name table_column"><b>Other Income & Expense</b></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Other Income</b></div>
+                    <div id="other_income_div"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Total Other Income</b></div>
+
+                    <div class="column_account_name table_column indent_level_1"><b>Other Expense</b></div>
+                    <div id="other_expense_div"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Total Other Expense</b></div>
+
+                    <div class="column_account_name table_column indent_level_1"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>NOI - Other Income</b></div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+                    <div class="column_account_name table_column indent_level_1">Total Income</div>
+                    <div class="column_account_name table_column indent_level_1">Total Expense</div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Net Income</b></div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+
+                    <div class="column_account_name table_column indent_level_1"><b>Other Items</b></div>
+                    <div id="other_items_div"></div>
+                    <div class="column_account_name table_column indent_level_1"><b>Net Other Items</b></div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+
+                    <div class="column_account_name table_column"><b>Cash Flow</b></div>
+                    <div class="column_account_name table_column indent_level_1"></div>
+                    <div class="column_account_name table_column "><b>Beginning Cash</b></div>
+                    <div class="column_account_name table_column "><b>Beginning Cash + Cash Flow</b></div>
+                    <div class="column_account_name table_column "><b>Actual Ending Cash</b></div>
+
+
+                    <div id="balance_sheet_totoal_result" class="table_total_result"><b>Total (52 Results)</b></div>
+                </div>
+
+            </div>
+            <div id="cash_flow_checkbox" class="checkbox_container">
+
+            </div>
+        </div>
 
     </div>
 
 
-    <script src="../components/comon/componentRouter.js"></script>
-    <script src="../components/properties/propertiesComponent.js"></script>
-    <script src="../components/comon/reportComponent.js"></script>
-    <script src="cashFlow.js" ></script>
-    <script src="../components/properties//properties.js"></script>
+
+
+    <script src="../components/comon/data/reportComponent.js"></script>
+    <script src="../components/comon/js/comonFunction.js"></script>
+    <script src="../components/comon/js/comonComponent.js"></script>
+    <script src="../components/comon/glAccountComponent.js"></script>
+
+    <script src="cashFlow.js"></script>
 
 
 </body>

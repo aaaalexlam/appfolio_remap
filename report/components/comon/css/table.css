@@ -54,10 +54,6 @@
     cursor: ew-resize;
 }
 
-.table_content>div {
-
-}
-
 .table_column {
     white-space: nowrap;
     overflow: hidden;
@@ -93,3 +89,7 @@
     padding-top: 2px;
     padding-bottom: 2px;
 }
+
+.indent_level_1::before {
+    content: "\00a0\00a0\00a0\00a0"; /* non-breaking space */
+  }

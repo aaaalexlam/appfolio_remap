@@ -199,8 +199,46 @@ window.reportComponent = {
                 "columns": [
                     {
                         "name": "Account Number",
-                        "display": false
-                    }
+                        "key": "account_name",
+                        "display": true,
+                        "checkBoxDisable": true,
+                        "width": "400px"
+                    },
+                    {
+                        "name": "Selected Period",
+                        "key": "selected_period",
+                        "display": true,
+                        "checkBoxDisable": false,
+                        "width": "100px"
+                    },
+                    {
+                        "name": "% Selected Period",
+                        "key": "percent_of_selected_period",
+                        "display": true,
+                        "checkBoxDisable": false,
+                        "width": "100px"
+                    },
+                    {
+                        "name": "Fiscal Year To Date",
+                        "key": "fiscal_year_to_date",
+                        "display": true,
+                        "checkBoxDisable": false,
+                        "width": "200px"
+                    },
+                    {
+                        "name": "% of Fiscal Year To Date",
+                        "key": "percent_of_fiscal_year_to_date",
+                        "display": true,
+                        "checkBoxDisable": false,
+                        "width": "200px"
+                    },
+                    {
+                        "name": "Account Number",
+                        "key": "number",
+                        "display": true,
+                        "checkBoxDisable": false,
+                        "width": "200px"
+                    },
                 ],
                 "customization": [
                     "properties",

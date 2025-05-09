@@ -77,7 +77,7 @@ body {
     display: table-cell;
 }
 
-#main{
+.main{
     width: 99%;
     padding: 5px;
     padding-left: 5px;

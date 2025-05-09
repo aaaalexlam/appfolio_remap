@@ -97,10 +97,21 @@ function createAccountRow(account, level) {
 }
 
 function getDataDiv(account, column, level) {
-    const totalIndent = column.key === 'account_name' ? '&nbsp;'.repeat(level * 4) : '';
+    
+    let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
+    let style = '';
+
+    if(column.key === 'account_name'){
+        displayName = '&nbsp;'.repeat(level * 5) + account[toCamelCase(column.key)];
+
+        if(account.children.length > 0){
+            style = 'font-weight:bold;';
+        }
+    }
+
     return `
-        <div class="column_${column.key} table_column" style="width:${column.width}; display:${column.display ? 'block' : 'none'}">
-            <div style="${column.inLineCss}" >${totalIndent}${account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '0.00'}</div>
+        <div class="column_${column.key} table_column" style="width:${column.width}; ${style} display:${column.display ? 'block' : 'none'}">
+            ${displayName}
         </div>
     `
 }
