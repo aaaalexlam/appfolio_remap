@@ -33,12 +33,12 @@ function getHeaderTemplate(column) {
     `
 }
 
-function initHeader() {
-    const table_header = document.getElementById('table_header');
-    const balance_sheet_checkbox = document.getElementById('balance_sheet_checkbox');
+function initHeader(columns, checkBoxId, tableHeaderId) {
+    const table_header = document.getElementById(tableHeaderId);
+    const checkbox = document.getElementById(checkBoxId);
     columns.forEach((column) => {
         table_header.innerHTML += getHeaderTemplate(column);
-        balance_sheet_checkbox.innerHTML += columnCheckboxTemplate(column)
+        checkbox.innerHTML += columnCheckboxTemplate(column)
     });
 
     // for css dispay only

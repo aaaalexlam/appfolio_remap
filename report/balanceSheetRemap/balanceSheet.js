@@ -1,3 +1,6 @@
+// table prefix
+const tablePrefix = 'balance_sheet_';
+
 // get the customization components
 const balanceSheetObject = window.reportComponent.data.find(item => item.hasOwnProperty('balanceSheet'));
 const columns = balanceSheetObject.balanceSheet.columns;
@@ -13,20 +16,20 @@ const assetData = toTree(balanceSheetTableData.filter(glAccount => glAccount.acc
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
     initCustomizationForm();
-    initHeader();
+    initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initTable();
     initResizeColumn();
 
     document.addEventListener('click', function (event) {
         // hide modal onClicked
         const clickedElement = event.target;
-        if (clickedElement.id !== '' && clickedElement.id === 'modal') {
-            document.getElementById("modal").style.display = "none";
+        if (clickedElement.id !== '' && clickedElement.id === `${tablePrefix}modal`) {
+            document.getElementById(`${tablePrefix}modal`).style.display = "none";
         }
     });
 
     // handel customization search update
-    document.getElementById('balance_sheet_post_form_btn').onclick = function () {
+    document.getElementById(`${tablePrefix}post_form_btn`).onclick = function () {
 
         const selectedProperties = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked')).map(cb => cb.value);
         const dateTime = document.getElementById("as_of_radio_input_date").checked ? document.getElementById('as_of_date').value : document.getElementById('as_of_select_date').value;
@@ -38,15 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('custom_search_summary_accounting_basis').innerText = accountingBasis;
         document.getElementById('custom_search_summary_level_of_detail').innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
 
-        document.getElementById("modal").style.display = "none";
+        document.getElementById(`${tablePrefix}modal`).style.display = "none";
     };
 
-    document.getElementById('balance_sheet_post_form_btn_cancel').onclick = function () {
-        document.getElementById("modal").style.display = "none";
+    document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "none";
     }
 
-    document.getElementById("customization_btn").onclick = function () {
-        document.getElementById("modal").style.display = "flex";
+    document.getElementById(`${tablePrefix}customization_btn`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "flex";
     }
 })
 
@@ -117,7 +120,7 @@ function initTable() {
 
 function initCustomizationForm() {
 
-    const propertiesElement = document.getElementById("modal");
+    const propertiesElement = document.getElementById(`${tablePrefix}modal`);
     propertiesElement.classList.add("modal");
     let customizationComponents = '';
     customizationComponents += `

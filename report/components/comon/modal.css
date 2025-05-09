@@ -22,12 +22,12 @@
     min-width: 600px;
 }
 
-#modal table {
+.modal table {
     width: 100%;
     min-width: 600px;
 }
 
-#modal tr {
+.modal tr {
     min-height: 60px;
     display: flex;
     align-items: center;

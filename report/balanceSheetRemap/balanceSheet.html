@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="../components/comon/css/table.css">
     <link rel="stylesheet" href="./balanceSheet.css">
     <link rel="stylesheet" href="../components/comon/root.css">
-
+    <link rel="stylesheet" href="../components//comon/css/columnCheckboxes.css">
     <!-- customization form -->
     <link rel="stylesheet" href="../components//comon//modal.css">
     <link rel="stylesheet" href="../components/properties/properties.css">
@@ -18,14 +20,12 @@
 
 <body>
     <div id="main">
-
-
         <div class="header_container">
             <div>
                 <h2>Balance Sheet</h2>
             </div>
             <div>
-                <button class="default_btn" id="customization_btn">Customization</button>
+                <button class="default_btn" id="balance_sheet_customization_btn">Customization</button>
             </div>
         </div>
 
@@ -49,11 +49,11 @@
 
         </div>
 
-        <div class="body_containerr">
+        <div class="body_container">
 
             <div class="table_container" id="balance_sheet_table">
 
-                <div class="table_header" id="table_header">
+                <div class="table_header" id="balance_sheet_table_header">
 
                 </div>
 
@@ -72,16 +72,16 @@
                     <div class="column_account_name table_column" id="capital_div"></div>
                     <div class="column_account_name table_column"><b>Total Capital</b></div>
                     <div class="column_account_name table_column"><b>TOTAL LIABILITIES & CAPITAL</b></div>
-                    <div id="talve_totoal_result"><b>Total (52 Results)</b></div>
+                    <div id="balance_sheet_totoal_result"><b>Total (52 Results)</b></div>
                 </div>
 
             </div>
-            <div id="balance_sheet_checkbox">
+            <div id="balance_sheet_checkbox" class="checkbox_container">
 
             </div>
         </div>
 
-        <div id="modal">
+        <div id="balance_sheet_modal" class="table_total_result">
 
         </div>
     </div>
