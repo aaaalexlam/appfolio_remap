@@ -114,6 +114,10 @@ function initTable() {
 
     let liabilities_and_capital_div = document.getElementById("liabilities_and_capital_div");
     liabilities_and_capital_div.appendChild(buildAccountsDiv(liabilityData));
+
+    const windowHeight = window.innerHeight;
+    const reportTable = document.getElementById(`${tablePrefix}table`);
+    reportTable.style.height = windowHeight - reportTable.getBoundingClientRect().top+'px';
 }
 
 

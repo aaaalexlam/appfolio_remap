@@ -5,9 +5,12 @@
 }
 
 .table_container {
-    width: 100%;
+    flex-grow: 1;
+    overflow: scroll;
 }
-
+.table_header > div {
+    flex-shrink: 0;
+}
 .table_header {
     display: flex;
     padding: 2px;
@@ -52,9 +55,7 @@
 }
 
 .table_content>div {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
 }
 
 .table_column {
@@ -62,7 +63,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     border-bottom: 1px solid #f1f1f1;
-
+    flex-shrink: 0;
 }
 
 .table_column div {
