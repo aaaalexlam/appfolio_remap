@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })
 
-
 function buildAccountsDiv(accounts, level = 1) {
     const container = document.createElement('div');
 
