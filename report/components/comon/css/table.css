@@ -10,13 +10,13 @@
 }
 .table_header > div {
     flex-shrink: 0;
+    background-color: #eeeff1;
 }
 .table_header {
     display: flex;
     padding: 2px;
     position: sticky;
     top: 0;
-    background-color: #eeeff1;
 }
 
 .table_row {
@@ -93,3 +93,8 @@
 .indent_level_1::before {
     content: "\00a0\00a0\00a0\00a0"; /* non-breaking space */
   }
+
+.end_header{
+    background-color: #eeeff1;
+    flex-grow: 1;
+}
