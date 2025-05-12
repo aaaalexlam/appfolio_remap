@@ -33,6 +33,15 @@ function getHeaderTemplate(column) {
     `
 }
 
+function getSearchSummaryTemplate(inputType, displayName, tablePrefix){
+    return `
+        <div>
+            <b>${displayName}:</b>
+            <span id="${tablePrefix}custom_search_summary_${inputType}"></span>
+        </div>   
+    `
+}
+
 function initHeader(columns, checkBoxId, tableHeaderId) {
     const table_header = document.getElementById(tableHeaderId);
     const checkbox = document.getElementById(checkBoxId);
@@ -117,9 +126,14 @@ function buildAccountsDiv(accounts, level) {
 
 
 function initCustomizationForm(customization, tablePrefix) {
+
     const propertiesElement = document.getElementById(`${tablePrefix}modal`);
+    const summaryReview = document.getElementById(`${tablePrefix}custom_search_summary`);
+
     propertiesElement.classList.add("modal");
     let customizationComponents = '';
+    let summaryReviewComponents = '';
+
     customizationComponents += `
         <div class="custom_search_container"> 
             <table> 
@@ -128,23 +142,30 @@ function initCustomizationForm(customization, tablePrefix) {
                 </tr>
         `;
 
-    customization.forEach((obj) => {
-        const html = getComponentByKey(obj.inputType, obj.displayName, tablePrefix);
+    customization.forEach((column) => {
+        const html = getCustomSearchComponentByKey(column.inputType, column.displayName, tablePrefix);
+        const summary = getSearchSummaryTemplate(column.inputType, column.displayName, tablePrefix);
+
         if (html) {
             customizationComponents += html;
         }
-    })
+
+        if(summary) {
+            summaryReviewComponents += summary;
+        }
+    });
 
     customizationComponents +=
-        `
+    `
                 <tr class="tr-single-right">
-                    <td><button id='balance_sheet_post_form_btn_cancel' class="cancel_btn" type="button">Cancel</button></td>
-                    <td><button id='balance_sheet_post_form_btn' class="default_btn" type="submit">Update</button></td>
+                    <td><button id='${tablePrefix}post_form_btn_cancel' class="cancel_btn" type="button">Cancel</button></td>
+                    <td><button id='${tablePrefix}post_form_btn' class="default_btn" type="submit">Update</button></td>
                 </tr>
             </table>
         </div>
     `
     propertiesElement.innerHTML = customizationComponents;
+    summaryReview.innerHTML = summaryReviewComponents;
 
     customization.forEach((obj) => {
         addEventListenerBykey(obj.inputType, tablePrefix);

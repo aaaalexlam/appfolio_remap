@@ -241,13 +241,26 @@ window.reportComponent = {
                     },
                 ],
                 "customization": [
-                    "properties",
-                    "dateRange",
-                    "accountingBasis",
-                    "additionalCashGLaccount",
-                    "levelOfDetail",
-                    "includeZeroBalanceGLAccount",
-                    "excludeSuppressedFees"
+                    {
+                        "inputType": "properties",
+                        "displayName": "Properties"
+                    },
+                    {
+                        "inputType": "asOf",
+                        "displayName": "As of"
+                    },
+                    {
+                        "inputType": "accountingBasis",
+                        "displayName": "Accounting Basis"
+                    },
+                    {
+                        "inputType": "levelOfDetail",
+                        "displayName": "Level Of Detail"
+                    },
+                    {
+                        "inputType": "checkBox",
+                        "displayName": "Include Zero Balance GL Account"
+                    }
                 ]
             }
         },

@@ -1,4 +1,4 @@
-function getComponentByKey(key, displayName, tablePrefix) {
+function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
     switch (key) {
         case "properties":
             return createPropertiesHTML(displayName, tablePrefix);
