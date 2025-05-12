@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
         const selectedRadio = document.querySelector('input[name="level_of_detail"]:checked').value;
 
-        document.getElementById('custom_search_summary_properties').innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);
-        document.getElementById('custom_search_summary_asOf').innerText = dateTime;
-        document.getElementById('custom_search_summary_accounting_basis').innerText = accountingBasis;
-        document.getElementById('custom_search_summary_level_of_detail').innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
+        document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);
+        document.getElementById(`${tablePrefix}custom_search_summary_asOf`).innerText = dateTime;
+        document.getElementById(`${tablePrefix}custom_search_summary_accounting_basis`).innerText = accountingBasis;
+        document.getElementById(`${tablePrefix}custom_search_summary_level_of_detail`).innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
 
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
     };
