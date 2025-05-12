@@ -45,7 +45,7 @@ function initHeader(columns, checkBoxId, tableHeaderId) {
     table_header.innerHTML +=
         `
            <div class="end_header">
-               <div>&nbsp;</div>
+               &nbsp;
            </div>
        `
 }
@@ -84,8 +84,8 @@ function createAccountRow(account, level) {
     // for css dispay only
     row.innerHTML +=
         `
-        <div class="end_columnd">
-            <div>&nbsp;</div>
+        <div class="end_columnd ">
+            &nbsp;
         </div>
     `
     return row;

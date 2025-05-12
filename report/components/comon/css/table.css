@@ -14,7 +14,6 @@
 }
 .table_header {
     display: flex;
-    padding: 2px;
     position: sticky;
     top: 0;
 }
@@ -24,8 +23,12 @@
 }
 
 .table_row div {
-    padding-top: 2px;
+    font-size: small;
     padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.end_columnd{
     font-size: small;
 }
 
@@ -97,4 +100,8 @@
 .end_header{
     background-color: #eeeff1;
     flex-grow: 1;
+}
+
+.column_account_name{
+    display: flex;
 }
