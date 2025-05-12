@@ -3,7 +3,7 @@ function getComponentByKey(key, displayName, tablePrefix) {
         case "properties":
             return createPropertiesHTML(displayName, tablePrefix);
         case "asOf":
-            return createAsOfHTML(displayName);
+            return createAsOfHTML(displayName, tablePrefix);
         case "accountingBasis":
             return createAccountingBasisHTML(displayName);
         case "levelOfDetail":
@@ -19,7 +19,7 @@ function addEventListenerBykey(key, tablePrefix){
             addPropertiesEventListener(tablePrefix);
             break;
         case "asOf":
-            addAsOfEventListener();
+            addAsOfEventListener(tablePrefix);
             break;
         case "accountingBasis":
             break;

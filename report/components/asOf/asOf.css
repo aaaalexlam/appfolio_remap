@@ -1,16 +1,16 @@
 
-#as_of_date{
+.as_of_date{
     flex-grow: 9;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     cursor: pointer;
     height: 25px;
 }
 
-#as_of_radio_input_date, #as_of_radio_select_date{
+.as_of_radio_input_date, .as_of_radio_select_date{
     margin: 0.5rem;
 }
 
-#as_of_select_date, #accounting_basis, #show_properties{
+.as_of_select_date, #accounting_basis, #show_properties{
     flex-grow: 9;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     cursor: pointer;
