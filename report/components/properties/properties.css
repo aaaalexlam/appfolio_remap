@@ -4,7 +4,7 @@
     border: 1px solid;
 }
 
-#properties_select_group{
+.properties_select_group{
     width: 100%;
 }
 
@@ -12,7 +12,7 @@
     flex-grow: 9;
 }
 
-#properties_selector_remove_all{
+.properties_selector_remove_all{
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     display: flex;
     justify-content: center;
@@ -29,39 +29,39 @@
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
 }
 
-#properties_input{
+.properties_input{
     border: none;
     outline: none;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
 }
 
-#properties_input:focus{
+.properties_input:focus{
     border: none;
     outline: none;
 }
-#properties_selector_options input[type="radio"]{
+.properties_selector_options input[type="radio"]{
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
-#selected_properties input[type="checkbox"]{
+.selected_properties input[type="checkbox"]{
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
 /* Change label background when radio is checked */
-#properties_selector_options input[type="radio"]:checked + .properties_selector_options_label{
+.properties_selector_options input[type="radio"]:checked + .properties_selector_options_label{
     background-color: #006eb7;  /* Green when checked */
     color: white;
 }
-#selected_properties{
+.selected_properties{
     display: flex;
     flex-direction: column;
 }
 
-#selected_properties div{
+.selected_properties div{
     background-color: #eeeff1!important;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     cursor: pointer;

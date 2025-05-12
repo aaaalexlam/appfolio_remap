@@ -129,7 +129,7 @@ function initCustomizationForm(customization, tablePrefix) {
         `;
 
     customization.forEach((obj) => {
-        const html = getComponentByKey(obj.inputType, obj.displayName);
+        const html = getComponentByKey(obj.inputType, obj.displayName, tablePrefix);
         if (html) {
             customizationComponents += html;
         }
@@ -147,7 +147,7 @@ function initCustomizationForm(customization, tablePrefix) {
     propertiesElement.innerHTML = customizationComponents;
 
     customization.forEach((obj) => {
-        addEventListenerBykey(obj.inputType);
+        addEventListenerBykey(obj.inputType, tablePrefix);
     });
 
 }

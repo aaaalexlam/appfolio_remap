@@ -1,7 +1,7 @@
-function getComponentByKey(key, displayName) {
+function getComponentByKey(key, displayName, tablePrefix) {
     switch (key) {
         case "properties":
-            return createPropertiesHTML(displayName);
+            return createPropertiesHTML(displayName, tablePrefix);
         case "asOf":
             return createAsOfHTML(displayName);
         case "accountingBasis":
@@ -13,10 +13,10 @@ function getComponentByKey(key, displayName) {
     }
 }
 
-function addEventListenerBykey(key){
+function addEventListenerBykey(key, tablePrefix){
     switch (key) {
         case "properties":
-            addPropertiesEventListener();
+            addPropertiesEventListener(tablePrefix);
             break;
         case "asOf":
             addAsOfEventListener();
