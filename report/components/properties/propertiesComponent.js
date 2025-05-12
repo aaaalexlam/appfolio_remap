@@ -16,19 +16,19 @@ const properties_options_data = [
     }
 ];
 
-function createPropertiesHTML(displayName) {
+function createPropertiesHTML(displayName, tablePrefix) {
     return `
                 <tr class="tr-default">
-                    <td class="input_field" id="properties_field">${displayName}</td>
+                    <td class="input_field" id="${tablePrefix}properties_field">${displayName}</td>
                     <td class="input_column">
                         <div class="properties_input_group">
-                            <div id="properties_select_group">
-                                <div id="selected_properties"></div>
-                                <input id="properties_input" type="text"
+                            <div id="${tablePrefix}properties_select_group" class="properties_select_group">
+                                <div id="${tablePrefix}selected_properties" class="selected_properties"></div>
+                                <input id="${tablePrefix}properties_input" class="properties_input" type="text"
                                     placeholder="Search by property, group, portfolio, or owner">
-                                <div id="properties_selector_options"></div>
+                                <div id="${tablePrefix}properties_selector_options" class="properties_selector_options"></div>
                             </div>
-                            <div id="properties_selector_remove_all"><i class="fa fa-close"></i></div>
+                            <div id="${tablePrefix}properties_selector_remove_all" class="properties_selector_remove_all"><i class="fa fa-close"></i></div>
                         </div>
                     </td>
                 </tr>
@@ -36,11 +36,11 @@ function createPropertiesHTML(displayName) {
 }
 
 
-function addPropertiesEventListener() {
-    const properties_options = document.getElementById("properties_selector_options")
-    const properties_input = document.getElementById("properties_input");
-    const selected_properties = document.getElementById("selected_properties");
-    const properties_selector_remove_all = document.getElementById("properties_selector_remove_all");
+function addPropertiesEventListener(tablePrefix) {
+    const properties_options = document.getElementById(`${tablePrefix}properties_selector_options`)
+    const properties_input = document.getElementById(`${tablePrefix}properties_input`);
+    const selected_properties = document.getElementById(`${tablePrefix}selected_properties`);
+    const properties_selector_remove_all = document.getElementById(`${tablePrefix}properties_selector_remove_all`);
 
     properties_input.addEventListener('input', function () {
 
@@ -66,12 +66,12 @@ function addPropertiesEventListener() {
 
                 wrapper.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
-                        handleRationChange();
+                        handleRationChange(tablePrefix);
                     }
                 });
 
                 wrapper.addEventListener('mousedown', (e) => {
-                    handleRationChange();
+                    handleRationChange(tablePrefix);
                 });
 
                 wrapper.addEventListener('mouseenter', (e) => {
@@ -87,7 +87,8 @@ function addPropertiesEventListener() {
             if (radio) {
                 radio.checked = true;
             }
-            document.getElementById('properties_selector_options').style.display = 'block';
+
+            document.getElementById(`${tablePrefix}properties_selector_options`).style.display = 'block';
         }
 
     });
@@ -114,16 +115,16 @@ function addPropertiesEventListener() {
         }
 
         if (e.key === 'Enter') {
-            handleRationChange();
+            handleRationChange(tablePrefix);
         }
     });
 
-    function handleRationChange() {
+    function handleRationChange(tablePrefix) {
         const checkedRadio = document.querySelector('input[type="radio"][name="properties"]:checked');
         if (checkedRadio) {
             appendSelectOption(checkedRadio.value); // This gives you the value attribute
         }
-        document.getElementById('properties_selector_options').style.display = 'none';
+        document.getElementById(`${tablePrefix}properties_selector_options`).style.display = 'none';
         properties_input.value = "";
     }
 
