@@ -1,4 +1,4 @@
-#level_of_detail label{
+.level_of_detail label{
     display: flex;
     margin-right: 1rem;
     cursor: pointer;

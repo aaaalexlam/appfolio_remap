@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const selectedProperties = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked')).map(cb => cb.value);
         const dateTime = document.getElementById(`${tablePrefix}as_of_radio_input_date`).checked ? document.getElementById(`${tablePrefix}as_of_date`).value : document.getElementById(`${tablePrefix}as_of_select_date`).value;
-        const accountingBasis = document.getElementById("accounting_basis").value;
+        const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
         const selectedRadio = document.querySelector('input[name="level_of_detail"]:checked').value;
 
         document.getElementById('custom_search_summary_properties').innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);

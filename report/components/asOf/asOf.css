@@ -10,10 +10,11 @@
     margin: 0.5rem;
 }
 
-.as_of_select_date, #accounting_basis, #show_properties{
+.as_of_select_date, .accounting_basis, #show_properties{
     flex-grow: 9;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
     cursor: pointer;
     height: 35px;
     z-index: 0;
 }
+

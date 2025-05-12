@@ -5,11 +5,11 @@ function getComponentByKey(key, displayName, tablePrefix) {
         case "asOf":
             return createAsOfHTML(displayName, tablePrefix);
         case "accountingBasis":
-            return createAccountingBasisHTML(displayName);
+            return createAccountingBasisHTML(displayName, tablePrefix);
         case "levelOfDetail":
-            return createLevelOfDetailHTML(displayName);
+            return createLevelOfDetailHTML(displayName, tablePrefix);
         case "checkBox":
-            return createCheckBoxHTML(key, displayName);
+            return createCheckBoxHTML(key, displayName, tablePrefix);
     }
 }
 
