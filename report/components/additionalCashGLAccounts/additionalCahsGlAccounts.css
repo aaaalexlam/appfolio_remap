@@ -1,0 +1,18 @@
+.additional_cahs_gl_accounts_checkbox_label{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin: 1px;
+}
+
+.additional_cahs_gl_accounts_group{
+    border: 1px solid;
+    flex-grow: 1;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.additional_cahs_gl_accounts_group_input_field{
+    height: 150px;
+}

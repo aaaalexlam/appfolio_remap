@@ -57,4 +57,29 @@
     display: flex;
     margin-right: 0.375rem;
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dateRangeFrom, .dateRangeTo, .dateRangeSelector{
+    border: 1px solid;
+    cursor: pointer;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    flex-grow: 1;
+}
+
+.dateRangeFrom{
+    height: 25px;
+    margin-right: 10px;
+}
+.dateRangeTo{
+    height: 25px;
+    margin-left: 10px;
+}
+.dateRangeSelector{
+    height: 35px;
+
+}
+.dateRangeRadio{
+    margin: 0.5rem;
 }
