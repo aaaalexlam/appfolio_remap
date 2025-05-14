@@ -36,7 +36,7 @@ const getSelectedCashGlAccount = (tablePrefix) => {
 
 
     const checkboxes = document.getElementById(`${tablePrefix}additional_cahs_gl_accounts`).querySelectorAll('input[type="checkbox"]:checked');
-    if(checkboxes.length === 0) return '';
+    if(checkboxes.length === 0) return 'N/A';
 
     const { number, accountName } = JSON.parse(checkboxes[0].value);
     let selectedAdditionalCashGlAccounts = ` ${number}: ${accountName}`;

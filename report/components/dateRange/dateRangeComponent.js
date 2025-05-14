@@ -166,7 +166,6 @@ const createDateRangeHTML = (displayName, tablePrefix) => {
 }
 
 function addDateRangeEventListener(tablePrefix) {
-    console.log(tablePrefix)
     const radios = document.getElementsByName("date_range_radio");
     const date_range_input_to = document.getElementById(`${tablePrefix}date_range_input_from`);
     const date_range_input_from = document.getElementById(`${tablePrefix}date_range_input_to`);

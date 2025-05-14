@@ -37,13 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedRadio = document.querySelector('input[name="level_of_detail"]:checked').value;
         const dateRange = getSelectedDateRange(tablePrefix);
         const selectedAdditionalCashGlAccounts = getSelectedCashGlAccount(tablePrefix);
+        const includeZeroBalanceGLAccount = document.querySelector('input[name="checkBox_include_zero_balance_gl_account"]').checked ? 'Y' : 'N';
+        const excludeSuppressedFees = document.querySelector('input[name="checkBox_exclude_suppressed_fees"]').checked ? 'Y' : 'N';
 
+        console.log(includeZeroBalanceGLAccount)
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr(`custom_search_summary_properties`, selectedProperties);
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
         document.getElementById(`${tablePrefix}custom_search_summary_levelOfDetail`).innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
         document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = dateRange;
         document.getElementById(`${tablePrefix}custom_search_summary_additionalCashGLAccunts`).innerText = selectedAdditionalCashGlAccounts;
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
+        document.getElementById(`${tablePrefix}custom_search_summary_include_zero_balance_gl_account`).innerHTML = includeZeroBalanceGLAccount;
+        document.getElementById(`${tablePrefix}custom_search_summary_exclude_suppressed_fees`).innerHTML = excludeSuppressedFees;
+
     }; 
 
     document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {

@@ -34,10 +34,11 @@ function getHeaderTemplate(column) {
 }
 
 function getSearchSummaryTemplate(inputType, displayName, tablePrefix){
+    let id = inputType === 'checkBox' ? toSnakeCase(displayName) : inputType;
     return `
         <div>
             <b>${displayName}:</b>
-            <span id="${tablePrefix}custom_search_summary_${inputType}"></span>
+            <span id="${tablePrefix}custom_search_summary_${id}"></span>
         </div>   
     `
 }
