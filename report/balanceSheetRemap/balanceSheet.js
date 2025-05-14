@@ -35,11 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const dateTime = document.getElementById(`${tablePrefix}as_of_radio_input_date`).checked ? document.getElementById(`${tablePrefix}as_of_date`).value : document.getElementById(`${tablePrefix}as_of_select_date`).value;
         const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
         const selectedRadio = document.querySelector('input[name="level_of_detail"]:checked').value;
+        const includeZeroBalanceGLAccount = document.querySelector('input[name="checkBox_include_zero_balance_gl_account"]').checked ? 'Y' : 'N';
 
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr("custom_search_summary_properties", selectedProperties);
         document.getElementById(`${tablePrefix}custom_search_summary_asOf`).innerText = dateTime;
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
         document.getElementById(`${tablePrefix}custom_search_summary_levelOfDetail`).innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
+        document.getElementById(`${tablePrefix}custom_search_summary_include_zero_balance_gl_account`).innerHTML = includeZeroBalanceGLAccount;
 
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
     };
