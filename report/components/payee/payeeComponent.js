@@ -24,8 +24,6 @@ const createPayeeHTML = (displayName, tablePrefix) => {
 }
 
 const addPayeeEventListener = (tablePrefix) => {
-    // Add a flag to prevent selecting radio when using ArrowDown
-    let arrowKeyNavigation = false;
     const payeeInput = document.getElementById(`${tablePrefix}payee_input`);
 
     payeeInput.addEventListener('input', function (event) {
@@ -81,7 +79,6 @@ const addPayeeEventListener = (tablePrefix) => {
 
     payeeInput.addEventListener('keydown', function (event) {
         if (event.key === 'ArrowDown') {
-            arrowKeyNavigation = true;
             const payee_input_radio_group = document.getElementById(`${tablePrefix}payee_input_radio_group`);
             if (payee_input_radio_group.childElementCount > 0) {
                 const firstRadio = document.querySelector(`input[name="${tablePrefix}payee_option"]`);

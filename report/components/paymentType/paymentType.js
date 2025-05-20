@@ -1,6 +1,4 @@
-const options = [
-    ""
-]
+
 const createPaymentTypeHTML = (displayName, tablePrefix) => {
     return `
                 <tr class="tr-default">

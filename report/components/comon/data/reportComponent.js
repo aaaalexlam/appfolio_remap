@@ -5358,7 +5358,7 @@ window.reportComponent = {
                     },
                     {
                         "inputType": "dateType",
-                        "displayName": "DateType"
+                        "displayName": "Date Type"
                     },
                     {
                         "inputType": "dateRange",
