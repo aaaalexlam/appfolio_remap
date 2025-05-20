@@ -16,6 +16,10 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createAdditionalCashGLAccuntsHTML(displayName, tablePrefix);
         case "payee":
             return createPayeeHTML(displayName, tablePrefix);
+        case "paymentType":
+            return createPaymentTypeHTML(displayName, tablePrefix);
+        case "createdBy":
+            return createdByComponentHTML(displayName, tablePrefix);
     }
 }
 
@@ -36,7 +40,7 @@ function addEventListenerBykey(key, tablePrefix){
             break;
         case "payee":
             addPayeeEventListener(tablePrefix);
-            break;
+            break;      
     }
 }
 

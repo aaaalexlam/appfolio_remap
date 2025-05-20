@@ -83,3 +83,9 @@
 .dateRangeRadio{
     margin: 0.5rem;
 }
+
+.drop_down{
+    width: 100%;
+    height: 35px;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+}

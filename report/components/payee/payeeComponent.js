@@ -11,7 +11,7 @@ const createPayeeHTML = (displayName, tablePrefix) => {
                     <td class="input_column">
                         <div class="payee_input">
                             <div class="payee_input_div">
-                                <input type="text" id="${tablePrefix}payee_input">
+                                <input type="text" id="${tablePrefix}payee_input" placeholder="Type to search payee">
                             </div>
                             <div class="payee_input_radio_group_div">
                                 <div id="${tablePrefix}payee_input_radio_group" class="payee_input_radio_group"></div>
