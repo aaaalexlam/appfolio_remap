@@ -5332,15 +5332,42 @@ window.reportComponent = {
                     }
                 ],
                 "customization": [
-                    "properties",
-                    "payee",
-                    "paymentType",
-                    "createdBy",
-                    "glAccounts",
-                    "billStatus",
-                    "dateType",
-                    "dateRange",
-                    "showReversedTransactions"
+                    {
+                        "inputType": "properties",
+                        "displayName": "Properties"
+                    },
+                    {
+                        "inputType": "payee",
+                        "displayName": "Payee"
+                    },
+                    {
+                        "inputType": "paymentType",
+                        "displayName": "Payment Type"
+                    },
+                    {
+                        "inputType": "createdBy",
+                        "displayName": "Created By"                      
+                    },
+                    {
+                        "inputType": "glAccounts",
+                        "displayName": "GL Accounts"    
+                    },
+                    {
+                        "inputType": "billStatus",
+                        "displayName": "Bill Status"
+                    },
+                    {
+                        "inputType": "dateType",
+                        "displayName": "DateType"
+                    },
+                    {
+                        "inputType": "dateRange",
+                        "displayName": "Date Range"
+                    },
+                    {
+                        "inputType": "checkBox",
+                        "displayName": "Show Reversed Transactions"
+                    }
                 ]
             }
         },

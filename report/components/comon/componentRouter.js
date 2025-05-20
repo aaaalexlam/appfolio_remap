@@ -14,6 +14,8 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createCheckBoxHTML(key, displayName, tablePrefix);
         case "additionalCashGLAccunts":
             return createAdditionalCashGLAccuntsHTML(displayName, tablePrefix);
+        case "payee":
+            return createPayeeHTML(displayName, tablePrefix);
     }
 }
 
@@ -32,7 +34,9 @@ function addEventListenerBykey(key, tablePrefix){
         case "dateRange":
             addDateRangeEventListener(tablePrefix);
             break;
-
+        case "payee":
+            addPayeeEventListener(tablePrefix);
+            break;
     }
 }
 

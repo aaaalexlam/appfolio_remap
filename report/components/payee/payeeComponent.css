@@ -1,0 +1,65 @@
+.payee_input {
+    flex-grow: 1;
+}
+
+.payee_input>div {
+    flex-grow: 1;
+}
+
+.payee_input_div {
+    border: 1px solid;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+}
+
+.payee_input input[type="text"] {
+    width: 99%;
+    height: 30px;
+    border: none;
+    outline: none;
+}
+
+.payee_input_radio_group_div {
+    z-index: 1;
+    position: relative;
+}
+
+.payee_input_radio_group {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+}
+
+.payee_input_radio_group label {
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+.payee_input_radio_group label:last-of-type {
+    border-bottom: 1px solid;
+}
+
+.payee_input_radio_group input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.payee_input_radio_group label:focus-within {
+    cursor: pointer;
+    background-color: #006eb7;
+    color: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.payee_input_radio_group label:last-of-type:focus-within {
+    border-bottom: 1px solid black;
+}
