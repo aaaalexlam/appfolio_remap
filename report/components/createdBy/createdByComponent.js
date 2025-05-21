@@ -19,6 +19,6 @@ const createdByComponentHTML = (displayName, tablePrefix) => {
 const optionHtml = userList
     .map(user =>
         `
-            <option value="">${user}</option>
+            <option value="${user}">${user}</option>
         `)
     .join("");

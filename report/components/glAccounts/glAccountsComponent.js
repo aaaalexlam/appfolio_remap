@@ -44,6 +44,7 @@ const getData = (keyWord) => {
             `
             <label class="additional_cahs_gl_accounts_checkbox_label">
                 <input type="checkBox" 
+                name='gl_account_checkbox'
                 value='${JSON.stringify({
                 number: glAccount.number,
                 accountName: glAccount.accountName,
