@@ -375,105 +375,209 @@ window.reportComponent = {
             "generalLedger": {
                 "columns": [
                     {
-                        "name": "GL Account",
-                        "display": false
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "property",
+                        "name": "Property"
                     },
                     {
-                        "name": "Property Name",
-                        "display": false
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "date",
+                        "name": "Date"
                     },
                     {
-                        "name": "Property Address",
-                        "display": false
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "payeeOrPayer",
+                        "name": "Payee / payer"
                     },
                     {
-                        "name": "Property Street Address 1",
-                        "display": false
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "type",
+                        "name": "Type"
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "reference",
+                        "name": "Reference"
+                    },
+                    {
+                        "checkBoxDisable":true,
+                        "display": true,
+                        "key": "debit",
+                        "name": "Debit"
+                    },
+                    {
+                        "checkBoxDisable":true,
+                        "display": true,
+                        "key": "credit",
+                        "name": "Credit"
+                    },
+                    {
+                        "checkBoxDisable":true,
+                        "display": true,
+                        "key": "balance",
+                        "name": "Balance"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": true,
+                        "key": "description",
+                        "name": "Description"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "credit",
+                        "name": "GL Account"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyName",
+                        "name": "Property Name"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyAddress",
+                        "name": "Property Address"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyStreetAddress1",
+                        "name": "Property Street Address 1"
+                    },
+                    {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyStreetAddress2",
                         "name": "Property Street Address 2",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyCity",
                         "name": "Property City",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyState",
                         "name": "Property State",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "propertyZip",
                         "name": "Property Zip",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "unit",
                         "name": "Unit",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "month",
                         "name": "Month",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "quarter",
                         "name": "Quarter",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "year",
                         "name": "Year",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "bankAccount",
                         "name": "Bank Account",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "createdAt",
                         "name": "Created At",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "lastEditedAt",
                         "name": "Last Edited At",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "invoiceLastEditedAt",
                         "name": "Invoice Last Edited At",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "accountLastEditedAt",
                         "name": "Account Last Edited At",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "createdBy",
                         "name": "Created By",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "remarks",
                         "name": "Remarks",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "depositDate",
                         "name": "Deposit Date",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "depositNumber",
                         "name": "Deposit Number",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "cashAccount",
                         "name": "Cash Account",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "vendorAccountNumber",
                         "name": "Vendor Account Number",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "serviceForm",
                         "name": "Service Form",
-                        "display": false
                     },
                     {
+                        "checkBoxDisable":false,
+                        "display": false,
+                        "key": "serviceTo",
                         "name": "Service To",
-                        "display": false
-                    }
+                    },
                 ],
                 "customization": [
                     "properties",

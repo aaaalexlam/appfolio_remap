@@ -33,7 +33,7 @@ function getHeaderTemplate(column) {
     `
 }
 
-function getSearchSummaryTemplate(inputType, displayName, tablePrefix){
+function getSearchSummaryTemplate(inputType, displayName, tablePrefix) {
     let id = inputType === 'checkBox' ? toSnakeCase(displayName) : inputType;
     return `
         <div>
@@ -65,10 +65,10 @@ function getDataDiv(account, column, level) {
     let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
     let style = '';
 
-    if(column.key === 'account_name'){
+    if (column.key === 'account_name') {
         displayName = '&nbsp;'.repeat(level * 5) + account[toCamelCase(column.key)];
 
-        if(account.children.length > 0){
+        if (account.children.length > 0) {
             style = 'font-weight:bold;';
         }
     }
@@ -151,13 +151,13 @@ function initCustomizationForm(customization, tablePrefix) {
             customizationComponents += html;
         }
 
-        if(summary) {
+        if (summary) {
             summaryReviewComponents += summary;
         }
     });
 
     customizationComponents +=
-    `
+        `
                 <tr class="tr-single-right">
                     <td><button id='${tablePrefix}post_form_btn_cancel' class="cancel_btn" type="button">Cancel</button></td>
                     <td><button id='${tablePrefix}post_form_btn' class="default_btn" type="submit">Update</button></td>
@@ -172,4 +172,17 @@ function initCustomizationForm(customization, tablePrefix) {
         addEventListenerBykey(obj.inputType, tablePrefix);
     });
 
+}
+
+function getHideableRow(glAccount) {
+    return `
+                <div class="hideable_row_header" id="">
+                    <i class="fa fa-angle-down"></i>
+                    <span>${glAccount.number} - ${glAccount.accountName}</span>      
+                </div>
+                <div  style="display:block;" id="content_${glAccount.id}">
+                    <div>Content</div>
+                </div>
+          
+        `
 }

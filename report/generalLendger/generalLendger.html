@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- comon form -->
+    <link rel="stylesheet" href="../components/comon/css/table.css">
+    <link rel="stylesheet" href="../components/comon/css/root.css">
+    <link rel="stylesheet" href="../components//comon/css/columnCheckboxes.css">
+
+
+    <!-- customization form -->
+    <link rel="stylesheet" href="../components/comon/css/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>General Lendger</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header_container">
+            <div>
+                <h2>General Lendger</h2>
+            </div>
+            <div>
+                <button class="default_btn" id="general_lendger_customization_btn">Customization</button>
+            </div>
+        </div>
+
+        <div id="general_lendger_custom_search_summary">
+
+        </div>
+
+        <div class="body_container" id="general_lendger_body_container">
+
+            <div class="table_container" id="general_lendger_table">
+
+                <div class="table_header" id="general_lendger_table_header">
+
+                </div>
+
+                <div class="table_content" id="general_lendger_table_content">
+                    <div class="hideable_row">
+                        <div class="hideable_row_header">
+                            <i class="fa fa-angle-down"></i>
+                            <span>Header</span>
+                            
+                        </div>
+                        <div>
+                            <div>Content</div>
+                        </div>
+                    </div>
+                    <div id="balance_sheet_totoal_result" class="table_total_result"><b>Total (52 Results)</b></div>
+                </div>
+
+            </div>
+            <div id="general_lendger_checkbox" class="checkbox_container">
+
+            </div>
+        </div>
+
+        <div id="general_lendger_modal">
+
+        </div>
+
+    </div>
+
+    <script src="../components/comon/glAccountComponent.js"></script>
+    <!-- customization form -->
+
+    <script src="../components/comon/data/reportComponent.js"></script>
+    <script src="../components/comon/js/comonFunction.js"></script>
+    <script src="../components/comon/js/comonComponent.js"></script>
+
+    <script src="generalLendger.js"></script>
+
+
+</body>
+
+</html>
