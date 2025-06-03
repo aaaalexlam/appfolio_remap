@@ -431,7 +431,7 @@ window.reportComponent = {
                     {
                         "checkBoxDisable":false,
                         "display": false,
-                        "key": "credit",
+                        "key": "glAccount",
                         "name": "GL Account"
                     },
                     {

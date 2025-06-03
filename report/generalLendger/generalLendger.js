@@ -21,7 +21,6 @@ function initTable() {
     const table = document.getElementById(`${tablePrefix}table_content`);
 
     for (let i = 0; i < glAccounts.length; i++) {
-        console.log(glAccounts[i].order.length)
         if(glAccounts[i].order.length !== 0) continue;
         const wrapper = document.createElement('div');
         wrapper.id = `hide_${glAccounts[i].id}_btn`;
