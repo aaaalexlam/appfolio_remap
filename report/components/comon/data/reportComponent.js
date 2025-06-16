@@ -378,163 +378,190 @@ window.reportComponent = {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "property",
-                        "name": "Property"
+                        "name": "Property",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "date",
-                        "name": "Date"
+                        "name": "Date",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "payeeOrPayer",
-                        "name": "Payee / payer"
+                        "name": "Payee / payer",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "type",
-                        "name": "Type"
+                        "name": "Type",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "reference",
-                        "name": "Reference"
+                        "name": "Reference",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":true,
                         "display": true,
                         "key": "debit",
-                        "name": "Debit"
+                        "name": "Debit",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":true,
                         "display": true,
                         "key": "credit",
-                        "name": "Credit"
+                        "name": "Credit",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":true,
                         "display": true,
                         "key": "balance",
-                        "name": "Balance"
+                        "name": "Balance",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": true,
                         "key": "description",
-                        "name": "Description"
+                        "name": "Description",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "glAccount",
-                        "name": "GL Account"
+                        "name": "GL Account",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyName",
-                        "name": "Property Name"
+                        "name": "Property Name",
+                        "width": "100px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyAddress",
-                        "name": "Property Address"
+                        "name": "Property Address",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyStreetAddress1",
-                        "name": "Property Street Address 1"
+                        "name": "Property Street Address 1",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyStreetAddress2",
                         "name": "Property Street Address 2",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyCity",
                         "name": "Property City",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyState",
                         "name": "Property State",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "propertyZip",
                         "name": "Property Zip",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "unit",
                         "name": "Unit",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "month",
                         "name": "Month",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "quarter",
                         "name": "Quarter",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "year",
                         "name": "Year",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "bankAccount",
                         "name": "Bank Account",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "createdAt",
                         "name": "Created At",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "lastEditedAt",
                         "name": "Last Edited At",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "invoiceLastEditedAt",
                         "name": "Invoice Last Edited At",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "accountLastEditedAt",
                         "name": "Account Last Edited At",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
                         "display": false,
                         "key": "createdBy",
                         "name": "Created By",
+                        "width": "300px"
                     },
                     {
                         "checkBoxDisable":false,
@@ -580,14 +607,17 @@ window.reportComponent = {
                     },
                 ],
                 "customization": [
-                    "properties",
-                    "createBy",
-                    "glAccounts",
-                    "excludeZeroDollarReceiptsFromCashAccounts",
-                    "dateRange",
-                    "lastEditedRange",
-                    "accountingBasis",
-                    "showReversedTransactions"
+                    {
+                        "inputType": "properties",
+                        "displayName": "Properties"
+                    },
+                    // "createBy",
+                    // "glAccounts",
+                    // "excludeZeroDollarReceiptsFromCashAccounts",
+                    // "dateRange",
+                    // "lastEditedRange",
+                    // "accountingBasis",
+                    // "showReversedTransactions"
                 ]
             }
         },

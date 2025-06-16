@@ -61,7 +61,7 @@ function initHeader(columns, checkBoxId, tableHeaderId) {
 }
 
 function getDataDiv(account, column, level) {
-    
+
     let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
     let style = '';
 
@@ -174,15 +174,36 @@ function initCustomizationForm(customization, tablePrefix) {
 
 }
 
-function getHideableRow(glAccount) {
+function getHideableRow(glAccount, tablePrefix, contentData, columns) {
     return `
                 <div class="hideable_row_header" id="">
                     <i class="fa fa-angle-down"></i>
                     <span>${glAccount.number} - ${glAccount.accountName}</span>      
                 </div>
                 <div  style="display:block;" id="content_${glAccount.id}">
-                    <div>Content</div>
+                    ${getContent(tablePrefix, contentData, columns)}
                 </div>
-          
         `
+}
+
+function getContent(tablePrefix, contentData, columns) {
+    let content = '';
+    if(!contentData){
+        return;
+    }
+    contentData.forEach(bill => {
+        content += `<div class='table_row'>`;
+        columns.forEach(column => {
+            content += `
+            <div 
+                class="column_${column.key} header_text"
+                style="width:${column.width}; flex-shrink:0"
+            >
+                ${bill[column.key]}
+            </div>`;
+        });
+        content += `</div>`;
+
+    });
+    return content;
 }
