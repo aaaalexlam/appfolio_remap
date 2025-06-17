@@ -611,6 +611,10 @@ window.reportComponent = {
                         "inputType": "properties",
                         "displayName": "Properties"
                     },
+                    {
+                        "inputType": "glAccounts",
+                        "displayName": "GL Accounts"
+                    },
                     // "createBy",
                     // "glAccounts",
                     // "excludeZeroDollarReceiptsFromCashAccounts",

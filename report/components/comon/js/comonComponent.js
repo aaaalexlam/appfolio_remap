@@ -187,23 +187,32 @@ function getHideableRow(glAccount, tablePrefix, contentData, columns) {
 }
 
 function getContent(tablePrefix, contentData, columns) {
-    let content = '';
-    if(!contentData){
-        return;
-    }
-    contentData.forEach(bill => {
-        content += `<div class='table_row'>`;
-        columns.forEach(column => {
-            content += `
-            <div 
-                class="column_${column.key} header_text"
-                style="width:${column.width}; flex-shrink:0"
-            >
-                ${bill[column.key]}
-            </div>`;
-        });
-        content += `</div>`;
+    let content = `
+        <div class='table_row'>
+            <div>Balance</div>
+        </div>
+    `;
+    if (contentData) {
+        contentData.forEach(bill => {
+            content += `<div class='table_row'>`;
+            columns.forEach(column => {
+                content += `
+                <div 
+                    class="column_${column.key} header_text"
+                    style="width:${column.width}; flex-shrink:0"
+                >
+                    ${bill[column.key]}
+                </div>`;
+            });
+            content += `</div>`;
 
-    });
+        });
+    }
+
+    content += `
+        <div class='table_row'>
+            <div>End Blanace</div>
+        </div>
+    `
     return content;
 }

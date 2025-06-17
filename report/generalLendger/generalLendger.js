@@ -6,18 +6,26 @@ const columns = generalLedgerObject.generalLedger.columns;
 const billList = groupByGlAccount(window.billComponent.data);
 
 const displayedColumns = columns.filter(item => item.display === true);
-// const customization = generalLedgerObject.generalLedger.customization;
+const customization = generalLedgerObject.generalLedger.customization;
 
 // get the glAccount data
 const glAccounts = window.glAccountComponent.glCodeData;
 
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
-    // initCustomizationForm(customization, tablePrefix);
+    initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initTable();
 
     initResizeColumn();
+
+    document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "none";
+    }
+
+    document.getElementById(`${tablePrefix}customization_btn`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "flex";
+    }
 });
 
 function initTable() {

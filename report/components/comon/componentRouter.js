@@ -14,6 +14,8 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createCheckBoxHTML(key, displayName, tablePrefix);
         case "additionalCashGLAccunts":
             return createAdditionalCashGLAccuntsHTML(displayName, tablePrefix);
+        case "glAccounts":
+            return createGLAccuntsHTML(displayName, tablePrefix);
     }
 }
 
