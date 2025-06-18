@@ -80,3 +80,19 @@ function toCamelCase(input) {
         .replace(/[_\s]+(.)?/g, (_, chr) => chr ? chr.toUpperCase() : '')
         .replace(/^[A-Z]/, chr => chr.toLowerCase());
 }
+
+function formatCurrency(amount = 0) {
+    return amount.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+function formatCurrencyToPostive(amount) {
+    const positiveAmount = Math.abs(amount); // convert to positive
+  
+    return positiveAmount.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }

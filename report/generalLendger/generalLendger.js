@@ -35,7 +35,7 @@ function initTable() {
         if (glAccounts[i].order.length !== 0) continue;
         // get all bills that may by same gl account
         const glAccountBills = billList[glAccounts[i].id];
-
+        console.log(glAccountBills)
         
         // main row
         const wrapper = document.createElement('div');
@@ -57,6 +57,7 @@ function initTable() {
         });
 
         table.appendChild(wrapper);
+
     }
 
 }
@@ -79,9 +80,9 @@ function groupByGlAccount(billList) {
                 "payeeOrPayer": entry.payeeName,
                 "type": "check",
                 "reference": entry.reference,
-                "credit": 0,
-                "debit": 0,
-                "amount": detail.amount,
+                "credit": detail.amount < 0 ? formatCurrencyToPostive(detail.amount) : 0,
+                "debit": detail.amount > 0 ? formatCurrencyToPostive(detail.amount) : 0,
+                "balance": detail.amount,
                 "description": detail.description,
             });
         });

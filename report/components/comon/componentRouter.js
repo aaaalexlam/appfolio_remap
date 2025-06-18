@@ -14,8 +14,6 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createCheckBoxHTML(key, displayName, tablePrefix);
         case "additionalCashGLAccunts":
             return createAdditionalCashGLAccuntsHTML(displayName, tablePrefix);
-        case "glAccounts":
-            return createGLAccuntsHTML(displayName, tablePrefix);
         case "payee":
             return createPayeeHTML(displayName, tablePrefix);
         case "paymentType":
@@ -27,7 +25,9 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
         case "billStatus":
             return createBillStatusHTML(displayName, tablePrefix);
         case "dateType":
-            return createDateTypeHTML(displayName, tablePrefix)
+            return createDateTypeHTML(displayName, tablePrefix);
+        case "lastEditedRange":
+            return createDateRangeHTML(displayName, tablePrefix);
     }
 }
 

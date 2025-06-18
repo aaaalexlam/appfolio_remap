@@ -14,7 +14,7 @@ window.billComponent = {
             "createdByName": "Andrew Yeh",
             "billDetails": [
                 {
-                    "amount": 6060,
+                    "amount": 10,
                     "status": "Unpaid",
                     "glName": "Program Assistant - Reg Salaries/Wages",
                     "glAccountId": "231",
@@ -63,7 +63,7 @@ window.billComponent = {
                     "glName": "PROGRAM ASSISTANT",
                     "glAccountId": "231",
                     "status": "Unpaid",
-                    "amount": 9090,
+                    "amount": -20,
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
                     "glNumber": "001",
                     "statusIndex": 0,
@@ -74,7 +74,7 @@ window.billComponent = {
                     "glName": "PROGRAM ASSISTANT",
                     "glAccountId": "231",
                     "status": "Unpaid",
-                    "amount": 9091,
+                    "amount": 30,
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
                     "glNumber": "001",
                     "statusIndex": 0,
@@ -85,12 +85,73 @@ window.billComponent = {
                     "glName": "PROGRAM ASSISTANT",
                     "glAccountId": "231",
                     "status": "Unpaid",
-                    "amount": 9091,
+                    "amount": 40,
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
                     "glNumber": "001",
                     "statusIndex": 0,
                     "description": ""
                 }
+            ],
+            "dueDate": "2025-05-09",
+            "createdByName": "Andrew Yeh",
+            "lastUpdatedBy": "Andrew Yeh",
+            "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
+            "workOrder": null,
+            "totalAmt": 9090,
+            "cashAccountData": null
+        },
+        {
+            "payeeName": "Test Service",
+            "reference": "123456",
+            "postDate": null,
+            "payeeId": "LX18Ibou8iXeVC0EJy1l",
+            "createdById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
+            "createdAt": {
+                "seconds": 1746820843,
+                "nanoseconds": 436000000
+            },
+            "billDate": "2025-06-08",
+            "remarks": "haha",
+            "billNotes": "",
+            "checkMemo": "",
+            "lastUpdatedAt": {
+                "seconds": 1746820843,
+                "nanoseconds": 436000000
+            },
+            "billDetails": [
+                {
+                    "propertyName": "The Groves at Tustin",
+                    "glName": "PROGRAM ASSISTANT",
+                    "glAccountId": "800",
+                    "status": "Unpaid",
+                    "amount": 50,
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "glNumber": "001",
+                    "statusIndex": 0,
+                    "description": ""
+                },
+                {
+                    "propertyName": "The Groves at Tustin",
+                    "glName": "PROGRAM ASSISTANT",
+                    "glAccountId": "800",
+                    "status": "Unpaid",
+                    "amount": -60,
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "glNumber": "001",
+                    "statusIndex": 0,
+                    "description": ""
+                },
+                {
+                    "propertyName": "The Groves at Tustin",
+                    "glName": "PROGRAM ASSISTANT",
+                    "glAccountId": "800",
+                    "status": "Unpaid",
+                    "amount": -70,
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "glNumber": "001",
+                    "statusIndex": 0,
+                    "description": ""
+                },
             ],
             "dueDate": "2025-05-09",
             "createdByName": "Andrew Yeh",

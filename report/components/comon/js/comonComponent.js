@@ -186,33 +186,118 @@ function getHideableRow(glAccount, tablePrefix, contentData, columns) {
         `
 }
 
-function getContent(tablePrefix, contentData, columns) {
+function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
+    let endBalance = startingBalance;
+    let totalNetChange = 0;
+    // starting balance Row
     let content = `
         <div class='table_row'>
-            <div>Balance</div>
+        ${columns.map(column => {
+        if (column.key === 'balance') {
+            return (
+                getRowBlockBalanceHTML(column, startingBalance)
+            )
+        } else {
+            return (
+                getRowBlockHTML(column, '')
+            )
+        }
+    }).join('')
+        }
         </div>
     `;
+
+    // main data Row
     if (contentData) {
         contentData.forEach(bill => {
             content += `<div class='table_row'>`;
             columns.forEach(column => {
-                content += `
-                <div 
-                    class="column_${column.key} header_text"
-                    style="width:${column.width}; flex-shrink:0"
-                >
-                    ${bill[column.key]}
-                </div>`;
+                content += getRowBlockHTML(column, bill[column.key])
+                if (column.key === 'balance') {
+                    totalNetChange += bill[column.key];
+                }
             });
             content += `</div>`;
-
         });
     }
 
+    // net change
     content += `
         <div class='table_row'>
-            <div>End Blanace</div>
+        ${columns.map(column => {
+        if (column.key === 'balance') {
+            return (
+                getRowBlockNetChangeHTML(column, totalNetChange)
+            )
+        } else {
+            return (
+                getRowBlockHTML(column, '')
+            )
+        }
+    }).join('')
+        }
         </div>
     `
+
+    // end balance
+    content += `
+    <div class='table_row'>
+    ${columns.map(column => {
+        if (column.key === 'balance') {
+            return (
+                `<div 
+                    class="table_column"
+                    style="font-weight: bold; text-align: end; width:${column.width};">${formatCurrency(endBalance + totalNetChange)}</div>`
+            )
+        } else {
+            return (
+                getRowBlockHTML(column, '')
+            )
+        }
+    }).join('')
+        }
+    </div>
+`
     return content;
+}
+
+const getRowBlockHTML = (column, data) => {
+    const currencyKeys = ['credit', 'balance', 'debit'];
+    const isCurrency = currencyKeys.includes(column.key);
+    const displayValue = isCurrency ? formatCurrency(data) : data;
+    const indent = isCurrency ? "text-align: end;" : "";
+
+    return `
+        <div
+            class="column_${column.key} header_text table_column"
+            style="width:${column.width}; flex-shrink:0; ${indent}"
+        >   
+            ${displayValue}
+        </div>
+    `;
+}
+
+const getRowBlockBalanceHTML = (column, data) => {
+
+    return `
+    <div
+        class="column_${column.key} header_text table_column"
+        style="width:${column.width}; flex-shrink:0; text-align: end;"
+    >   
+        ${formatCurrency(data)}
+        <div style="color: #cacaca">Starting Balance</div>
+    </div>
+`;
+}
+
+const getRowBlockNetChangeHTML = (column, data) => {
+    return `
+    <div
+        class="column_${column.key} header_text table_column"
+        style="width:${column.width}; flex-shrink:0; text-align: end;"
+    >   
+        ${formatCurrency(data)}
+        <div style="color: #cacaca">Net Change</div>
+    </div>
+`;
 }

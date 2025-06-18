@@ -612,16 +612,25 @@ window.reportComponent = {
                         "displayName": "Properties"
                     },
                     {
-                        "inputType": "glAccounts",
-                        "displayName": "GL Accounts"
+                        "inputType": "createdBy",
+                        "displayName": "Created By"                      
                     },
-                    // "createBy",
-                    // "glAccounts",
-                    // "excludeZeroDollarReceiptsFromCashAccounts",
-                    // "dateRange",
-                    // "lastEditedRange",
-                    // "accountingBasis",
-                    // "showReversedTransactions"
+                    {
+                        "inputType": "glAccounts",
+                        "displayName": "GL Accounts"    
+                    },
+                    {
+                        "inputType": "dateRange",
+                        "displayName": "Date Range"
+                    },
+                    {
+                        "inputType": "accountingBasis",
+                        "displayName": "Accounting Basis"
+                    },
+                    {
+                        "inputType": "dateRange",
+                        "displayName": "Last Edited Range"
+                    }
                 ]
             }
         },

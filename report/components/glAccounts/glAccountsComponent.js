@@ -17,13 +17,6 @@ const checkBoxHtml = glAccountData
 const createGLAccuntsHTML = (displayName, tablePrefix) => {
     return `
                 <tr class="tr-default">
-<<<<<<< HEAD
-                    <td class="input_field additional_cahs_gl_accounts_group_input_field">${displayName}</td>
-                    <td class="input_column">
-                        <div class="additional_cahs_gl_accounts_group">
-                            <div id="${tablePrefix}additional_cahs_gl_accounts" class="">
-                                ${checkBoxHtml}
-=======
                     <td class="input_field">${displayName}</td>
                     <td class="input_column">
                         <div class="gl_account_search_div">
@@ -34,7 +27,6 @@ const createGLAccuntsHTML = (displayName, tablePrefix) => {
                             <div class="additional_cahs_gl_accounts_group">
                                 <div id="${tablePrefix}additional_cahs_gl_accounts" class="">
                                     ${getData("")}
->>>>>>> feature/bill_detail
                             </div>
                         </div>
                     </td>
