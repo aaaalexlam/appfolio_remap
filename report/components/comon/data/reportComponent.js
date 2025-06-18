@@ -5341,8 +5341,88 @@ window.reportComponent = {
             "billDetail": {
                 "columns": [
                     {
+                        "name": "Reference",
+                        "key": "reference",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Bill Date",
+                        "key": "bill_date",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Due Date",
+                        "key": "due_date",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "GL Account",
+                        "key": "gl_account",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Property",
+                        "key": "property",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Unit",
+                        "key": "unit",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Payee Name",
+                        "key": "payee_name",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Paid",
+                        "key": "paid",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Unpaid",
+                        "key": "unpaid",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Check #",
+                        "key": "check",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Paid Date",
+                        "key": "paid_date",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Description",
+                        "key": "description",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
+                        "name": "Work Order Issue",
+                        "key": "work_order_issue",
+                        "display": true,
+                        "checkBoxDisable": false,
+                    },
+                    {
                         "name": "Posting Date",
-                        "display": false
+                        "key": "posting_date",
+                        "display": false,
+                        "checkBoxDisable": false,
                     },
                     {
                         "name": "GL Account Name",
@@ -5470,15 +5550,42 @@ window.reportComponent = {
                     }
                 ],
                 "customization": [
-                    "properties",
-                    "payee",
-                    "paymentType",
-                    "createdBy",
-                    "glAccounts",
-                    "billStatus",
-                    "dateType",
-                    "dateRange",
-                    "showReversedTransactions"
+                    {
+                        "inputType": "properties",
+                        "displayName": "Properties"
+                    },
+                    {
+                        "inputType": "payee",
+                        "displayName": "Payee"
+                    },
+                    {
+                        "inputType": "paymentType",
+                        "displayName": "Payment Type"
+                    },
+                    {
+                        "inputType": "createdBy",
+                        "displayName": "Created By"                      
+                    },
+                    {
+                        "inputType": "glAccounts",
+                        "displayName": "GL Accounts"    
+                    },
+                    {
+                        "inputType": "billStatus",
+                        "displayName": "Bill Status"
+                    },
+                    {
+                        "inputType": "dateType",
+                        "displayName": "Date Type"
+                    },
+                    {
+                        "inputType": "dateRange",
+                        "displayName": "Date Range"
+                    },
+                    {
+                        "inputType": "checkBox",
+                        "displayName": "Show Reversed Transactions"
+                    }
                 ]
             }
         },

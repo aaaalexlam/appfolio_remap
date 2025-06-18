@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- comon form -->
+    <link rel="stylesheet" href="../components/comon/css/table.css">
+    <link rel="stylesheet" href="../components/comon/css/root.css">
+    <link rel="stylesheet" href="../components//comon/css/columnCheckboxes.css">
+    <link rel="stylesheet" href="../components/additionalCashGLAccounts/additionalCahsGlAccounts.css">
+    
+    <!-- customization form -->
+    <link rel="stylesheet" href="../components/comon/css/modal.css">
+    <link rel="stylesheet" href="../components/properties/properties.css">
+    <link rel="stylesheet" href="../components/asOf/asOf.css">
+    <link rel="stylesheet" href="../components/levelOfDetail/levelOfDetail.css">
+    <link rel="stylesheet" href="../components/payee/payeeComponent.css">
+    <link rel="stylesheet" href="../components/paymentType/paymentType.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header_container">
+            <div>
+                <h2>Bill Detail</h2>
+            </div>
+            <div>
+                <button class="default_btn" id="bill_detail_customization_btn">Customization</button>
+            </div>
+        </div>
+
+        <div id="bill_detail_custom_search_summary">
+
+        </div>
+
+        <div class="body_container" id="bill_detail_body_container">
+
+            <div class="table_container" id="bill_detail_table">
+
+                <div class="table_header" id="bill_detail_table_header">
+
+                </div>
+
+                <div class="table_content">
+
+                    <div id="bill_detail_totoal_result" class="table_total_result"><b>Total (52 Results)</b></div>
+                </div>
+
+            </div>
+            <div id="bill_detail_checkbox" class="checkbox_container">
+
+            </div>
+        </div>
+
+        
+        <div id="bill_detail_modal">
+            
+        </div>
+
+    </div>
+
+    <script src="../components/comon/data/reportComponent.js"></script>
+    <script src="../components/comon/js/comonFunction.js"></script>
+    <script src="../components/comon/js/comonComponent.js"></script>
+    <script src="../components/comon/glAccountComponent.js"></script>
+
+    <!-- customization form -->
+    <script src="../components/accountingBasis/accountingBasisComponent.js"></script>
+    <script src="../components/levelOfDetail/levelOfDetailComponent.js"></script>
+    <script src="../components/checkBox/checkBoxComponent.js"></script>
+    <script src="../components/comon/componentRouter.js"></script>
+    <script src="../components/properties/propertiesComponent.js"></script>
+    <script src="../components/asOf/asOfComponent.js"></script>
+    <script src="../components/dateRange/dateRangeComponent.js"></script>
+    <script src="../components/payee/payeeComponent.js"></script>
+    <script src="../components/paymentType/paymentType.js"></script>
+    <script src="../components/createdBy/createdByComponent.js"></script>
+    <script src="../components/glAccounts/glAccountsComponent.js"></script>
+    <script src="../components/billStatus/billStatusComponent.js"></script>
+    <script src="../components/dateType/dateTypeComponent.js"></script>
+    <script src="./billDetail.js"></script>
+
+</body>
+
+</html>

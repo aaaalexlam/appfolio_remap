@@ -16,3 +16,18 @@
 .additional_cahs_gl_accounts_group_input_field{
     height: 150px;
 }
+
+.gl_account_search_div {
+    width: 100%;
+}
+.gl_account_search_input_div{
+    border: 1px solid;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    margin-bottom: 2px;
+}
+
+.gl_account_search_div input[type="text"] {
+    width: 98%;
+    border: none;
+    outline: none;
+}

@@ -16,6 +16,18 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createAdditionalCashGLAccuntsHTML(displayName, tablePrefix);
         case "glAccounts":
             return createGLAccuntsHTML(displayName, tablePrefix);
+        case "payee":
+            return createPayeeHTML(displayName, tablePrefix);
+        case "paymentType":
+            return createPaymentTypeHTML(displayName, tablePrefix);
+        case "createdBy":
+            return createdByComponentHTML(displayName, tablePrefix);
+        case "glAccounts":
+            return createGLAccuntsHTML(displayName, tablePrefix);
+        case "billStatus":
+            return createBillStatusHTML(displayName, tablePrefix);
+        case "dateType":
+            return createDateTypeHTML(displayName, tablePrefix)
     }
 }
 
@@ -34,7 +46,11 @@ function addEventListenerBykey(key, tablePrefix){
         case "dateRange":
             addDateRangeEventListener(tablePrefix);
             break;
-
+        case "payee":
+            addPayeeEventListener(tablePrefix);
+            break;
+        case "glAccounts":
+            addGlAccountsEventListener(tablePrefix)    
     }
 }
 
