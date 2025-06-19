@@ -44,62 +44,66 @@ function getSearchSummaryTemplate(inputType, displayName, tablePrefix) {
 }
 
 function initHeader(columns, checkBoxId, tableHeaderId) {
-    const table_header = document.getElementById(tableHeaderId);
-    const checkbox = document.getElementById(checkBoxId);
-    columns.forEach((column) => {
-        table_header.innerHTML += getHeaderTemplate(column);
-        checkbox.innerHTML += columnCheckboxTemplate(column)
-    });
+    const tableHeaderEl = document.getElementById(tableHeaderId);
+    const checkboxEl = document.getElementById(checkBoxId);
 
-    // for css dispay only
-    table_header.innerHTML +=
-        `
-           <div class="end_header">
-               &nbsp;
-           </div>
-       `
-}
+    // Use arrays to collect the HTML strings
+    const headerHTML = [];
+    const checkboxHTML = [];
 
-function getDataDiv(account, column, level) {
-
-    let displayName = account[toCamelCase(column.key)] ? account[toCamelCase(column.key)] : '&nbsp;';
-    let style = '';
-
-    if (column.key === 'account_name') {
-        displayName = '&nbsp;'.repeat(level * 5) + account[toCamelCase(column.key)];
-
-        if (account.children.length > 0) {
-            style = 'font-weight:bold;';
-        }
+    // Build once, append once
+    for (const column of columns) {
+        headerHTML.push(getHeaderTemplate(column));
+        checkboxHTML.push(columnCheckboxTemplate(column));
     }
 
-    return `
-        <div class="column_${column.key} table_column" style="width:${column.width}; ${style} display:${column.display ? 'block' : 'none'}">
-            ${displayName}
+    // Add the extra end header div for styling
+    headerHTML.push(`
+        <div class="end_header">
+            &nbsp;
         </div>
-    `
+    `);
+
+    // Assign the combined HTML to the elements once
+    tableHeaderEl.innerHTML = headerHTML.join('');
+    checkboxEl.innerHTML = checkboxHTML.join('');
 }
 
 function createAccountRow(account, level) {
-
     const row = document.createElement('div');
     row.style.display = 'flex';
     row.style.alignItems = 'center';
     row.className = 'table_row';
 
-    columns.forEach((column) => {
-        row.innerHTML += getDataDiv(account, column, level)
-    })
+    // Use appendChild instead of innerHTML
+    for (const column of columns) {
+        const cell = createDataDiv(account, column, level); // returns a DOM element
+        row.appendChild(cell);
+    }
 
-    // for css dispay only
-    row.innerHTML +=
-        `
-        <div class="end_columnd ">
-            &nbsp;
-        </div>
-    `
+    // Add static spacer column
+    const spacer = document.createElement('div');
+    spacer.className = 'end_columnd';
+    spacer.innerHTML = '&nbsp;';
+    row.appendChild(spacer);
+
     return row;
 }
+
+function createDataDiv(account, column, level) {
+    const div = document.createElement('div');
+    div.className = `column_${column.key} table_column`;
+    div.style.width = column.width;
+    div.textContent = account[column.key] || ''; // adjust as needed
+
+    // Add indentation or formatting based on level/key
+    if (column.key === 'name' && level > 0) {
+        div.style.paddingLeft = `${level * 16}px`; // for nested indentation
+    }
+
+    return div;
+}
+
 
 function buildAccountsDiv(accounts, level) {
     const container = document.createElement('div');
@@ -176,89 +180,65 @@ function initCustomizationForm(customization, tablePrefix) {
 
 function getHideableRow(glAccount, tablePrefix, contentData, columns) {
     return `
-                <div class="hideable_row_header" id="">
-                    <i class="fa fa-angle-down"></i>
-                    <span>${glAccount.number} - ${glAccount.accountName}</span>      
-                </div>
-                <div  style="display:block;" id="content_${glAccount.id}">
-                    ${getContent(tablePrefix, contentData, columns)}
-                </div>
-        `
+        <div class="hideable_row_header">
+            <i class="fa fa-angle-down"></i>
+            <span>${glAccount.number} - ${glAccount.accountName}</span>      
+        </div>
+        <div style="display:block;" id="content_${glAccount.id}">
+            ${getContent(tablePrefix, contentData, columns)}
+        </div>
+    `;
 }
 
 function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
-    let endBalance = startingBalance;
     let totalNetChange = 0;
-    // starting balance Row
-    let content = `
-        <div class='table_row'>
-        ${columns.map(column => {
-        if (column.key === 'balance') {
-            return (
-                getRowBlockBalanceHTML(column, startingBalance)
-            )
-        } else {
-            return (
-                getRowBlockHTML(column, '')
-            )
-        }
-    }).join('')
-        }
-        </div>
-    `;
+    const rows = [];
 
-    // main data Row
-    if (contentData) {
-        contentData.forEach(bill => {
-            content += `<div class='table_row'>`;
-            columns.forEach(column => {
-                content += getRowBlockHTML(column, bill[column.key])
+    // Starting balance row
+    rows.push(
+        `<div class='table_row'>${columns.map(column =>
+            column.key === 'balance'
+                ? getRowBlockBalanceHTML(column, startingBalance)
+                : getRowBlockHTML(column, '')
+        ).join('')}</div>`
+    );
+
+    // Main data rows
+    if (contentData?.length) {
+        for (const bill of contentData) {
+            rows.push(`<div class='table_row'>`);
+            for (const column of columns) {
+                rows.push(getRowBlockHTML(column, bill[column.key]));
                 if (column.key === 'balance') {
                     totalNetChange += bill[column.key];
                 }
-            });
-            content += `</div>`;
-        });
+            }
+            rows.push(`</div>`);
+        }
     }
 
-    // net change
-    content += `
-        <div class='table_row'>
-        ${columns.map(column => {
-        if (column.key === 'balance') {
-            return (
-                getRowBlockNetChangeHTML(column, totalNetChange)
-            )
-        } else {
-            return (
-                getRowBlockHTML(column, '')
-            )
-        }
-    }).join('')
-        }
-        </div>
-    `
+    // Net change row
+    rows.push(
+        `<div class='table_row'>${columns.map(column =>
+            column.key === 'balance'
+                ? getRowBlockNetChangeHTML(column, totalNetChange)
+                : getRowBlockHTML(column, '')
+        ).join('')}</div>`
+    );
 
-    // end balance
-    content += `
-    <div class='table_row'>
-    ${columns.map(column => {
-        if (column.key === 'balance') {
-            return (
-                `<div 
-                    class="table_column"
-                    style="font-weight: bold; text-align: end; width:${column.width};">${formatCurrency(endBalance + totalNetChange)}</div>`
-            )
-        } else {
-            return (
-                getRowBlockHTML(column, '')
-            )
-        }
-    }).join('')
-        }
-    </div>
-`
-    return content;
+    // End balance row
+    const endBalance = startingBalance + totalNetChange;
+    rows.push(
+        `<div class='table_row'>${columns.map(column =>
+            column.key === 'balance'
+                ? `<div class="table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
+                        ${formatCurrency(endBalance)}
+                   </div>`
+                : getRowBlockHTML(column, '')
+        ).join('')}</div>`
+    );
+
+    return rows.join('');
 }
 
 const getRowBlockHTML = (column, data) => {

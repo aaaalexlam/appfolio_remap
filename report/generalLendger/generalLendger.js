@@ -15,9 +15,35 @@ const glAccounts = window.glAccountComponent.glCodeData;
 document.addEventListener("DOMContentLoaded", function () {
     initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
-    initTable();
-
     initResizeColumn();
+
+    document.addEventListener('click', function (event) {
+        // hide modal onClicked
+        const clickedElement = event.target;
+        if (clickedElement.id !== '' && clickedElement.id === `${tablePrefix}modal`) {
+            document.getElementById(`${tablePrefix}modal`).style.display = "none";
+        }
+    });
+
+    document.getElementById(`${tablePrefix}post_form_btn`).onclick = function () {
+        const selectedProperties = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked')).map(cb => cb.value);
+        const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
+        const dateRange = getSelectedDateRange(tablePrefix);
+        const selectedGlAccounts = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked')).map(cb => cb.value);
+        const lastEditDateRange = getSelectedLastEditDateRange(tablePrefix);
+        const createdBy = document.getElementById(`${tablePrefix}created_by`).value;
+        
+        document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr(`custom_search_summary_properties`, selectedProperties);
+        document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
+        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = selectedGlAccounts;
+        document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = dateRange;
+        document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
+        document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = lastEditDateRange;
+
+        document.getElementById(`${tablePrefix}modal`).style.display = "none";
+
+        initTable(dateRange);
+    }
 
     document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
@@ -28,38 +54,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function initTable() {
+function initTable(dateRange) {
     const table = document.getElementById(`${tablePrefix}table_content`);
+    const fragment = document.createDocumentFragment(); // improves batch DOM insert
 
-    for (let i = 0; i < glAccounts.length; i++) {
-        if (glAccounts[i].order.length !== 0) continue;
-        // get all bills that may by same gl account
-        const glAccountBills = billList[glAccounts[i].id];
-        console.log(glAccountBills)
-        
-        // main row
+    for (const glAccount of glAccounts) {
+        if (glAccount.order.length !== 0) continue;
+
+        const glAccountBills = billList[glAccount.id];
+
+        // Create wrapper
         const wrapper = document.createElement('div');
-        wrapper.id = `hide_${glAccounts[i].id}_btn`;
-        wrapper.innerHTML = getHideableRow(glAccounts[i], tablePrefix, glAccountBills, displayedColumns);
+        wrapper.id = `hide_${glAccount.id}_btn`;
+        wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns);
 
-        wrapper.addEventListener('click', function (event) {
-            const tag = event.target.tagName.toLowerCase();
-            let id = tag === 'div' ? event.target.parentElement.id : event.target.parentElement.parentElement.id;
-            id = id.split('_')[1];
-
-            let content = document.getElementById(`content_${id}`);
-
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
+        // Use event delegation for better performance
+        wrapper.querySelector('.hideable_row_header')?.addEventListener('click', (event) => {
+            const content = document.getElementById(`content_${glAccount.id}`);
+            if (content) {
+                content.style.display = (content.style.display === 'block') ? 'none' : 'block';
             }
         });
 
-        table.appendChild(wrapper);
-
+        fragment.appendChild(wrapper);
     }
 
+    table.appendChild(fragment);
 }
 
 function groupByGlAccount(billList) {

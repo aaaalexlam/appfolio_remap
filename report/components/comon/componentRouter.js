@@ -27,7 +27,7 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
         case "dateType":
             return createDateTypeHTML(displayName, tablePrefix);
         case "lastEditedRange":
-            return createDateRangeHTML(displayName, tablePrefix);
+            return createLastEditDateRangeComponent(displayName, tablePrefix);
     }
 }
 
@@ -50,7 +50,11 @@ function addEventListenerBykey(key, tablePrefix){
             addPayeeEventListener(tablePrefix);
             break;
         case "glAccounts":
-            addGlAccountsEventListener(tablePrefix)    
+            addGlAccountsEventListener(tablePrefix);
+            break;
+        case "lastEditedRange":
+            addLastEditDateRangeEventListener(tablePrefix);
+            break;
     }
 }
 

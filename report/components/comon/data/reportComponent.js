@@ -628,7 +628,7 @@ window.reportComponent = {
                         "displayName": "Accounting Basis"
                     },
                     {
-                        "inputType": "dateRange",
+                        "inputType": "lastEditedRange",
                         "displayName": "Last Edited Range"
                     }
                 ]

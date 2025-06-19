@@ -1,37 +1,36 @@
 function initResizeColumn() {
     const resizers = document.querySelectorAll(".resize_div");
-    let currentResizer;
 
     resizers.forEach(resizer => {
-        resizer.addEventListener("mousedown", mousedownHandler);
+        resizer.addEventListener("mousedown", onMouseDown);
+    });
 
-        function mousedownHandler(e) {
-            currentResizer = resizer;
+    function onMouseDown(e) {
+        const resizer = e.currentTarget;
+        let headerComponent = resizer.parentElement.parentElement;
+        const headerId = headerComponent.id;
+        const columnTargets = document.querySelectorAll(`.${headerId}`);
+        const startX = e.pageX;
+        const startWidth = headerComponent.offsetWidth;
 
-            let headerComponent = currentResizer.parentElement.parentElement;
-            let headerId = headerComponent.id;
-            let column_account_name = document.querySelectorAll(`.${headerId}`);
-            let startX = e.pageX;
-            let startWidth = headerComponent.offsetWidth;
-
-            function mousemoveHandler(e) {
-                const newWidth = startWidth + (e.pageX - startX);
-                column_account_name.forEach(el => {
-                    el.style.width = newWidth + "px"; // or any desired value
-                });
-                headerComponent.style.width = newWidth + "px";
+        const onMouseMove = (e) => {
+            const newWidth = Math.max(startWidth + (e.pageX - startX), 40); // minimum width safety
+            for (const el of columnTargets) {
+                el.style.width = `${newWidth}px`;
             }
+            headerComponent.style.width = `${newWidth}px`;
+        };
 
-            function mouseupHandler() {
-                document.removeEventListener("mousemove", mousemoveHandler);
-                document.removeEventListener("mouseup", mouseupHandler);
-            }
+        const onMouseUp = () => {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
+        };
 
-            document.addEventListener("mousemove", mousemoveHandler);
-            document.addEventListener("mouseup", mouseupHandler);
-        }
-    })
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    }
 }
+
 
 function handleCheckboxClick(event) {
     const isChecked = event.target.checked;
