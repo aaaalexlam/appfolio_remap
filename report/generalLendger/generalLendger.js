@@ -57,8 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTable(dateRange) {
     const table = document.getElementById(`${tablePrefix}table_content`);
     const fragment = document.createDocumentFragment(); // improves batch DOM insert
+    const keyList = Object.keys(billList);
 
-    for (const glAccount of glAccounts) {
+    const filteredGlAccounts = glAccounts.filter(item => keyList.includes(item.id));
+
+    for (const glAccount of filteredGlAccounts) {
         if (glAccount.order.length !== 0) continue;
 
         const glAccountBills = billList[glAccount.id];
