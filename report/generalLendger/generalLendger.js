@@ -3,8 +3,8 @@
 const tablePrefix = 'general_lendger_';
 const generalLedgerObject = window.reportComponent.data.find(item => item.hasOwnProperty('generalLedger'));
 const columns = generalLedgerObject.generalLedger.columns;
-const billList = groupByGlAccount(window.billComponent.data);
-const recepitsList = groupByGlAccount2(window.receiptsComponent.data);
+const billList = groupByGlAccountForBill(window.billComponent.data);
+const recepitsList = groupByGlAccountForReceipt(window.receiptsComponent.data);
 const mergedList = { ...billList, ...recepitsList };
 
 const displayedColumns = columns.filter(item => item.display === true);
@@ -87,7 +87,7 @@ function initTable(dateRange) {
     table.appendChild(fragment);
 }
 
-function groupByGlAccount(billList) {
+function groupByGlAccountForBill(billList) {
     // Grouping logic
     const grouped = {};
     billList.forEach(entry => {
@@ -115,7 +115,7 @@ function groupByGlAccount(billList) {
     return grouped;
 }
 
-function groupByGlAccount2(recepitsList) {
+function groupByGlAccountForReceipt(recepitsList) {
     const grouped = {};
     recepitsList.forEach(entry => {
         const glId = entry.glAccountId;
@@ -123,6 +123,7 @@ function groupByGlAccount2(recepitsList) {
             grouped[glId] = [];
         }
 
+        console.log(entry.totalAmt)
         // map with columns key
         grouped[glId].push({
             "property": entry.propertyName,
@@ -130,9 +131,9 @@ function groupByGlAccount2(recepitsList) {
             "payeeOrPayer": entry.tenantName,
             "type": "check",
             "reference": entry.referenceNotes,
-            "credit": 0,
-            "debit": 0,
-            "balance": 0,
+            "credit": entry.totalAmt > 0 ? entry.totalAmt :  0,
+            "debit": entry.totalAmt < 0 ? entry.totalAmt: 0,
+            "balance": entry.totalAmt,
             "description": "",
         });
 
