@@ -4,6 +4,8 @@ const tablePrefix = 'general_lendger_';
 const generalLedgerObject = window.reportComponent.data.find(item => item.hasOwnProperty('generalLedger'));
 const columns = generalLedgerObject.generalLedger.columns;
 const billList = groupByGlAccount(window.billComponent.data);
+const recepitsList = groupByGlAccount2(window.receiptsComponent.data);
+const mergedList = { ...billList, ...recepitsList };
 
 const displayedColumns = columns.filter(item => item.display === true);
 const customization = generalLedgerObject.generalLedger.customization;
@@ -57,14 +59,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTable(dateRange) {
     const table = document.getElementById(`${tablePrefix}table_content`);
     const fragment = document.createDocumentFragment(); // improves batch DOM insert
-    const keyList = Object.keys(billList);
+    const keyList = Object.keys(mergedList);
 
     const filteredGlAccounts = glAccounts.filter(item => keyList.includes(item.id));
 
     for (const glAccount of filteredGlAccounts) {
         if (glAccount.order.length !== 0) continue;
 
-        const glAccountBills = billList[glAccount.id];
+        const glAccountBills = mergedList[glAccount.id];
 
         // Create wrapper
         const wrapper = document.createElement('div');
@@ -109,6 +111,31 @@ function groupByGlAccount(billList) {
                 "description": detail.description,
             });
         });
+    });
+    return grouped;
+}
+
+function groupByGlAccount2(recepitsList) {
+    const grouped = {};
+    recepitsList.forEach(entry => {
+        const glId = entry.glAccountId;
+        if (!grouped[glId]) {
+            grouped[glId] = [];
+        }
+
+        // map with columns key
+        grouped[glId].push({
+            "property": entry.propertyName,
+            "date": entry.receiptDate,
+            "payeeOrPayer": entry.tenantName,
+            "type": "check",
+            "reference": entry.referenceNotes,
+            "credit": 0,
+            "debit": 0,
+            "balance": 0,
+            "description": "",
+        });
+
     });
     return grouped;
 }
