@@ -1,0 +1,117 @@
+.custom-select-wrapper {
+    position: relative;
+    width: 200px;
+}
+
+.custom-select {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-select-trigger {
+    padding: 6px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: scroll;
+    max-height: 220px;
+}
+
+.custom-options input {
+    width: calc(100% - 20px);
+    padding: 10px 5px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.custom-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-option:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-option.hidden {
+    display: none;
+}
+
+/* Vendor */
+.custom-vendor-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-vendor-option:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-vendor-option.hidden {
+    display: none;
+}
+
+/* Resident */
+.custom-resident-select {
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-resident-select-trigger {
+    padding: 6px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-resident-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: scroll;
+    max-height: 220px;
+}
+
+.custom-resident-options input {
+    width: calc(100% - 20px);
+    padding: 10px 5px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.custom-resident-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-resident-option:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-resident-option.hidden {
+    display: none;
+}
