@@ -1,155 +1,121 @@
 const pagePrefix = 'accountung_setting';
+const glAccount = window.glAccountComponent.glCodeData;
 
 const componentList = [
     {
-        "id": "rentIncomeAccountSelector",
-        "displayName": "Rent Income Account",
-        "canAddAnotherAccount": false,
-        "glAccounts": ["cash"],
-        "selectedGLaccounts": ["4010"]
+        "header": "Rent Key Accounts",
+        "components": [
+            {
+                "id": "rentIncomeAccountSelector",
+                "displayName": "Rent Income Account",
+                "canAddAnotherAccount": false,
+                "glAccounts": ["cash"],
+                "selectedGLaccountIds": ["27"]
+            },
+            {
+                "id": "additionalRentIncomeAccountsSelector",
+                "displayName": "Additional Rent Income Accounts",
+                "canAddAnotherAccount": true,
+                "glAccounts": ["cash"],
+                "selectedGLaccountIds": ["208", "1098"]
+            },
+            {
+                "id": "subsidizedRentIncomeAccounts",
+                "displayName": "Subsidized Rent Income Accounts",
+                "canAddAnotherAccount": true,
+                "glAccounts": ["cash", "liability"],
+                "selectedGLaccountIds": []
+            },
+            {
+                "id": "hudRentIncomeAccount",
+                "displayName": "HUD Rent Income Account",
+                "canAddAnotherAccount": true,
+                "glAccounts": ["cash", "liability"],
+                "selectedGLaccountIds": []
+            },
+            {
+                "id": "hudUtilityReimbursementAccount",
+                "displayName": "HUD Utility Reimbursement Account",
+                "canAddAnotherAccount": true,
+                "glAccounts": ["cash", "liability"],
+                "selectedGLaccountIds": []
+            },
+            {
+                "id": "hudRepaymentAgreementAccount",
+                "displayName": "HUD Repayment Agreement Account",
+                "canAddAnotherAccount": true,
+                "glAccounts": ["cash", "liability"],
+                "selectedGLaccountIds": []
+            },
+        ]
     },
+
     {
-        "id": "additionalRentIncomeAccountsSelector",
-        "displayName": "Additional Rent Income Accounts",
-        "canAddAnotherAccount": true,
-        "glAccounts": ["cash"],
-        "selectedGLaccounts": ["4011", "4012"]
-    },
-    {
-        "id": "subsidizedRentIncomeAccounts",
-        "displayName": "Subsidized Rent Income Accounts",
-        "canAddAnotherAccount": true,
-        "glAccounts": ["cash", "liability"],
-        "selectedGLaccounts": []
-    },
-    {
-        "id": "hudRentIncomeAccount",
-        "displayName": "HUD Rent Income Account",
-        "canAddAnotherAccount": true,
-        "glAccounts": ["cash", "liability"],
-        "selectedGLaccounts": []
-    },
-    {
-        "id": "hudUtilityReimbursementAccount",
-        "displayName": "HUD Utility Reimbursement Account",
-        "canAddAnotherAccount": true,
-        "glAccounts": ["cash", "liability"],
-        "selectedGLaccounts": []
-    },
-    {
-        "id": "hudRepaymentAgreementAccount",
-        "displayName": "HUD Repayment Agreement Account",
-        "canAddAnotherAccount": true,
-        "glAccounts": ["cash", "liability"],
-        "selectedGLaccounts": []
-    },
-    
+        "header": "Other Key Accounts",
+        "components": [
+            {
+                "id": "accountsReceivableAccount",
+                "displayName": "Accounts Receivable Account",
+                "canAddAnotherAccount": false,
+                "glAccounts": ["asset"],
+                "selectedGLaccountIds": ['4']
+            },
+            {
+                "id": "Accounts Payable Account",
+                "displayName": "accountsPayableAccount",
+                "canAddAnotherAccount": false,
+                "glAccounts": ["liability"],
+                "selectedGLaccountIds": ['19']
+            },
+        ]
+    }
+
+
 ]
 
 document.addEventListener("DOMContentLoaded", function () {
     let accountingSettingForm = document.getElementById('rentKeyAccounts');
-
+    
     componentList.forEach((component) => {
-        accountingSettingForm.innerHTML += glAccountDropDownComponent(component.displayName, component.id, component.glAccounts)
+
+        accountingSettingForm.insertAdjacentHTML('beforeend', `<h1>${component.header}</h1>`);
+
+        accountingSettingForm
+        component.components.forEach((component) => {
+            const selectedGLaccountIds = glAccount
+                .filter(item => component.selectedGLaccountIds.includes(item.id));
+
+            const filterAndGroupByAccountType = glAccount
+                .filter(item => component.glAccounts.includes(item.accountType))
+                .reduce((acc, item) => {
+                    const key = item.accountTypeName;
+                    if (!acc[key]) {
+                        acc[key] = [];
+                    }
+                    acc[key].push(item);
+                    return acc;
+                }, {});
+
+            accountingSettingForm.insertAdjacentHTML('beforeend', glAccountDropDownComponent(component.canAddAnotherAccount, component.displayName, component.id, filterAndGroupByAccountType, selectedGLaccountIds));
+
+            const addAnotherAccountBtn = document.getElementById(`${component.id}_addBtn`);
+            if (addAnotherAccountBtn) {
+                addAnotherAccountBtn.addEventListener('click', (e) => {
+                    const groupContainer = document.getElementById(`${component.id}_group`);
+                    const childCount = groupContainer.childElementCount;
+                    let id = `${component.id}_${childCount + 1}`
+                    groupContainer.insertAdjacentHTML('beforeend', addDropDownboxComponent(id, filterAndGroupByAccountType));
+                    addCustomSelect(id);
+                })
+            }
+
+            // load the dropdown listerner
+            const groupContainer = document.getElementById(`${component.id}_group`);
+            const childrens = groupContainer.children;
+            for (const child of childrens) {
+                addCustomSelect(child.id);
+            }
+        })
+
     })
-    // addCustomSelect('paymentSelect');
-    // function addCustomSelect(containerId, onSelectCallback = () => { }) {
-    //     console.log('addCustomSelect')
-    //     const container = document.getElementById(containerId);
-    //     if (!container) return;
-
-    //     const selectTrigger = container.querySelector('.custom-select-trigger');
-    //     const optionsWrapper = container.querySelector('.custom-options');
-    //     const filterInput = container.querySelector('input[type="text"]');
-    //     const options = container.querySelectorAll('.custom-option');
-
-    //     selectTrigger.addEventListener('click', function () {
-    //         const isVisible = optionsWrapper.style.display === 'block';
-    //         optionsWrapper.style.display = isVisible ? 'none' : 'block';
-    //         filterInput.value = '';
-    //         filterInput.focus();
-    //         filterOptions(options, '');
-    //     });
-
-    //     options.forEach(option => {
-    //         option.addEventListener('click', function () {
-    //             selectTrigger.textContent = this.textContent;
-    //             selectTrigger.dataset.value = this.dataset.value;
-    //             optionsWrapper.style.display = 'none';
-
-    //             // Custom callback when an option is selected
-    //             onSelectCallback(this.dataset.value, this.textContent);
-    //         });
-    //     });
-
-    //     filterInput.addEventListener('input', function () {
-    //         filterOptions(options, this.value);
-    //     });
-
-    //     // Close dropdown if click is outside
-    //     document.addEventListener('click', function (event) {
-    //         if (!container.contains(event.target)) {
-    //             optionsWrapper.style.display = 'none';
-    //         }
-    //     });
-    // }
-
-    // function filterOptions(options, query) {
-    //     options.forEach(option => {
-    //         if (option.textContent.toLowerCase().includes(query.toLowerCase())) {
-    //             option.classList.remove('hidden');
-    //         } else {
-    //             option.classList.add('hidden');
-    //         }
-    //     });
-    // }
 });
-function addCustomSelect(containerId, onSelectCallback = () => { }) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    const selectTrigger = container.querySelector('.custom-select-trigger');
-    const optionsWrapper = container.querySelector('.custom-options');
-    const filterInput = container.querySelector('input[type="text"]');
-    const options = container.querySelectorAll('.custom-option');
-
-    selectTrigger.addEventListener('click', function () {
-        const isVisible = optionsWrapper.style.display === 'block';
-        optionsWrapper.style.display = isVisible ? 'none' : 'block';
-        filterInput.value = '';
-        filterInput.focus();
-        filterOptions(options, '');
-    });
-
-    options.forEach(option => {
-        option.addEventListener('click', function () {
-            selectTrigger.textContent = this.textContent;
-            selectTrigger.dataset.value = this.dataset.value;
-            optionsWrapper.style.display = 'none';
-
-            // Custom callback when an option is selected
-            onSelectCallback(this.dataset.value, this.textContent);
-        });
-    });
-
-    filterInput.addEventListener('input', function () {
-        filterOptions(options, this.value);
-    });
-
-    // Close dropdown if click is outside
-    document.addEventListener('click', function (event) {
-        if (!container.contains(event.target)) {
-            optionsWrapper.style.display = 'none';
-        }
-    });
-}
-
-function filterOptions(options, query) {
-    options.forEach(option => {
-        if (option.textContent.toLowerCase().includes(query.toLowerCase())) {
-            option.classList.remove('hidden');
-        } else {
-            option.classList.add('hidden');
-        }
-    });
-}
