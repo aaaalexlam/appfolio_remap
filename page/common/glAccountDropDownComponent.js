@@ -3,8 +3,10 @@ const glAccountDropDownComponent = (
   displayLabel,
   id,
   glaccounts,
-  selectedGLaccountIds = []
+  selectedGLaccountIds = [],
+  requireDefaultAccount
 ) => {
+
   const addButtonHtml = canAddAnotherAccount
     ? `
       <button 
@@ -21,10 +23,14 @@ const glAccountDropDownComponent = (
     for (const glAcc of selectedGLaccountIds) {
       const tempId = `${id}_${glAcc.id}`;
       const label = `${glAcc.number} - ${glAcc.accountName}`;
-      dropDownHtml += addDropDownboxComponent(tempId, glaccounts, label);
+      const value = {
+        key: id,
+        value: glAcc.id
+      };
+      dropDownHtml += addDropDownboxComponent(id, tempId, glaccounts, label, value, requireDefaultAccount);
     }
   } else {
-    dropDownHtml = addDropDownboxComponent(id, glaccounts);
+    dropDownHtml = addDropDownboxComponent(id, id, glaccounts, 'Select a GL Account', '', requireDefaultAccount);
   }
 
   return `
@@ -42,8 +48,6 @@ const glAccountDropDownComponent = (
   `;
 };
 
-
-
 function addCustomSelect(containerId, onSelectCallback = () => { }) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -54,7 +58,6 @@ function addCustomSelect(containerId, onSelectCallback = () => { }) {
   const options = container.querySelectorAll('.custom-option');
 
   selectTrigger.addEventListener('click', function () {
-    
     const isVisible = optionsWrapper.style.display === 'block';
     optionsWrapper.style.display = isVisible ? 'none' : 'block';
     filterInput.value = '';
@@ -95,36 +98,47 @@ function filterOptions(options, query) {
   });
 }
 
-function addDropDownboxComponent(id, glaccounts, displayName = 'Select a GL Account') {
-  return `
-      <div class="mb-1 w-80 h-10 custom-select-container custom-select" id="${id}">
-        <div class="custom-select-trigger">${displayName}</div>
-        <div class="custom-options" id="${id}_list">
-          <input type="text" placeholder="Type to filter...">
-          ${Object.keys(glaccounts)
-      .map(key => {
-        return `
-                  <div class="font-bold px-2 py-1 text-gray-700">${key}</div>
-                  ${glaccounts[key]
-            .map(glaccount => `
-                        <div class="custom-option indent-2" data-value="${glaccount.id}">
-                          ${glaccount.number} - ${glaccount.accountName}
-                        </div>
-                      `)
-            .join('')
-          }
-                `;
-      })
-      .join('')
-    }
+function addDropDownboxComponent(componentKey, id, glaccounts, displayName, value, requireDefaultAccount) {
+  const optionsHtml = Object.entries(glaccounts).map(([groupName, accounts]) => {
+    const accountOptions = accounts.map(glaccount => {
+      const optionValue = JSON.stringify({
+        key: componentKey,
+        value: glaccount.id
+      });
+
+      return `
+        <div class="custom-option indent-2" data-value='${optionValue}'>
+          ${glaccount.number} - ${glaccount.accountName}
         </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="font-bold px-2 py-1 text-gray-700">${groupName}</div>
+      ${accountOptions}
+    `;
+  }).join('');
+
+  const removeBtnHtml = requireDefaultAccount ? ``
+    :
+    `<div class="ml-2 flex items-center justify-center border-2 border-red-400 w-5 h-5 rounded-full hover:border-red-300">
+    <div class="mb-1 text-red-400 font-bold" id="${id}_remove_btn">x</div>
+  </div>`;
+  return `
+    <div class="flex items-center mb-1 h-10 custom-select-container custom-select" id="${id}">
+      <div data-value='${JSON.stringify(value)}' class="custom-select-trigger w-80">${displayName}</div>
+      <div class="custom-options flex" id="${id}_list">
+        <input type="text" placeholder="Type to filter...">
+        ${optionsHtml}
       </div>
-    `
+      ${removeBtnHtml}
+    </div>
+  `;
 }
 
 function addAnotherAccount(id, glaccounts) {
   const groupContainer = document.getElementById(`${id}_group`);
   if (groupContainer) {
-    groupContainer.insertAdjacentHTML('beforeend', addDropDownboxComponent(id, glaccounts));
+    groupContainer.insertAdjacentHTML('beforeend', addDropDownboxComponent(id, glaccounts, 'Select a GL Account', ''));
   }
 }

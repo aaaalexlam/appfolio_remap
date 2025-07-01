@@ -263,7 +263,7 @@ const glCodeList = {
             "relationships": {}
         },
         {
-            "id": "22",
+            "id": " ",
             "type": "gl_accounts",
             "attributes": {
                 "display_name": "1220: Owner / Investor Distribution",

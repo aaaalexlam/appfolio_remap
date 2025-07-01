@@ -1,86 +1,14 @@
 const pagePrefix = 'accountung_setting';
 const glAccount = window.glAccountComponent.glCodeData;
-
-const componentList = [
-    {
-        "header": "Rent Key Accounts",
-        "components": [
-            {
-                "id": "rentIncomeAccountSelector",
-                "displayName": "Rent Income Account",
-                "canAddAnotherAccount": false,
-                "glAccounts": ["cash"],
-                "selectedGLaccountIds": ["27"]
-            },
-            {
-                "id": "additionalRentIncomeAccountsSelector",
-                "displayName": "Additional Rent Income Accounts",
-                "canAddAnotherAccount": true,
-                "glAccounts": ["cash"],
-                "selectedGLaccountIds": ["208", "1098"]
-            },
-            {
-                "id": "subsidizedRentIncomeAccounts",
-                "displayName": "Subsidized Rent Income Accounts",
-                "canAddAnotherAccount": true,
-                "glAccounts": ["cash", "liability"],
-                "selectedGLaccountIds": []
-            },
-            {
-                "id": "hudRentIncomeAccount",
-                "displayName": "HUD Rent Income Account",
-                "canAddAnotherAccount": true,
-                "glAccounts": ["cash", "liability"],
-                "selectedGLaccountIds": []
-            },
-            {
-                "id": "hudUtilityReimbursementAccount",
-                "displayName": "HUD Utility Reimbursement Account",
-                "canAddAnotherAccount": true,
-                "glAccounts": ["cash", "liability"],
-                "selectedGLaccountIds": []
-            },
-            {
-                "id": "hudRepaymentAgreementAccount",
-                "displayName": "HUD Repayment Agreement Account",
-                "canAddAnotherAccount": true,
-                "glAccounts": ["cash", "liability"],
-                "selectedGLaccountIds": []
-            },
-        ]
-    },
-
-    {
-        "header": "Other Key Accounts",
-        "components": [
-            {
-                "id": "accountsReceivableAccount",
-                "displayName": "Accounts Receivable Account",
-                "canAddAnotherAccount": false,
-                "glAccounts": ["asset"],
-                "selectedGLaccountIds": ['4']
-            },
-            {
-                "id": "Accounts Payable Account",
-                "displayName": "accountsPayableAccount",
-                "canAddAnotherAccount": false,
-                "glAccounts": ["liability"],
-                "selectedGLaccountIds": ['19']
-            },
-        ]
-    }
-
-
-]
+const accountingSettingComponent = window.accountingSetting;
 
 document.addEventListener("DOMContentLoaded", function () {
+
     let accountingSettingForm = document.getElementById('rentKeyAccounts');
-    
-    componentList.forEach((component) => {
+    accountingSettingComponent.forEach((component) => {
 
-        accountingSettingForm.insertAdjacentHTML('beforeend', `<h1>${component.header}</h1>`);
+        accountingSettingForm.insertAdjacentHTML('beforeend', `<div class="text-xl">${component.header}</div>`);
 
-        accountingSettingForm
         component.components.forEach((component) => {
             const selectedGLaccountIds = glAccount
                 .filter(item => component.selectedGLaccountIds.includes(item.id));
@@ -96,16 +24,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     return acc;
                 }, {});
 
-            accountingSettingForm.insertAdjacentHTML('beforeend', glAccountDropDownComponent(component.canAddAnotherAccount, component.displayName, component.id, filterAndGroupByAccountType, selectedGLaccountIds));
+            accountingSettingForm.insertAdjacentHTML('beforeend', glAccountDropDownComponent(component.canAddAnotherAccount, component.displayName, component.id, filterAndGroupByAccountType, selectedGLaccountIds, component.requireDefaultAccount));
 
             const addAnotherAccountBtn = document.getElementById(`${component.id}_addBtn`);
             if (addAnotherAccountBtn) {
                 addAnotherAccountBtn.addEventListener('click', (e) => {
                     const groupContainer = document.getElementById(`${component.id}_group`);
                     const childCount = groupContainer.childElementCount;
-                    let id = `${component.id}_${childCount + 1}`
-                    groupContainer.insertAdjacentHTML('beforeend', addDropDownboxComponent(id, filterAndGroupByAccountType));
+                    let id = `${component.id}_${childCount + 1}`;
+
+                    groupContainer.insertAdjacentHTML('beforeend', addDropDownboxComponent(component.id, id, filterAndGroupByAccountType, 'Select a GL Account', ''));
                     addCustomSelect(id);
+
+                    // init remove btn listerner
+                    const dropDownRemoveBtn = document.getElementById(`${id}_remove_btn`);
+                    dropDownRemoveBtn.addEventListener('click', (e)=>{
+                        const dropdownBtnId = e.target.id.replace('_remove_btn', '');
+                        const targetDropdownBtnId = document.getElementById(dropdownBtnId);
+                        targetDropdownBtnId.remove();
+                    })
                 })
             }
 
@@ -115,7 +52,39 @@ document.addEventListener("DOMContentLoaded", function () {
             for (const child of childrens) {
                 addCustomSelect(child.id);
             }
-        })
 
+        })
+    });
+
+    // load the remove btn
+    const dropDownRemoveBtn = document.querySelectorAll('[id$="_remove_btn"]');
+    dropDownRemoveBtn.forEach((button) => {
+        button.addEventListener('click', (e)=>{
+            const dropdownBtnId = e.target.id.replace('_remove_btn', '');
+            const targetDropdownBtnId = document.getElementById(dropdownBtnId);
+            targetDropdownBtnId.remove();
+        })
+    })
+
+    document.getElementById("accounting_setting_save_btn").addEventListener('click', () => {
+
+        const triggers = document.querySelectorAll('.custom-select-trigger');
+
+        const parsedValues = Array.from(triggers).map(trigger => {
+            const rawValue = trigger.getAttribute('data-value');
+            return JSON.parse(rawValue)
+        });
+
+        const grouped = parsedValues.reduce((acc, item) => {
+            if (typeof item === 'object' && item !== null && item.key) {
+                if (!acc[item.key]) {
+                    acc[item.key] = [];
+                }
+                acc[item.key].push(item.value);
+            }
+            return acc;
+        }, {});
+
+        console.log(grouped)
     })
 });
