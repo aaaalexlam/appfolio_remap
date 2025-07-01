@@ -5,7 +5,7 @@ window.accountingSetting = [
                 {
                     "id": "rentIncomeAccount",
                     "displayName": "Rent Income Account",
-                    "canAddAnotherAccount": true,
+                    "canAddAnotherAccount": false,
                     "requireDefaultAccount": true,
                     "glAccounts": ["cash"],
                     "selectedGLaccountIds": ["27"]
@@ -16,38 +16,38 @@ window.accountingSetting = [
                     "canAddAnotherAccount": true,
                     "requireDefaultAccount": false,
                     "glAccounts": ["cash"],
-                    "selectedGLaccountIds": ["208", "1098"]
+                    "selectedGLaccountIds": ["208", "1140"]
                 },
                 {
                     "id": "subsidizedRentIncomeAccounts",
                     "displayName": "Subsidized Rent Income Accounts",
                     "canAddAnotherAccount": true,
                     "requireDefaultAccount": false,
-                    "glAccounts": ["cash", "liability"],
+                    "glAccounts": ["income", "liability"],
                     "selectedGLaccountIds": []
                 },
                 {
                     "id": "hudRentIncomeAccount",
                     "displayName": "HUD Rent Income Account",
-                    "canAddAnotherAccount": true,
+                    "canAddAnotherAccount": false,
                     "requireDefaultAccount": false,
-                    "glAccounts": ["cash", "liability"],
+                    "glAccounts": ["income"],
                     "selectedGLaccountIds": []
                 },
                 {
                     "id": "hudUtilityReimbursementAccount",
                     "displayName": "HUD Utility Reimbursement Account",
-                    "canAddAnotherAccount": true,
+                    "canAddAnotherAccount": false,
                     "requireDefaultAccount": false,
-                    "glAccounts": ["cash", "liability"],
+                    "glAccounts": ["income", "liability"],
                     "selectedGLaccountIds": []
                 },
                 {
                     "id": "hudRepaymentAgreementAccount",
                     "displayName": "HUD Repayment Agreement Account",
-                    "canAddAnotherAccount": true,
+                    "canAddAnotherAccount": false,
                     "requireDefaultAccount": false,
-                    "glAccounts": ["cash", "liability"],
+                    "glAccounts": ["income", "liability"],
                     "selectedGLaccountIds": []
                 },
             ]
@@ -113,7 +113,7 @@ window.accountingSetting = [
                 },
                 {
                     "id": "leaseFeeAccount",
-                    "displayName": "leaseFeeAccount",
+                    "displayName": "Lease Fee Account",
                     "canAddAnotherAccount": false,
                     "requireDefaultAccount": true,
                     "glAccounts": ["expense", "other_expense"],
@@ -140,7 +140,7 @@ window.accountingSetting = [
                     "displayName": "Tax Authority Account",
                     "canAddAnotherAccount": false,
                     "requireDefaultAccount": true,
-                    "glAccounts": ["income", "liability"],
+                    "glAccounts": ["income", "expense","liability"],
                     "selectedGLaccountIds": ["88"]
                 },
                 {
@@ -148,7 +148,7 @@ window.accountingSetting = [
                     "displayName": "Tax Passthru Account",
                     "canAddAnotherAccount": false,
                     "requireDefaultAccount": true,
-                    "glAccounts": ["income", "liability"],
+                    "glAccounts": ["income"],
                     "selectedGLaccountIds": ["37"]
                 },
                 {

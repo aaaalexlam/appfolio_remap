@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let accountingSettingForm = document.getElementById('rentKeyAccounts');
     accountingSettingComponent.forEach((component) => {
 
-        accountingSettingForm.insertAdjacentHTML('beforeend', `<div class="text-xl">${component.header}</div>`);
+        accountingSettingForm.insertAdjacentHTML('beforeend', `<div class="text-xl border-b-1 border-gray-300 pb-2 mt-3">${component.header}</div>`);
 
         component.components.forEach((component) => {
             const selectedGLaccountIds = glAccount
@@ -64,8 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetDropdownBtnId = document.getElementById(dropdownBtnId);
             targetDropdownBtnId.remove();
         })
-    })
+    });
 
+    // on Save btn click
     document.getElementById("accounting_setting_save_btn").addEventListener('click', () => {
 
         const triggers = document.querySelectorAll('.custom-select-trigger');

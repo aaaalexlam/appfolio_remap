@@ -4,18 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accounting Setting</title>
     <link rel="stylesheet" href="../common/customselect.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
 
 <body>
-    <div>
-        <button class="border-1 rounded-sm bg-blue-500 p-1 w-24 text-white cursor-pointer hover:bg-blue-400" id="accounting_setting_save_btn">Save</button>
-        <button class="border-1 rounded-sm bg-gray-100 p-1 w-24 cursor-pointer hover:bg-gray-200" id="accounting_setting_cancel_btn">Cancel</button>
-    </div>
-    <div id="rentKeyAccounts">
+    <div class="p-2 ">
+        <div class="sticky top-0 bg-white w-full z-1">
+            <div class="text-3xl">Accounting Settings</div>
+            <div class="mt-1 mb-1 w-full flex justify-end">
+                <button class="border-1 rounded-sm bg-blue-500 p-1 w-24 text-white cursor-pointer hover:bg-blue-400"
+                    id="accounting_setting_save_btn">Save</button>
+                <button class="rounded-sm bg-gray-100 p-1 w-24 cursor-pointer hover:bg-gray-200"
+                    id="accounting_setting_cancel_btn">Cancel</button>
+            </div>
+        </div>
+
+
+        <div id="rentKeyAccounts">
+
+        </div>
 
     </div>
 
@@ -26,4 +36,5 @@
 <script src="../accounting_setting/accounting_setting.js"></script>
 <script src="../common/glAccountDropDownComponent.js"></script>
 <script src="../../report/components/comon/glAccountComponent.js"></script>
+
 </html>
