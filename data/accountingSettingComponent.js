@@ -7,7 +7,7 @@ window.accountingSetting = [
                     "displayName": "Rent Income Account",
                     "canAddAnotherAccount": false,
                     "requireDefaultAccount": true,
-                    "glAccounts": ["cash"],
+                    "glAccounts": ["income"],
                     "selectedGLaccountIds": ["27"]
                 },
                 {
