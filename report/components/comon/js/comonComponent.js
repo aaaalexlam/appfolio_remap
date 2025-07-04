@@ -221,13 +221,13 @@ function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
     rows.push(
         `<div class='table_row'>${columns.map(column =>
             column.key === 'balance'
-                ? getRowBlockNetChangeHTML(column, totalNetChange)
+                ? getRowBlockNetChangeHTML(column, contentData[contentData.length-1].balance)
                 : getRowBlockHTML(column, '')
         ).join('')}</div>`
     );
 
     // End balance row
-    const endBalance = startingBalance + totalNetChange;
+    const endBalance = startingBalance +  contentData[contentData.length-1].balance;
     rows.push(
         `<div class='table_row'>${columns.map(column =>
             column.key === 'balance'

@@ -118,24 +118,25 @@ function groupByGlAccountForBill(billList) {
 function groupByGlAccountForReceipt(recepitsList) {
     const grouped = {};
     recepitsList.forEach(entry => {
-        const glId = entry.glAccountId;
-        if (!grouped[glId]) {
-            grouped[glId] = [];
-        }
+        entry.charges.forEach(charge => {
+            const glId = entry.glAccountId;
+            if (!grouped[glId]) {
+                grouped[glId] = [];
+            }
 
-        console.log(entry.totalAmt)
-        // map with columns key
-        grouped[glId].push({
-            "property": entry.propertyName,
-            "date": entry.receiptDate,
-            "payeeOrPayer": entry.tenantName,
-            "type": "check",
-            "reference": entry.referenceNotes,
-            "credit": entry.totalAmt > 0 ? entry.totalAmt :  0,
-            "debit": entry.totalAmt < 0 ? entry.totalAmt: 0,
-            "balance": entry.totalAmt,
-            "description": "",
-        });
+            // map with columns key
+            grouped[glId].push({
+                "property": entry.propertyName,
+                "date": entry.receiptDate,
+                "payeeOrPayer": entry.tenantName,
+                "type": "check",
+                "reference": entry.referenceNotes, 
+                "credit": charge.appliedAmount < 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
+                "debit": charge.appliedAmount > 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
+                "balance": charge.originalBalance,
+                "description": "",
+            });
+        })
 
     });
     return grouped;
