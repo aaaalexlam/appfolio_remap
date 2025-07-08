@@ -262,7 +262,7 @@ const getRowBlockHTML = (column, data, options = {}) => {
 
 
 const getSummaryRow = (columns, totalResult, totalDebit, totalCredit, totalBalance) => {
-    return `<div class='table_row font-bold fixed bottom-0 w-full bg-white border-t-1 border-gray-100'>${columns
+    return `<div class='table_row font-bold fixed bottom-0 left-0 w-full bg-white border-t-1 border-gray-100 '>${columns
         .map(column => {
             if (column.key === 'balance') {
                 return getRowBlockHTML(column, totalBalance);
