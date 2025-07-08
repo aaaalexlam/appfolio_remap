@@ -7,7 +7,7 @@ const createdByComponentHTML = (displayName, tablePrefix) => {
     return `
                 <tr class="tr-default">
                     <td class="input_field">${displayName}</td>
-                    <td class="input_column">
+                    <td class="input_column border-1">
                         <select id="${tablePrefix}created_by" class="drop_down">
                             ${optionHtml}
                         </select>

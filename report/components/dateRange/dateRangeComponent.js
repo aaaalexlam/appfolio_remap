@@ -190,12 +190,10 @@ function addDateRangeEventListener(tablePrefix) {
 
 
 function getSelectedDateRange(tablePrefix) {
-
+    console.log(document.getElementById(`${tablePrefix}date_range_radio`).checked)
     if (document.getElementById(`${tablePrefix}date_range_radio`).checked) {
-        return {
-            "startDate": document.getElementById(`${tablePrefix}date_range_input_from`).value,
-            "endDate": document.getElementById(`${tablePrefix}date_range_input_to`).value
-        }
+        return `${document.getElementById(`${tablePrefix}date_range_input_from`).value} To ${document.getElementById(`${tablePrefix}date_range_input_to`).value}`
+        
     }
     return document.getElementById(`${tablePrefix}date_range_selector`).value;
 }

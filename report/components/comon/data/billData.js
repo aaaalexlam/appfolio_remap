@@ -123,12 +123,12 @@ window.billComponent = {
             "createdByName": "Alex Lam",
             "billDetails": [
                 {
-                    "amount": 414.23,
+                    "amount": 365.68,
                     "status": "Paid",
                     "glName": "General Maintenance Supplies",
                     "glAccountId": "173",
                     "glNumber": "6450",
-                    "description": "Micowave",
+                    "description": "Wall Plates",
                     "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
                     "statusIndex": 0
@@ -144,7 +144,7 @@ window.billComponent = {
             "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
             "remarks": "",
             "workOrder": null,
-            "totalAmt": 413.23,
+            "totalAmt": 365.68,
             "cashAccountData": null,
             "lastUpdatedBy": "Andrew Yeh"
         },

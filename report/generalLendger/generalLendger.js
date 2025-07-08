@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr(`custom_search_summary_properties`, selectedProperties);
         document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
-        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = selectedGlAccounts;
+        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(selectedGlAccounts);
         document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = dateRange;
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
         document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = lastEditDateRange;
@@ -129,7 +129,10 @@ function initTable() {
 
         // Get total length for each key
     const totalResult = Object.values(merged).reduce((sum, arr) => sum + arr.length, 0);
-    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, total.toFixed(2));
+
+    // remove minus sing when total = 0
+    total = Number(total.toFixed(2)) === 0 ? 0 : 0
+    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, total);
 }
 
 
