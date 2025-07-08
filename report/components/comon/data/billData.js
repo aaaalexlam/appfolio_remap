@@ -5,6 +5,9 @@ window.billComponent = {
                 "seconds": 1746833944,
                 "nanoseconds": 359000000
             },
+            "glNumber": "1150",
+            "glName": "ESL Operating Cash",
+            "glAccountId": "2",
             "billDate": "2025-05-09",
             "payeeName": "1Heart Caregiver Services",
             "reference": "",
@@ -14,13 +17,35 @@ window.billComponent = {
             "createdByName": "Andrew Yeh",
             "billDetails": [
                 {
-                    "amount": 10,
-                    "status": "Unpaid",
-                    "glName": "Program Assistant - Reg Salaries/Wages",
-                    "glAccountId": "231",
-                    "glNumber": "001-1",
-                    "description": "",
-                    "propertyName": "The Groves at Tustin",
+                    "amount": 2183.44,
+                    "status": "Paid",
+                    "glName": "Auto Insurance",
+                    "glAccountId": "357",
+                    "glNumber": "7150",
+                    "description": "April 2025",
+                    "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "statusIndex": 0
+                },
+                {
+                    "amount": -150,
+                    "status": "Used",
+                    "glName": "Auto Insurance",
+                    "glAccountId": "357",
+                    "glNumber": "7150",
+                    "description": "($600) Policy change on 02/07/2025 ",
+                    "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "statusIndex": 0
+                },
+                {
+                    "amount": -424,
+                    "status": "Used",
+                    "glName": "Auto Insurance",
+                    "glAccountId": "357",
+                    "glNumber": "7150",
+                    "description": "($1696) Policy change on 02/13/2025 ",
+                    "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
                     "statusIndex": 0
                 }
@@ -35,192 +60,93 @@ window.billComponent = {
             "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
             "remarks": "",
             "workOrder": null,
-            "totalAmt": 6060,
+            "totalAmt": 1609.44,
             "cashAccountData": null,
             "lastUpdatedBy": "Andrew Yeh"
         },
         {
+            "createdAt": {
+                "seconds": 1746833944,
+                "nanoseconds": 359000000
+            },
+            "glNumber": "1150",
+            "glName": "ESL Operating Cash",
+            "glAccountId": "2",
+            "billDate": "2025-04-11",
             "payeeName": "1Heart Caregiver Services",
-            "reference": "oo99",
-            "postDate": null,
-            "payeeId": "LX18Ibou8iXeVC0EJy1l",
+            "reference": "",
+            "checkMemo": "",
+            "dueDate": "2025-05-11",
             "createdById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
-            "createdAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
+            "createdByName": "Alex Lam",
+            "billDetails": [
+                {
+                    "amount": 414.23,
+                    "status": "Paid",
+                    "glName": "General Maintenance Supplies",
+                    "glAccountId": "173",
+                    "glNumber": "6450",
+                    "description": "Micowave",
+                    "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
+                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
+                    "statusIndex": 0
+                },
+            ],
+            "lastUpdatedAt": {
+                "seconds": 1746833944,
+                "nanoseconds": 359000000
             },
-            "billDate": "2025-05-09",
+            "payeeId": "LX18Ibou8iXeVC0EJy1l",
+            "postDate": null,
+            "billNotes": "",
+            "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
             "remarks": "",
-            "billNotes": "",
-            "checkMemo": "",
-            "lastUpdatedAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
-            },
-            "billDetails": [
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "231",
-                    "status": "Unpaid",
-                    "amount": -20,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "231",
-                    "status": "Unpaid",
-                    "amount": 30,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "231",
-                    "status": "Unpaid",
-                    "amount": 40,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                }
-            ],
-            "dueDate": "2025-05-09",
-            "createdByName": "Andrew Yeh",
-            "lastUpdatedBy": "Andrew Yeh",
-            "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
             "workOrder": null,
-            "totalAmt": 9090,
-            "cashAccountData": null
+            "totalAmt": 413.23,
+            "cashAccountData": null,
+            "lastUpdatedBy": "Andrew Yeh"
         },
         {
-            "payeeName": "Test Service",
-            "reference": "123456",
-            "postDate": null,
-            "payeeId": "LX18Ibou8iXeVC0EJy1l",
-            "createdById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
             "createdAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
+                "seconds": 1746833944,
+                "nanoseconds": 359000000
             },
-            "billDate": "2025-06-08",
-            "remarks": "haha",
-            "billNotes": "",
+            "glNumber": "1150",
+            "glName": "ESL Operating Cash",
+            "glAccountId": "2",
+            "billDate": "2025-04-04",
+            "payeeName": "1Heart Caregiver Services",
+            "reference": "",
             "checkMemo": "",
-            "lastUpdatedAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
-            },
+            "dueDate": "2025-05-04",
+            "createdById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
+            "createdByName": "Alex Lam",
             "billDetails": [
                 {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "800",
-                    "status": "Unpaid",
-                    "amount": 50,
+                    "amount": 414.23,
+                    "status": "Paid",
+                    "glName": "General Maintenance Supplies",
+                    "glAccountId": "173",
+                    "glNumber": "6450",
+                    "description": "Micowave",
+                    "propertyName": "Walnut Valley Senior Living - Payable to: Everest Senior Living Management, Inc.19850 Colima Road Walnut, CA 91789",
                     "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "800",
-                    "status": "Unpaid",
-                    "amount": -60,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "800",
-                    "status": "Unpaid",
-                    "amount": -70,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
+                    "statusIndex": 0
                 },
             ],
-            "dueDate": "2025-05-09",
-            "createdByName": "Andrew Yeh",
-            "lastUpdatedBy": "Andrew Yeh",
+            "lastUpdatedAt": {
+                "seconds": 1746833944,
+                "nanoseconds": 359000000
+            },
+            "payeeId": "LX18Ibou8iXeVC0EJy1l",
+            "postDate": null,
+            "billNotes": "",
             "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
+            "remarks": "",
             "workOrder": null,
-            "totalAmt": 9090,
-            "cashAccountData": null
+            "totalAmt": 413.23,
+            "cashAccountData": null,
+            "lastUpdatedBy": "Andrew Yeh"
         },
-        {
-            "payeeName": "Test Service",
-            "reference": "123456",
-            "postDate": null,
-            "payeeId": "LX18Ibou8iXeVC0EJy1l",
-            "createdById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
-            "createdAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
-            },
-            "billDate": "2025-06-08",
-            "remarks": "haha",
-            "billNotes": "",
-            "checkMemo": "",
-            "lastUpdatedAt": {
-                "seconds": 1746820843,
-                "nanoseconds": 436000000
-            },
-            "billDetails": [
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "176",
-                    "status": "Unpaid",
-                    "amount": 50,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "176",
-                    "status": "Unpaid",
-                    "amount": -60,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-                {
-                    "propertyName": "The Groves at Tustin",
-                    "glName": "PROGRAM ASSISTANT",
-                    "glAccountId": "176",
-                    "status": "Unpaid",
-                    "amount": -70,
-                    "propertyId": "5YRaAVfo8ouGbawc6tq2",
-                    "glNumber": "001",
-                    "statusIndex": 0,
-                    "description": ""
-                },
-            ],
-            "dueDate": "2024-05-09",
-            "createdByName": "Andrew Yeh",
-            "lastUpdatedBy": "Andrew Yeh",
-            "lastUpdatedById": "tzYwNNgZ7UTKk5Kl2pwLhL7WBqU2",
-            "workOrder": null,
-            "totalAmt": 9090,
-            "cashAccountData": null
-        }
     ]
 } 

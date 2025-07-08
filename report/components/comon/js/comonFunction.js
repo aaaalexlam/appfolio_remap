@@ -87,9 +87,8 @@ function formatCurrency(amount = 0) {
     });
 }
 
-function formatCurrencyToPostive(amount) {
+function formatCurrencyToPostive(amount = 0) {
     const positiveAmount = Math.abs(amount); // convert to positive
-  
     return positiveAmount.toLocaleString('en-US', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2

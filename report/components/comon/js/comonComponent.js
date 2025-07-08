@@ -190,10 +190,10 @@ function getHideableRow(glAccount, tablePrefix, contentData, columns) {
     `;
 }
 
-function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
+function getContent(tablePrefix, contentData, columns, startingBalance = 100) {
     let totalNetChange = 0;
+    let balance = startingBalance;
     const rows = [];
-
     // Starting balance row
     rows.push(
         `<div class='table_row'>${columns.map(column =>
@@ -208,31 +208,31 @@ function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
         for (const bill of contentData) {
             rows.push(`<div class='table_row'>`);
             for (const column of columns) {
-                rows.push(getRowBlockHTML(column, bill[column.key]));
                 if (column.key === 'balance') {
-                    totalNetChange += bill[column.key];
+                    totalNetChange += bill['balance']
+                    rows.push(getRowBlockHTML(column, balance += bill['balance']));
+                } else {
+                    rows.push(getRowBlockHTML(column, bill[column.key]));
                 }
             }
             rows.push(`</div>`);
         }
     }
-
     // Net change row
     rows.push(
         `<div class='table_row'>${columns.map(column =>
             column.key === 'balance'
-                ? getRowBlockNetChangeHTML(column, contentData[contentData.length-1].balance)
+                ? getRowBlockNetChangeHTML(column, totalNetChange)
                 : getRowBlockHTML(column, '')
         ).join('')}</div>`
     );
 
     // End balance row
-    const endBalance = startingBalance +  contentData[contentData.length-1].balance;
     rows.push(
         `<div class='table_row'>${columns.map(column =>
             column.key === 'balance'
-                ? `<div class="table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
-                        ${formatCurrency(endBalance)}
+                ? `<div class="end_balance table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
+                        ${formatCurrency(totalNetChange += startingBalance)}
                    </div>`
                 : getRowBlockHTML(column, '')
         ).join('')}</div>`
@@ -280,4 +280,39 @@ const getRowBlockNetChangeHTML = (column, data) => {
         <div style="color: #cacaca">Net Change</div>
     </div>
 `;
+}
+
+const getTotal = (columns, totalDebit, totalCredit, totalBalance) => {
+    return `<div class='table_row font-bold fixed bottom-0 w-full bg-white'>${columns
+      .map(column => {
+        if (column.key === 'balance') {
+          return getRowBlockHTML(column, totalBalance);
+        } else if (column.key === 'credit') {
+          return getRowBlockHTML(column, totalCredit);
+        } else if (column.key === 'debit') {
+          return getRowBlockHTML(column, totalDebit);
+        } else {
+          return getRowBlockHTML(column, '');
+        }
+      })
+      .join('')}</div>`;
+  };
+  
+
+function getBalance(glAccountId, amount) {
+    let balance = 0;
+    if (glAccountId === '2') {
+        if (amount < 0) {
+            balance = Math.abs(amount);
+        } else {
+            balance = amount * -1;
+        }
+    } else {
+        if (amount < 0) {
+            balance = Math.abs(amount);
+        } else {
+            balance = amount * -1;
+        }
+    }
+    return balance;
 }
