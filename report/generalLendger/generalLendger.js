@@ -3,21 +3,26 @@
 const tablePrefix = 'general_lendger_';
 const generalLedgerObject = window.reportComponent.data.find(item => item.hasOwnProperty('generalLedger'));
 const columns = generalLedgerObject.generalLedger.columns;
-const billCashList = groupByCashAccountForBill(window.billComponent.data);
-const billGLAcList = groupByGLAccountForBill(window.billComponent.data);
-const recepitsCashList = groupByCashAccountForReceipt(window.receiptsComponent.data);
-const receiptGlList = groupByGLAccountForReceipt(window.receiptsComponent.data)
-// const mergedList = {...billGLAcList, ...billCashList, ...recepitsCashList, ...receiptGlList };
 
+const { billComponent, receiptsComponent } = window;
+const groupedSources = [
+  groupByCashAccountForBill(billComponent.data),
+  groupByGLAccountForBill(billComponent.data),
+  groupByCashAccountForReceipt(receiptsComponent.data),
+  groupByGLAccountForReceipt(receiptsComponent.data),
+];
+
+// Collect all unique keys
+const allKeys = new Set();
+groupedSources.forEach(group =>
+  Object.keys(group).forEach(key => allKeys.add(key))
+);
+
+// Merge values from all groups under each key
 const merged = {};
-for (const key of new Set([...Object.keys(receiptGlList), ...Object.keys(billGLAcList), ...Object.keys(billCashList), ...Object.keys(recepitsCashList)])) {
-    const arr1 = billCashList[key] || [];
-    const arr2 = recepitsCashList[key] || [];
-    const arr3 = billGLAcList[key] || [];
-    const arr4 = receiptGlList[key] || [];
-    merged[key] = [...arr1, ...arr2, ...arr3, ...arr4];
+for (const key of allKeys) {
+  merged[key] = groupedSources.flatMap(group => group[key] || []);
 }
-console.log(merged)
 
 const displayedColumns = columns.filter(item => item.display === true);
 const customization = generalLedgerObject.generalLedger.customization;
@@ -27,6 +32,7 @@ const glAccounts = window.glAccountComponent.glCodeData;
 
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
+
     initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initResizeColumn();
@@ -56,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
 
-        initTable(dateRange);
+        initTable();
     }
 
     document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
@@ -68,13 +74,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function initTable(dateRange) {
+function initTable() {
     const table = document.getElementById(`${tablePrefix}table_content`);
     const fragment = document.createDocumentFragment(); // improves batch DOM insert
     const keyList = Object.keys(merged);
 
     const filteredGlAccounts = glAccounts.filter(item => keyList.includes(item.id));
 
+    // loop by gl account
     for (const glAccount of filteredGlAccounts) {
         if (glAccount.order.length !== 0) continue;
 
@@ -95,7 +102,9 @@ function initTable(dateRange) {
         fragment.appendChild(wrapper);
     }
 
+    table.appendChild(fragment);
 
+    
     let totalCredit = 0;
     let totalDebit = 0;
     for (const records of Object.values(merged)) {
@@ -106,9 +115,8 @@ function initTable(dateRange) {
             totalCredit+=credit;
         }
     }
-   
-    table.appendChild(fragment);
 
+    // get Total Balance
     let total = 0;
     document.querySelectorAll('[class*="end_balance"]').forEach(el => {
         const text = el.innerText.trim();
@@ -118,7 +126,10 @@ function initTable(dateRange) {
           total += num;
         }
       });
-    table.innerHTML += getTotal(displayedColumns, totalDebit, totalCredit, total.toFixed(2));
+
+        // Get total length for each key
+    const totalResult = Object.values(merged).reduce((sum, arr) => sum + arr.length, 0);
+    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, total.toFixed(2));
 }
 
 
