@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTable() {
     let income_div = document.getElementById("income_div");
     income_div.appendChild(buildAccountsDiv(incomeData, 2));
-
+    console.log(income_div)
     let expense_div = document.getElementById("expense_div");
     expense_div.appendChild(buildAccountsDiv(incomeData, 2));
 

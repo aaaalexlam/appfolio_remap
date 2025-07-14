@@ -70,6 +70,7 @@ function initHeader(columns, checkBoxId, tableHeaderId) {
 }
 
 function createAccountRow(account, level) {
+    console.log(account)
     const row = document.createElement('div');
     row.style.display = 'flex';
     row.style.alignItems = 'center';
@@ -94,10 +95,11 @@ function createDataDiv(account, column, level) {
     const div = document.createElement('div');
     div.className = `column_${column.key} table_column`;
     div.style.width = column.width;
-    div.textContent = account[column.key] || ''; // adjust as needed
+
+    div.textContent = account[toCamelCase(column.key)] || ''; // adjust as needed
 
     // Add indentation or formatting based on level/key
-    if (column.key === 'name' && level > 0) {
+    if (column.key === 'account_name' && level > 0) {
         div.style.paddingLeft = `${level * 16}px`; // for nested indentation
     }
 
@@ -125,7 +127,7 @@ function buildAccountsDiv(accounts, level) {
         }
 
     });
-
+    console.log(container)
     return container;
 }
 
