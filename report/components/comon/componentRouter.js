@@ -28,6 +28,10 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
             return createDateTypeHTML(displayName, tablePrefix);
         case "lastEditedRange":
             return createLastEditDateRangeComponent(displayName, tablePrefix);
+        case "billDateRange":
+            return createBillDateRangeComponent(displayName, tablePrefix);
+        case "showReversedTransactions":
+            return createCheckBoxHTML(key, displayName, tablePrefix);
     }
 }
 
@@ -54,6 +58,9 @@ function addEventListenerBykey(key, tablePrefix) {
             break;
         case "lastEditedRange":
             addLastEditDateRangeEventListener(tablePrefix);
+            break;
+        case "billDateRange":
+            addBillDateRangeEventListener(tablePrefix);
             break;
     }
 }

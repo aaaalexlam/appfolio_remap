@@ -178,6 +178,14 @@ function initCustomizationForm(customization, tablePrefix) {
         addEventListenerBykey(obj.inputType, tablePrefix);
     });
 
+    document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "none";
+    }
+
+    document.getElementById(`${tablePrefix}customization_btn`).onclick = function () {
+        document.getElementById(`${tablePrefix}modal`).style.display = "flex";
+    }
+
 }
 
 function getHideableRow(glAccount, tablePrefix, contentData, columns) {
@@ -203,7 +211,7 @@ function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
     // Starting balance row
     rows.push(renderRow(columns, column =>
         column.key === 'balance'
-            ? getRowBlockHTML(column, startingBalance, {label: 'Starting Balance'})
+            ? getRowBlockHTML(column, startingBalance, { label: 'Starting Balance' })
             : getRowBlockHTML(column, '')
     ));
 

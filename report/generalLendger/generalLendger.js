@@ -65,13 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         initTable();
     }
 
-    document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {
-        document.getElementById(`${tablePrefix}modal`).style.display = "none";
-    }
 
-    document.getElementById(`${tablePrefix}customization_btn`).onclick = function () {
-        document.getElementById(`${tablePrefix}modal`).style.display = "flex";
-    }
 });
 
 function initTable() {
