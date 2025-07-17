@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- root css -->
+    <link rel="stylesheet" href="../../css/table.css">
+    <link rel="stylesheet" href="../../css/root.css">
+
+    <!-- customization form -->
+    <link rel="stylesheet" href="../../css/customizationForm/modal.css">
+    <link rel="stylesheet" href="../../css/customizationForm/properties.css">
+    <link rel="stylesheet" href="../../css/customizationForm/additionalCahsGlAccounts.css">
+    <link rel="stylesheet" href="../../css/customizationForm/columnCheckboxes.css">
+    <link rel="stylesheet" href="../../css/customizationForm/asOf.css">
+
+    <!-- embeded css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>General Lendger</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header_container">
+            <div>
+                <h2>General Lendger</h2>
+            </div>
+            <div>
+                <button class="default_btn" id="general_lendger_customization_btn">Customization</button>
+            </div>
+        </div>
+
+        <div id="general_lendger_custom_search_summary">
+
+        </div>
+
+        <div class="body_container" id="general_lendger_body_container">
+
+            <div class="table_container" id="general_lendger_table">
+
+                <div class="table_header" id="general_lendger_table_header">
+
+                </div>
+
+                <div class="table_content" id="general_lendger_table_content">
+
+                </div>
+
+            </div>
+            <div id="general_lendger_checkbox" class="checkbox_container">
+
+            </div>
+        </div>
+
+        <div id="general_lendger_modal">
+
+        </div>
+
+    </div>
+
+    <!-- Data -->
+    <script src="../../data/glAccountComponent.js"></script>
+    <script src="../../data/billData.js"></script>
+    <script src="../../data/receiptsData.js"></script>
+    <script src="../../data/reportComponent.js"></script>
+
+    <!-- customization form -->
+     <script src="../../components/customizationForm/propertiesComponent.js"></script>
+    <script src="../../components/customizationForm/glAccountsComponent.js"></script>
+    <script src="../../components/customizationForm/createdByComponent.js"></script>
+    <script src="../../components/customizationForm/accountingBasisComponent.js"></script>
+    <script src="../../components/customizationForm/dateRangeComponent.js"></script>
+    <script src="../../components/customizationForm/lastEditDateRangeComponent.js"></script>
+
+    <!-- Report Componet -->
+    <script src="../../components/componentRouter.js"></script>
+    <script src="../../components/comonFunction.js"></script>
+    <script src="../../components/comonComponent.js"></script>
+
+    <script src="generalLendger.js"></script>
+
+
+</body>
+
+</html>

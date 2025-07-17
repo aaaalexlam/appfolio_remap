@@ -5,24 +5,6 @@ const generalLedgerObject = window.reportComponent.data.find(item => item.hasOwn
 const columns = generalLedgerObject.generalLedger.columns;
 
 const { billComponent, receiptsComponent } = window;
-const groupedSources = [
-  groupByCashAccountForBill(billComponent.data),
-  groupByGLAccountForBill(billComponent.data),
-  groupByCashAccountForReceipt(receiptsComponent.data),
-  groupByGLAccountForReceipt(receiptsComponent.data),
-];
-
-// Collect all unique keys
-const allKeys = new Set();
-groupedSources.forEach(group =>
-  Object.keys(group).forEach(key => allKeys.add(key))
-);
-
-// Merge values from all groups under each key
-const merged = {};
-for (const key of allKeys) {
-  merged[key] = groupedSources.flatMap(group => group[key] || []);
-}
 
 const displayedColumns = columns.filter(item => item.display === true);
 const customization = generalLedgerObject.generalLedger.customization;
@@ -63,6 +45,17 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
 
         initTable();
+
+        // init hideable row
+        document.querySelectorAll('.hideable_row_header').forEach(header => {
+            header.addEventListener('click', () => {
+                const glAcId = header.closest('[data-gl-account-id]').getAttribute('data-gl-account-id');
+                const content = document.getElementById(`content_${glAcId}`);
+                if (content) {
+                    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+                }
+            });
+        });
     }
 
 
@@ -71,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTable() {
     const table = document.getElementById(`${tablePrefix}table_content`);
     const fragment = document.createDocumentFragment(); // improves batch DOM insert
+    const merged = initData();
     const keyList = Object.keys(merged);
 
     const filteredGlAccounts = glAccounts.filter(item => keyList.includes(item.id));
@@ -84,29 +78,22 @@ function initTable() {
         // Create wrapper
         const wrapper = document.createElement('div');
         wrapper.id = `hide_${glAccount.id}_btn`;
+        wrapper.setAttribute('data-gl-account-id', glAccount.id);
         wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns);
 
-        // Use event delegation for better performance
-        wrapper.querySelector('.hideable_row_header')?.addEventListener('click', (event) => {
-            const content = document.getElementById(`content_${glAccount.id}`);
-            if (content) {
-                content.style.display = (content.style.display === 'block') ? 'none' : 'block';
-            }
-        });
         fragment.appendChild(wrapper);
     }
 
     table.appendChild(fragment);
 
-    
     let totalCredit = 0;
     let totalDebit = 0;
     for (const records of Object.values(merged)) {
         for (const item of records) {
             const credit = parseFloat(item.credit.toString().replace(/,/g, '')) || 0;
             const debit = parseFloat(item.debit.toString().replace(/,/g, '')) || 0;
-            totalDebit+=debit;
-            totalCredit+=credit;
+            totalDebit += debit;
+            totalCredit += credit;
         }
     }
 
@@ -115,13 +102,13 @@ function initTable() {
     document.querySelectorAll('[class*="end_balance"]').forEach(el => {
         const text = el.innerText.trim();
         const num = parseFloat(text.replace(/,/g, ''));
-      
-        if (!isNaN(num)) {
-          total += num;
-        }
-      });
 
-        // Get total length for each key
+        if (!isNaN(num)) {
+            total += Number(num.toFixed(2));
+        }
+    });
+
+    // Get total length for each key
     const totalResult = Object.values(merged).reduce((sum, arr) => sum + arr.length, 0);
 
     // remove minus sing when total = 0
@@ -234,3 +221,24 @@ function groupByGLAccountForReceipt(recepitsList) {
     return grouped;
 }
 
+function initData() {
+    const groupedSources = [
+        groupByCashAccountForBill(billComponent.data),
+        groupByGLAccountForBill(billComponent.data),
+        groupByCashAccountForReceipt(receiptsComponent.data),
+        groupByGLAccountForReceipt(receiptsComponent.data),
+    ];
+
+    // Collect all unique keys
+    const allKeys = new Set();
+    groupedSources.forEach(group =>
+        Object.keys(group).forEach(key => allKeys.add(key))
+    );
+    // Merge values from all groups under each key
+    const merged = {};
+    for (const key of allKeys) {
+        merged[key] = groupedSources.flatMap(group => group[key] || []);
+    }
+
+    return merged;
+}
