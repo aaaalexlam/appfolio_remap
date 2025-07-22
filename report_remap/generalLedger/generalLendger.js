@@ -70,17 +70,25 @@ function initTable() {
     const filteredGlAccounts = glAccounts.filter(item => keyList.includes(item.id));
 
     // loop by gl account
+    let totalNetBalance = 0;
     for (const glAccount of filteredGlAccounts) {
         if (glAccount.order.length !== 0) continue;
 
         const glAccountBills = merged[glAccount.id];
 
+        // sum the net change, balance for each gl account
+        let startingBalanceByGlAccount = 100;
+        let totalNetChangeByGlAccount = glAccountBills.reduce((sum, entry) => sum + parseInt(entry.balance * 100), 0) / 100;
+        let totalBalanceByGlAccount = startingBalanceByGlAccount + totalNetChangeByGlAccount;
+        
+        totalNetBalance += totalBalanceByGlAccount;
+
         // Create wrapper
         const wrapper = document.createElement('div');
         wrapper.id = `hide_${glAccount.id}_btn`;
         wrapper.setAttribute('data-gl-account-id', glAccount.id);
-        wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns);
-
+        wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount);
+        
         fragment.appendChild(wrapper);
     }
 
@@ -97,128 +105,9 @@ function initTable() {
         }
     }
 
-    // get Total Balance
-    let total = 0;
-    document.querySelectorAll('[class*="end_balance"]').forEach(el => {
-        const text = el.innerText.trim();
-        const num = parseFloat(text.replace(/,/g, ''));
-
-        if (!isNaN(num)) {
-            total += Number(num.toFixed(2));
-        }
-    });
-
     // Get total length for each key
     const totalResult = Object.values(merged).reduce((sum, arr) => sum + arr.length, 0);
-
-    // remove minus sing when total = 0
-    total = Number(total.toFixed(2)) === 0 ? 0 : 0
-    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, total);
-}
-
-
-function groupByGLAccountForBill(billList) {
-    // Grouping logic
-    const grouped = {};
-    billList.forEach(entry => {
-        entry.billDetails.forEach(detail => {
-            const glId = detail.glAccountId;
-            if (!grouped[glId]) {
-                grouped[glId] = [];
-            }
-
-            // map with columns key
-            grouped[glId].push({
-                "property": detail.propertyName,
-                "date": entry.billDate,
-                "payeeOrPayer": entry.payeeName,
-                "type": "check",
-                "reference": entry.reference,
-                "credit": detail.amount < 0 ? formatCurrencyToPostive(detail.amount) : 0,
-                "debit": detail.amount > 0 ? formatCurrencyToPostive(detail.amount) : 0,
-                "balance": detail.amount,
-                "description": detail.description,
-            });
-        });
-    });
-    return grouped;
-}
-
-function groupByCashAccountForBill(billList) {
-    const grouped = {};
-    billList.forEach(entry => {
-        const glId = entry.glAccountId;
-        if (!grouped[glId]) {
-            grouped[glId] = [];
-        }
-        entry.billDetails.forEach(detail => {
-            grouped[glId].push({
-                "property": detail.propertyName,
-                "date": entry.billDate,
-                "payeeOrPayer": entry.payeeName,
-                "type": "check",
-                "reference": entry.reference,
-                "credit": detail.amount > 0 ? formatCurrencyToPostive(detail.amount) : 0,
-                "debit": detail.amount < 0 ? formatCurrencyToPostive(detail.amount) : 0,
-                "balance": getBalance(entry.glAccountId, detail.amount),
-                "description": detail.description,
-            });
-        })
-    });
-    return grouped;
-}
-
-function groupByCashAccountForReceipt(recepitsList) {
-    const grouped = {};
-    recepitsList.forEach(entry => {
-        entry.charges.forEach(charge => {
-            const glId = entry.glAccountId;
-            if (!grouped[glId]) {
-                grouped[glId] = [];
-            }
-
-            // map with columns key
-            grouped[glId].push({
-                "property": entry.propertyName,
-                "date": entry.receiptDate,
-                "payeeOrPayer": entry.tenantName,
-                "type": "check",
-                "reference": entry.referenceNotes,
-                "credit": charge.appliedAmount < 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
-                "debit": charge.appliedAmount > 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
-                "balance": charge.appliedAmount,
-                "description": "",
-            });
-        })
-
-    });
-
-    return grouped;
-}
-
-function groupByGLAccountForReceipt(recepitsList) {
-    const grouped = {};
-    recepitsList.forEach(entry => {
-        entry.charges.forEach(charge => {
-            const glId = charge.glAccount;
-            if (!grouped[glId]) {
-                grouped[glId] = [];
-            }
-            grouped[glId].push({
-                "property": entry.propertyName,
-                "date": entry.receiptDate,
-                "payeeOrPayer": entry.tenantName,
-                "type": "check",
-                "reference": entry.referenceNotes,
-                "credit": charge.appliedAmount > 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
-                "debit": charge.appliedAmount < 0 ? formatCurrencyToPostive(charge.appliedAmount) : 0,
-                "balance": getBalance(glId, charge.appliedAmount),
-                "description": "",
-            });
-        })
-    });
-
-    return grouped;
+    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, totalNetBalance);
 }
 
 function initData() {

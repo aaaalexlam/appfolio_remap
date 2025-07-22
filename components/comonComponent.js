@@ -70,7 +70,6 @@ function initHeader(columns, checkBoxId, tableHeaderId) {
 }
 
 function createAccountRow(account, level) {
-    console.log(account)
     const row = document.createElement('div');
     row.style.display = 'flex';
     row.style.alignItems = 'center';
@@ -187,109 +186,6 @@ function initCustomizationForm(customization, tablePrefix) {
     }
 
 }
-
-function getHideableRow(glAccount, tablePrefix, contentData, columns) {
-    return `
-        <div class="hideable_row_header">
-            <i class="fa fa-angle-down"></i>
-            <span>${glAccount.number} - ${glAccount.accountName}</span>      
-        </div>
-        <div style="display:block;" id="content_${glAccount.id}">
-            ${getContent(tablePrefix, contentData, columns)}
-        </div>
-    `;
-}
-
-function getContent(tablePrefix, contentData, columns, startingBalance = 0) {
-    let totalNetChange = 0;
-    let currentBalance = startingBalance;
-    const rows = [];
-
-    const renderRow = (columns, cellCallback) =>
-        `<div class='table_row'>${columns.map(cellCallback).join('')}</div>`;
-
-    // Starting balance row
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? getRowBlockHTML(column, startingBalance, { label: 'Starting Balance' })
-            : getRowBlockHTML(column, '')
-    ));
-
-    // Main content rows
-    if (Array.isArray(contentData)) {
-        for (const item of contentData) {
-            rows.push(renderRow(columns, column => {
-                if (column.key === 'balance') {
-                    currentBalance += item.balance;
-                    totalNetChange += item.balance;
-                    return getRowBlockHTML(column, currentBalance);
-                }
-                return getRowBlockHTML(column, item[column.key]);
-            }));
-        }
-    }
-
-    // Net change row
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? getRowBlockHTML(column, totalNetChange, { label: 'Net Change' })
-            : getRowBlockHTML(column, '')
-    ));
-
-    // End balance row
-    const finalBalance = startingBalance + totalNetChange;
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? `<div class="end_balance table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
-                    ${formatCurrency(finalBalance)}
-               </div>`
-            : getRowBlockHTML(column, '')
-    ));
-
-    return rows.join('');
-}
-
-const getRowBlockHTML = (column, data, options = {}) => {
-    const {
-        isCurrency = ['credit', 'debit', 'balance'].includes(column.key),
-        label = null
-    } = options;
-
-    const displayValue = isCurrency ? formatCurrency(data) : data ?? '';
-    const styles = [
-        `width:${column.width}`,
-        'flex-shrink:0',
-        isCurrency ? 'text-align: end' : ''
-    ].filter(Boolean).join('; ');
-
-    return `
-        <div class="column_${column.key} header_text table_column" style="${styles}">
-            ${displayValue}
-            ${label ? `<div style="color: #cacaca">${label}</div>` : ''}
-        </div>
-    `;
-};
-
-
-const getSummaryRow = (columns, totalResult, totalDebit, totalCredit, totalBalance) => {
-    return `<div class='table_row font-bold fixed bottom-0  w-full bg-white border-t-1 border-gray-100 '>${columns
-        .map(column => {
-            if (column.key === 'balance') {
-                return getRowBlockHTML(column, totalBalance);
-            } else if (column.key === 'credit') {
-                return getRowBlockHTML(column, totalCredit);
-            } else if (column.key === 'debit') {
-                return getRowBlockHTML(column, totalDebit);
-            } else if (column.key === 'property') {
-                return getRowBlockHTML(column, `Total (${totalResult} Results)`);
-            }
-            else {
-                return getRowBlockHTML(column, '');
-            }
-        })
-        .join('')}</div>`;
-};
-
 
 function getBalance(glAccountId, amount) {
     let balance = 0;
