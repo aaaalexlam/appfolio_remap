@@ -86,6 +86,5 @@ document.addEventListener("DOMContentLoaded", function () {
             return acc;
         }, {});
 
-        console.log(grouped)
     })
 });

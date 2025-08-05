@@ -1,21 +1,4 @@
-const properties_options_data = [
-    {
-        "id": "1",
-        "type": "property",
-        "address": "Everest at Oceanside - 3500 Lake Blvd.  Oceanside, CA 92056"
-    },
-    {
-        "id": "2",
-        "type": "property",
-        "address": "Everest Valley Senior Living  - 19850 Colima Road  Walnut, CA 91789"
-    },
-    {
-        "id": "3",
-        "type": "owner",
-        "address": "Everest Senior Living Management Inc - 801 S. Garfield Ave. #308 Alhambra, CA 91801"
-    }
-];
-
+const properties_options_data = window.propertiesDataComponent.data;
 function createPropertiesHTML(displayName, tablePrefix) {
     return `
                 <tr class="tr-default">
@@ -51,7 +34,7 @@ function addPropertiesEventListener(tablePrefix) {
         if (this.value.length > 1) {
             const searchText = this.value.toLowerCase();
             const filtered = properties_options_data.filter(option =>
-                option.address.toLowerCase().includes(searchText)
+                option.name.toLowerCase().includes(searchText)
             );
 
             // Clear the results
@@ -60,8 +43,8 @@ function addPropertiesEventListener(tablePrefix) {
             filtered.forEach(option => {
                 let wrapper = document.createElement('label');
                 wrapper.innerHTML = `
-                    <input type="radio" name="properties" value='${option.address}'>
-                    <div class="properties_selector_options_label">${option.address}</div>
+                    <input type="radio" name="properties" value='${option.id}' propertyName='${option.name}'>
+                    <div class="properties_selector_options_label">${option.name}</div>
                 `;
 
                 wrapper.addEventListener('keydown', (e) => {
@@ -122,17 +105,24 @@ function addPropertiesEventListener(tablePrefix) {
     function handleRationChange(tablePrefix) {
         const checkedRadio = document.querySelector('input[type="radio"][name="properties"]:checked');
         if (checkedRadio) {
-            appendSelectOption(checkedRadio.value); // This gives you the value attribute
+
+            const propertyName = checkedRadio.getAttribute('propertyname');
+            const propertyId = checkedRadio.value;
+
+            appendSelectOption(propertyName, propertyId); // This gives you the value attribute
+
         }
         document.getElementById(`${tablePrefix}properties_selector_options`).style.display = 'none';
         properties_input.value = "";
     }
 
-    function appendSelectOption(selected) {
+    function appendSelectOption(propertyName, propertyId) {
+
         let wrapper = document.createElement('label');
+
         wrapper.innerHTML = `
-            <input type="checkbox" name="properties_checkbox" value="${selected}" checked>
-            <div>${selected}</div>
+            <input type="checkbox" name="properties_checkbox" value="${propertyId}" propertyName="${propertyName}" checked>
+            <div>${propertyName}</div>
         `;
 
         selected_properties.appendChild(wrapper)
@@ -147,17 +137,43 @@ function addPropertiesEventListener(tablePrefix) {
     };
 }
 
-function formartPropertiesStr(str) {
-    if (str.length === 0) {
+function formartPropertiesStr(selectedPropertiesList){
+    if (selectedPropertiesList.length === 3) {
         return "All Properties";
     }
+    let formartStr = selectedPropertiesList[0].propertyName;
 
-    let propertiesStr = str[0];
-
-    for (let i = 1; i < str.length; i++) {
-        propertiesStr += ' | ' + str[i];
+    for(let i = 1; i<selectedPropertiesList.length; i++){
+        formartStr += ` | ${selectedPropertiesList[i].propertyName}`
     }
     
-    return `[${propertiesStr}]`;
+    return formartStr;
+
 }
 
+function getSelectedProperties() {
+    const propertiesCheckboxs = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked'));
+    const selectedPropertiesList = [];
+
+    if(propertiesCheckboxs.length === 0){
+        properties_options_data.forEach (propertie => {
+            selectedPropertiesList.push(
+                {
+                    "propertyName":propertie.name,
+                    "propertyId": propertie.id
+                }
+            )
+        })
+    } else {
+        propertiesCheckboxs.forEach(propertiesCheckbox => {
+            selectedPropertiesList.push(
+                {
+                    "propertyName":propertiesCheckbox.getAttribute('propertyname'),
+                    "propertyId": propertiesCheckbox.value
+                }
+            )
+        });
+    }
+    return selectedPropertiesList;
+
+}   

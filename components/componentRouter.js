@@ -75,25 +75,3 @@ function formatCustomSearchStr(id, str) {
 
     }
 }
-
-function formatSelectedGLAccount(selectedGlAccounts) {
-    const parsedList = selectedGlAccounts.map(item => JSON.parse(item));
-    let formatingStr = '';
-    if (selectedGlAccounts.length === 0) return '';
-
-
-    const account = parsedList[0];
-    formatingStr = `${account.number} - ${account.accountName}`;
-
-    if (selectedGlAccounts.length === 1){
-        return formatingStr;
-    }
-
-    // Loop using a classic for loop
-    for (let i = 1; i < parsedList.length; i++) {
-        const account = parsedList[i];
-        formatingStr += `, ${account.number} - ${account.accountName}`;
-    }
-
-    return formatingStr;
-}

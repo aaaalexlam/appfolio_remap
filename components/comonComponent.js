@@ -126,7 +126,6 @@ function buildAccountsDiv(accounts, level) {
         }
 
     });
-    console.log(container)
     return container;
 }
 

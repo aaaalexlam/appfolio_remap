@@ -1,6 +1,4 @@
 const createBillDateRangeComponent = (displayName, tablePrefix) => {
-    console.log(displayName)
-    console.log(tablePrefix)
 
     // Get the last day of the current month
     const today = new Date();

@@ -60,13 +60,17 @@ function addLastEditDateRangeEventListener(tablePrefix) {
 
 
 function getSelectedLastEditDateRange(tablePrefix) {
-    
-    if (!document.getElementById(`${tablePrefix}last_edit_date_range_radio`).checked && !document.getElementById(`${tablePrefix}last_edit_date_range_selector_radio`).checked){
-        return null;
+    let dateRange = {
+        "startDate": "",
+        "endDate": ""
     }
-
     if (document.getElementById(`${tablePrefix}last_edit_date_range_radio`).checked) {
-        return `${document.getElementById(`${tablePrefix}last_edit_date_range_input_from`).value} To ${document.getElementById(`${tablePrefix}last_edit_date_range_input_to`).value}`
+
+        dateRange.startDate = `${document.getElementById(`${tablePrefix}last_edit_date_range_input_from`).value}`;
+        dateRange.endDate = `${document.getElementById(`${tablePrefix}last_edit_date_range_input_to`).value}`
+
+        return dateRange;
     }
-    return document.getElementById(`${tablePrefix}last_edit_date_range_selector`).value;
+    return dateRangeConvertor(document.getElementById(`${tablePrefix}last_edit_date_range_selector`).value);
+
 }

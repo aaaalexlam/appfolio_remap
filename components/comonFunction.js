@@ -35,7 +35,6 @@ function initResizeColumn() {
 function handleCheckboxClick(event) {
     const isChecked = event.target.checked;
     const value = event.target.value;
-    console.log(value)
     if (isChecked) {
         [...document.getElementsByClassName(`column_${value}`)].forEach(header => {
             header.style.display = 'block';

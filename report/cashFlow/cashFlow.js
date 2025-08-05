@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const includeZeroBalanceGLAccount = document.querySelector('input[name="checkBox_include_zero_balance_gl_account"]').checked ? 'Y' : 'N';
         const excludeSuppressedFees = document.querySelector('input[name="checkBox_exclude_suppressed_fees"]').checked ? 'Y' : 'N';
 
-        console.log(includeZeroBalanceGLAccount)
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr(`custom_search_summary_properties`, selectedProperties);
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
         document.getElementById(`${tablePrefix}custom_search_summary_levelOfDetail`).innerText = formatCustomSearchStr("custom_search_summary_level_of_detail", selectedRadio);
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTable() {
     let income_div = document.getElementById("income_div");
     income_div.appendChild(buildAccountsDiv(incomeData, 2));
-    console.log(income_div)
     let expense_div = document.getElementById("expense_div");
     expense_div.appendChild(buildAccountsDiv(incomeData, 2));
 

@@ -28,19 +28,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = function () {
-        const selectedProperties = Array.from(document.querySelectorAll('input[name="properties_checkbox"]:checked')).map(cb => cb.value);
+
+        const selectedPropertiesList = getSelectedProperties();
+        const getSelectedGlAccountList = getSelectedGlAccount();
+        
         const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
         const dateRange = getSelectedDateRange(tablePrefix);
-        const selectedGlAccounts = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked')).map(cb => cb.value);
+
         const lastEditDateRange = getSelectedLastEditDateRange(tablePrefix);
         const createdBy = document.getElementById(`${tablePrefix}created_by`).value;
 
-        document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formatCustomSearchStr(`custom_search_summary_properties`, selectedProperties);
+        const customization = {
+            "properties": [selectedPropertiesList],
+            "createdBy": {
+                "id": 1,
+                "name": createdBy
+            },
+            "selectedGlAccounts": [getSelectedGlAccountList],
+            "dateRange": {
+                "startDate": dateRange.startDate,
+                "endDate": dateRange.endDate
+            },
+            "accountingBasis": accountingBasis,
+            "lastEditDateRange": {
+                "startDate": lastEditDateRange.startDate,
+                "endDate": lastEditDateRange.endDate
+            }
+        }
+
+        document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
         document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
-        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(selectedGlAccounts);
-        document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = dateRange;
+        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList);
+        document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = `From: ${dateRange.startDate} To: ${dateRange.endDate}`;
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
-        document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = lastEditDateRange;
+        document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = `From: ${lastEditDateRange.startDate} To: ${lastEditDateRange.endDate}`;;
 
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
 
@@ -80,7 +101,7 @@ function initTable() {
         let startingBalanceByGlAccount = 100;
         let totalNetChangeByGlAccount = glAccountBills.reduce((sum, entry) => sum + parseInt(entry.balance * 100), 0) / 100;
         let totalBalanceByGlAccount = startingBalanceByGlAccount + totalNetChangeByGlAccount;
-        
+
         totalNetBalance += totalBalanceByGlAccount;
 
         // Create wrapper
@@ -88,7 +109,7 @@ function initTable() {
         wrapper.id = `hide_${glAccount.id}_btn`;
         wrapper.setAttribute('data-gl-account-id', glAccount.id);
         wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount);
-        
+
         fragment.appendChild(wrapper);
     }
 
