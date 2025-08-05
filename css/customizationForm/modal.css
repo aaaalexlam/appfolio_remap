@@ -2,8 +2,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 100vw;
+    height: auto;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
@@ -15,7 +15,6 @@
     min-width: 600px;
     background-color: white;
     padding: calc(var(--bs-gutter-x)*.9);
-    ;
 }
 
 .custom_search_container table {

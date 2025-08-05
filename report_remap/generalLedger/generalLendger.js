@@ -38,6 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const lastEditDateRange = getSelectedLastEditDateRange(tablePrefix);
         const createdBy = document.getElementById(`${tablePrefix}created_by`).value;
 
+        const excludeZeroDollarReceiptsFromCashAccounts = getCheckBoxValueByKey(tablePrefix, "excludeZeroDollarReceiptsFromCashAccounts");
+        const showReversedTransactions = getCheckBoxValueByKey(tablePrefix, "showReversedTransactions");
+
         const customization = {
             "properties": [selectedPropertiesList],
             "createdBy": {
@@ -49,11 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "startDate": dateRange.startDate,
                 "endDate": dateRange.endDate
             },
-            "accountingBasis": accountingBasis,
             "lastEditDateRange": {
                 "startDate": lastEditDateRange.startDate,
                 "endDate": lastEditDateRange.endDate
-            }
+            },
+            "accountingBasis": accountingBasis,
+            "excludeZeroDollarReceiptsFromCashAccounts": excludeZeroDollarReceiptsFromCashAccounts,
+            "showReversedTransactions": showReversedTransactions
         }
 
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
@@ -62,7 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = `From: ${dateRange.startDate} To: ${dateRange.endDate}`;
         document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
         document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = `From: ${lastEditDateRange.startDate} To: ${lastEditDateRange.endDate}`;;
-
+        document.getElementById(`${tablePrefix}custom_search_summary_excludeZeroDollarReceiptsFromCashAccounts`).innerText = excludeZeroDollarReceiptsFromCashAccounts;
+        document.getElementById(`${tablePrefix}custom_search_summary_showReversedTransactions`).innerText = showReversedTransactions;
         document.getElementById(`${tablePrefix}modal`).style.display = "none";
 
         initTable();

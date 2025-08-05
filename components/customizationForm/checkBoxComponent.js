@@ -15,3 +15,7 @@ function createCheckBoxHTML(key, displayName, tablePrefix) {
 function isChecked(key, tablePrefix){
     return document.getElementById(`${tablePrefix}${key}`).checked;
 }
+
+function getCheckBoxValueByKey(tablePrefix, key){
+    return document.getElementById(`${tablePrefix}${key}`).checked;
+}
