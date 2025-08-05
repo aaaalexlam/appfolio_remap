@@ -15,8 +15,6 @@ const glAccounts = window.glAccountComponent.glCodeData;
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
 
-    
-
     initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initResizeColumn();
@@ -28,6 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(`${tablePrefix}modal`).style.display = "none";
         }
     });
+
+    document.getElementById(`${tablePrefix}hide_detail_summary_btn`).onclick = function () {
+        const summary = document.getElementById(`${tablePrefix}custom_search_summary`);
+        
+        if(this.innerText === 'Hide Details'){
+            summary.style.display = 'none';
+            this.innerText = 'Show Details'
+        }else {
+            summary.style.display = 'block';
+            this.innerText = 'Hide Details'
+        }
+
+    }
 
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = function () {
 
@@ -63,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "showReversedTransactions": showReversedTransactions
         }
 
+        console.log(customization)
         document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
         document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
         document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList);
@@ -87,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
+    
 });
 
 function initTable() {

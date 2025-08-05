@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     min-width: 100vw;
-    height: auto;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
@@ -12,9 +12,10 @@
 
 .custom_search_container {
     width: 60vw;
-    min-width: 600px;
+    height: 80vh;
     background-color: white;
     padding: calc(var(--bs-gutter-x)*.9);
+    overflow: scroll;
 }
 
 .custom_search_container table {
