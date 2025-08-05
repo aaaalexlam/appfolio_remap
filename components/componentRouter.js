@@ -31,6 +31,7 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
         case "billDateRange":
             return createBillDateRangeComponent(displayName, tablePrefix);
         case "showReversedTransactions":
+        case "excludeZeroDollarReceiptsFromCashAccounts":
             return createCheckBoxHTML(key, displayName, tablePrefix);
     }
 }

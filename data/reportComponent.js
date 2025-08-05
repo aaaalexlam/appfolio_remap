@@ -620,17 +620,25 @@ window.reportComponent = {
                         "displayName": "GL Accounts"
                     },
                     {
+                        "inputType": "excludeZeroDollarReceiptsFromCashAccounts",
+                        "displayName": "Exclude Zero Dollar Receipts From Cash Accounts"
+                    },
+                    {
                         "inputType": "dateRange",
                         "displayName": "Date Range"
+                    },
+                    {
+                        "inputType": "lastEditedRange",
+                        "displayName": "Last Edited Range"
                     },
                     {
                         "inputType": "accountingBasis",
                         "displayName": "Accounting Basis"
                     },
                     {
-                        "inputType": "lastEditedRange",
-                        "displayName": "Last Edited Range"
-                    }
+                        "inputType": "showReversedTransactions",
+                        "displayName": "Show Reversed Transactions"
+                    },
                 ]
             }
         },

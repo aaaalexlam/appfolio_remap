@@ -15,17 +15,17 @@ const createLastEditDateRangeComponent = (displayName, tablePrefix) => {
                 <tr class="tr-default">
                     <td class="input_field">${displayName}<span style="color: red;">*</span></td>
                     <td class="input_column">
-                        <input type="radio" class="dateRangeRadio" name="last_edit_date_range_radio" id="${tablePrefix}last_edit_date_range_radio" class="">
-                        <input type="date" id="${tablePrefix}last_edit_date_range_input_from" value=${formattedFirstDay} disabled class="dateRangeFrom" value="">
-                        <div>To</div>
-                        <input type="date" id="${tablePrefix}last_edit_date_range_input_to" value=${formattedToday} disabled class="dateRangeTo" value="">
+                        <input type="radio" class="dateRangeRadio" name="last_edit_date_range_radio" id="${tablePrefix}last_edit_date_range_radio" class="" checked>
+                        <input type="date" id="${tablePrefix}last_edit_date_range_input_from" value=${formattedFirstDay} class="${radioDateRangeEnableCss}" value="">
+                        <div class="ml-2 mr-2">To</div>
+                        <input type="date" id="${tablePrefix}last_edit_date_range_input_to" value=${formattedToday} class="${radioDateRangeEnableCss}" value="">
                     </td>
                 </tr>
                 <tr class="tr-default">
                     <td class="input_field"></td>
                     <td class="input_column">
                         <input type="radio" class="dateRangeRadio" name="last_edit_date_range_radio" id="${tablePrefix}last_edit_date_range_selector_radio" class="">
-                        <select name="" id="${tablePrefix}last_edit_date_range_selector" class="dateRangeSelector" disabled>
+                        <select name="" id="${tablePrefix}last_edit_date_range_selector" class="${dageRangeSelectorDisableCss}" disabled>
                             ${optionsHTML}
                         </select>
                         </label>
@@ -46,12 +46,25 @@ function addLastEditDateRangeEventListener(tablePrefix) {
             if (radio.checked) {
                 if (radio.id === `${tablePrefix}last_edit_date_range_radio`) {
                     date_range_selector.disabled = true;
+                    date_range_selector.className = dageRangeSelectorDisableCss;
+
                     date_range_input_to.disabled = false;
+                    date_range_input_to.className = radioDateRangeEnableCss;
+
                     date_range_input_from.disabled = false;
+                    date_range_input_from.className = radioDateRangeEnableCss;
+
                 } else if (radio.id === `${tablePrefix}last_edit_date_range_selector_radio`) {
+
                     date_range_selector.disabled = false;
+                    date_range_selector.className = dageRangeSelectorEnableCss;
+
                     date_range_input_to.disabled = true;
+                    date_range_input_to.className = radioDateRangeDisableCss;
+
                     date_range_input_from.disabled = true;
+                    date_range_input_from.className = radioDateRangeDisableCss;
+
                 }
             }
         });

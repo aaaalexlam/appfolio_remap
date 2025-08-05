@@ -3,7 +3,7 @@ function createAccountingBasisHTML(displayName, tablePrefix) {
                 <tr class="tr-default">
                     <td class="input_field" id="${tablePrefix}accounting_basis_field">${displayName}</td>
                     <td class="input_column">
-                        <select name="accounting_basis" id="${tablePrefix}accounting_basis" class="accounting_basis">
+                        <select name="accounting_basis" id="${tablePrefix}accounting_basis" class="cursor-pointer border-1 h-[35px] w-full">
                             <option value="Cash">Cash</option>
                             <option value="Accural">Accural</option>
                         </select>
