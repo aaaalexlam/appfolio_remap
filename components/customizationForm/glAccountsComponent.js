@@ -17,7 +17,7 @@ const checkBoxHtml = glAccountData
 const createGLAccuntsHTML = (displayName, tablePrefix) => {
     return `
                 <tr class="tr-default">
-                    <td class="input_field h-48">${displayName}</td>
+                    <td class="input_field h-43">${displayName}</td>
                     <td class="input_column">
                         <div class="gl_account_search_div">
                             <div>Select: 
@@ -60,7 +60,6 @@ const addGlAccountsEventListener = (tablePrefix) => {
 
     // on search
     const input = document.getElementById(`${tablePrefix}gl_account_search`);
-    const additional_cahs_gl_accounts = document.getElementById(`${tablePrefix}additional_cahs_gl_accounts`);
     input.addEventListener('input', function (event) {
         const keyword = this.value.toLowerCase();
         const labels = document.querySelectorAll('.additional_cahs_gl_accounts_checkbox_label');

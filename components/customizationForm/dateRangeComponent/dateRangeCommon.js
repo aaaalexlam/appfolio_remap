@@ -1,8 +1,8 @@
-const radioDateRangeEnableCss = "h-[35px] border-1 w-full"
-const radioDateRangeDisableCss = "h-[35px] border-1 w-full bg-gray-200"
+const radioDateRangeEnableCss = "h-[35px] border-1 w-full  cursor-pointer p-1"
+const radioDateRangeDisableCss = "h-[35px] border-1 w-full bg-gray-200 p-1"
 
-const dageRangeSelectorDisableCss = "h-[35px] border-1 w-full cursor-pointer bg-gray-200";
-const dageRangeSelectorEnableCss = "h-[35px] border-1 w-full cursor-pointer";
+const dageRangeSelectorDisableCss = "h-[35px] border-1 w-full bg-gray-200 p-1";
+const dageRangeSelectorEnableCss = "h-[35px] border-1 w-full cursor-pointer p-1";
 
 function dateRangeConvertor(value) {
     const today = new Date();

@@ -15,6 +15,8 @@ const glAccounts = window.glAccountComponent.glCodeData;
 // init balance sheet html elements; it must be init when the dom was loaded;
 document.addEventListener("DOMContentLoaded", function () {
 
+    
+
     initCustomizationForm(customization, tablePrefix);
     initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
     initResizeColumn();
