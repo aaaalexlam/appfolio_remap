@@ -150,3 +150,16 @@ window.billComponent = {
         },
     ]
 } 
+
+async function getPayableBills(db) {
+    const snapshot = await db.collection("adminManagement")
+      .doc("IIPMwsQfXSzrASo8qjFO")
+      .collection("payableBills")
+      .get();
+  
+    const data = [];
+    snapshot.forEach(doc => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    return data;
+  }

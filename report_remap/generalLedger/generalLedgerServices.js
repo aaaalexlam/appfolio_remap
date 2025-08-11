@@ -1,7 +1,7 @@
 function groupByCashAccountForBill(billList) {
     const grouped = {};
     billList.forEach(entry => {
-        const glId = entry.glAccountId;
+        const glId = "2";
         if (!grouped[glId]) {
             grouped[glId] = [];
         }
@@ -87,7 +87,6 @@ function groupByCashAccountForReceipt(recepitsList) {
         })
 
     });
-
     return grouped;
 }
 

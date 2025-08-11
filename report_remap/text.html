@@ -2,57 +2,102 @@
 <html>
 
 <head>
-    <title>Firebase Test</title>
-    <!-- ✅ Use the UMD version of Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-</head>
+    <title>Firebase Sign-In & Fetch Bills</title>
+    <script type="module">
+        // 1. Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { getFirestore, collection, query, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-<body>
-    <h1>Firebase Realtime DB Test</h1>
-    <button onclick="writeTestData()">Write</button>
-    <button onclick="readTestData()">Read</button>
-
-    <script>
-
-        // 🔁 Replace with your actual config from Firebase Console
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // 2. Your Firebase config
         const firebaseConfig = {
-            apiKey: "AIzaSyD02KjTOyFR1Tmn8y4-UE1YajjqPMQrSKM",
-            authDomain: "test-2e19d.firebaseapp.com",
-            projectId: "test-2e19d",
-            storageBucket: "test-2e19d.firebasestorage.app",
-            messagingSenderId: "340711849149",
-            appId: "1:340711849149:web:e2635002a89bf0166b0bd4",
-            measurementId: "G-VNWZSHZKCP"
+            apiKey: "AIzaSyDiofUHEJxWqYt25sO8bwz8dRLyZLMCoFE",
+            authDomain: "everest-51e18.firebaseapp.com",
+            projectId: "everest-51e18",
+            storageBucket: "everest-51e18.appspot.com",
+            messagingSenderId: "848124670146",
+            appId: "1:848124670146:web:f7fc6f4d9e2a60b47ecb5b",
+            measurementId: "G-TR7Z090WV9"
         };
 
-        // Initialize Firebase (compat version)
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        // 3. Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
 
 
-        // ✅ Read from Firestore
-        function readTestData() {
-            db.collection("test_collection")
-                .where("accountBasis", "==", "cash")
-                .get()
-                .then((querySnapshot) => {
-                    if (querySnapshot.empty) {
-                        alert("❗ No matching documents found");
-                        return;
-                    }
+        // 4. Sign in user
+        async function signInUser() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-                    querySnapshot.forEach((doc) => {
-                        console.log("✅ Match:", doc.id, doc.data());
-                    });
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user.uid)
+                    fetchAccountList();
+
                 })
                 .catch((error) => {
-                    alert("❌ Query failed: " + error.message);
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
                 });
         }
 
+        async function fetchAccountList() {
+            try {
+                // This matches your exact path
+                const colRef = collection(
+                    db,
+                    "adminManagement",
+                    "IIPMwsQfXSzrASo8qjFO",
+                    "accounting",
+                    "glAccounts",
+                    "accountList"
+                );
+
+                const snapshot = await getDocs(colRef);
+
+                const data = [];
+                snapshot.forEach((doc) => {
+                    data.push({ id: doc.id, ...doc.data() });
+                });
+
+                console.log("Account List data:", data);
+                document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error("Error fetching account list:", error.message);
+            }
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("✅ Signed in:", user.email);
+                console.log("✅ Signed in:", user.uid);
+                const accountingDb = collection(db, "adminManagement", "IIPMwsQfXSzrASo8qjFO", "accounting", "glAccounts", "accountList");
+                const querySnapshot = getDocs(accountingDb);
+            } else {
+                console.log("❌ Not signed in");
+            }
+        });
+
+
+        // Expose function to global scope for HTML button
+        window.signInUser = signInUser;
     </script>
+</head>
+
+<body>
+    <h2>Firebase Sign-In and Fetch 'bills'</h2>
+    <div>
+        <input type="email" id="email" placeholder="Email"><br>
+        <input type="password" id="password" placeholder="Password"><br>
+        <button onclick="signInUser()">Sign In</button>
+        <p id="status">Not signed in.</p>
+    </div>
+
+    <pre id="output">Data will appear here...</pre>
 </body>
 
 </html>

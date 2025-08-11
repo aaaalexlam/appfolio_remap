@@ -20,7 +20,7 @@ function getHeaderTemplate(column) {
     return `
         <div 
             id="column_${column.key}"
-            class="column_${column.key}"
+            class="column_${column.key} sticky top-0"
             style="display:${column.display ? 'block' : 'none'}; width:${column.width}"
         > 
             <div class="header_container">

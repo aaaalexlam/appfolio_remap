@@ -30,14 +30,10 @@
                 <h2>General Lendger</h2>
             </div>
             <div class="flex">
-                <input 
-                    type="text" 
-                    placeholder="Search Report"
-                    class="border-1 p-2 r-sm w-80 mr-3 rounded"
-                >
+                <input type="text" placeholder="Search Report" class="border-1 p-2 r-sm w-80 mr-3 rounded">
                 <button class="px-4 py-2 cursor-pointer border-1 rounded font-normal text-base mr-3">
                     Print to PDF
-                  </button>
+                </button>
                 <button class="default_btn" id="general_lendger_customization_btn">Customization</button>
             </div>
         </div>
@@ -71,7 +67,19 @@
 
         </div>
 
+        <img
+            class="absolute w-24 h-24 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"  
+            src="../../img/kOnzy.gif" 
+            alt=""
+            id="loading_img"
+        >
+
     </div>
+
+    <!-- Firebase SDKs (Compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
     <!-- Data -->
     <script src="../../data/glAccountComponent.js"></script>
@@ -81,15 +89,15 @@
     <script src="../../data/propertiesData.js"></script>
 
     <!-- customization form -->
-     <script src="../../components/customizationForm/propertiesComponent.js"></script>
+    <script src="../../components/customizationForm/propertiesComponent.js"></script>
     <script src="../../components/customizationForm/glAccountsComponent.js"></script>
     <script src="../../components/customizationForm/createdByComponent.js"></script>
     <script src="../../components/customizationForm/accountingBasisComponent.js"></script>
     <script src="../../components/customizationForm/dateRangeComponent/dateRangeCommon.js"></script>
     <script src="../../components/customizationForm/dateRangeComponent/dateRangeComponent.js"></script>
     <script src="../../components/customizationForm/dateRangeComponent/lastEditDateRangeComponent.js"></script>
-    <script src="../../components/customizationForm/lastEditDateRangeComponent.js"></script>
     <script src="../../components/customizationForm/checkBoxComponent.js"></script>
+
     <!-- Report Componet -->
     <script src="../../components/componentRouter.js"></script>
     <script src="../../components/comonFunction.js"></script>
@@ -98,6 +106,7 @@
     <!-- Services -->
     <script src="./generalLedgerServices.js"></script>
     <script src="./generalLendger.js"></script>
+    <script src="../../service/getFirestoreService.js"></script>
 
 
 </body>

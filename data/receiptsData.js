@@ -108,3 +108,16 @@ window.receiptsComponent = {
         }
     ]
 }
+
+async function getReceipts(db) {
+    const snapshot = await db.collection("adminManagement")
+      .doc("IIPMwsQfXSzrASo8qjFO")
+      .collection("tenantReceipts")
+      .get();
+  
+    const data = [];
+    snapshot.forEach(doc => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    return data;
+}
