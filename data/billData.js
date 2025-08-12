@@ -149,17 +149,18 @@ window.billComponent = {
             "lastUpdatedBy": "Andrew Yeh"
         },
     ]
-} 
+}
 
-async function getPayableBills(db) {
+async function getPayableBills(getPayableBills) {
+    const db = window.firebaseFirestore;
     const snapshot = await db.collection("adminManagement")
-      .doc("IIPMwsQfXSzrASo8qjFO")
-      .collection("payableBills")
-      .get();
-  
+        .doc("IIPMwsQfXSzrASo8qjFO")
+        .collection("payableBills")
+        .get();
+
     const data = [];
     snapshot.forEach(doc => {
-      data.push({ id: doc.id, ...doc.data() });
+        data.push({ id: doc.id, ...doc.data() });
     });
     return data;
-  }
+}

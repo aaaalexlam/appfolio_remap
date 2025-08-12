@@ -147,6 +147,9 @@ function getSelectedGlAccount() {
     const selectedGlAccountList = [];
 
     selectedGlAccountsCheckboxs.forEach(selectedGlAccountsCheckbox => {
+        if(selectedGlAccountsCheckbox.value === 'all'){
+            return;
+        }
         selectedGlAccountList.push(
             {
                 "glId": selectedGlAccountsCheckbox.value,

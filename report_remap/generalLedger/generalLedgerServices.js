@@ -237,14 +237,14 @@ const handleAndGetCustomizationData = () => {
     document.getElementById(`${tablePrefix}custom_search_summary_excludeZeroDollarReceiptsFromCashAccounts`).innerText = excludeZeroDollarReceiptsFromCashAccounts;
     document.getElementById(`${tablePrefix}custom_search_summary_showReversedTransactions`).innerText = showReversedTransactions;
     document.getElementById(`${tablePrefix}modal`).style.display = "none";
-    
+
     return {
         "properties": [selectedPropertiesList],
         "createdBy": {
             "id": 1,
             "name": createdBy
         },
-        "selectedGlAccounts": [getSelectedGlAccountList],
+        "selectedGlAccounts": getSelectedGlAccountList,
         "dateRange": {
             "startDate": dateRange.startDate,
             "endDate": dateRange.endDate
@@ -257,4 +257,28 @@ const handleAndGetCustomizationData = () => {
         "excludeZeroDollarReceiptsFromCashAccounts": excludeZeroDollarReceiptsFromCashAccounts,
         "showReversedTransactions": showReversedTransactions
     }
+}
+
+// main logic to transform data into desirable data strecture
+const dataMapping = (bills, receipt) => {
+
+    const groupedSources = [
+        groupByCashAccountForBill(bills),
+        groupByGLAccountForBill(bills),
+        groupByCashAccountForReceipt(receipt),
+        groupByGLAccountForReceipt(receipt),
+    ];
+
+    // Collect all unique keys
+    const allKeys = new Set();
+    groupedSources.forEach(group =>
+        Object.keys(group).forEach(key => allKeys.add(key))
+    );
+
+    // Merge values from all groups under each key
+    const merged = {};
+    for (const key of allKeys) {
+        merged[key] = groupedSources.flatMap(group => group[key] || []);
+    }
+    return merged;
 }

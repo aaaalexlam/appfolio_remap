@@ -10599,7 +10599,10 @@ window.glAccountComponent = {
     }
   ]
 }
-async function getGlAccountMap(db) {
+async function getGlAccountMap(glAccountOrderIdList) {
+  const db = window.firebaseFirestore;
+
+  // get the gl account where gl account id in
   const snapshot = await db.collection("adminManagement")
     .doc("IIPMwsQfXSzrASo8qjFO")
     .collection("accounting")
@@ -10614,7 +10617,8 @@ async function getGlAccountMap(db) {
   return data;
 }
 
-async function getGlAccountOrder(db, getNumberOfGlAccount) {
+async function getGlAccountIdList(start, end) {
+  const db = window.firebaseFirestore;
   const snapshot = await db.collection("adminManagement")
     .doc("IIPMwsQfXSzrASo8qjFO")
     .collection("accounting")
@@ -10625,7 +10629,7 @@ async function getGlAccountOrder(db, getNumberOfGlAccount) {
     data.push({ id: doc.id, ...doc.data() });
   });
 
-  return data[0].coaMainOrder.slice(getNumberOfGlAccount - getNumberOfGlAccount, getNumberOfGlAccount);
+  return data[0].coaMainOrder;
 }
 
 

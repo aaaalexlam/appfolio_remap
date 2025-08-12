@@ -109,15 +109,16 @@ window.receiptsComponent = {
     ]
 }
 
-async function getReceipts(db) {
+async function getReceipts(glAccountOrderIdList) {
+    const db = window.firebaseFirestore;
     const snapshot = await db.collection("adminManagement")
-      .doc("IIPMwsQfXSzrASo8qjFO")
-      .collection("tenantReceipts")
-      .get();
-  
+        .doc("IIPMwsQfXSzrASo8qjFO")
+        .collection("tenantReceipts")
+        .get();
+
     const data = [];
     snapshot.forEach(doc => {
-      data.push({ id: doc.id, ...doc.data() });
+        data.push({ id: doc.id, ...doc.data() });
     });
     return data;
 }

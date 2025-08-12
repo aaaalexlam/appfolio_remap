@@ -9,40 +9,17 @@ const { billComponent, receiptsComponent } = window;
 const displayedColumns = columns.filter(item => item.display === true);
 const customization = generalLedgerObject.generalLedger.customization;
 
+// for loading the data
 let getNumberOfGlAccount = 10;
-let getNumberOfGlAccountStartFrom = 0;
-
-let reachedBottom = false;
-window.addEventListener("scroll", async () => {
-    
-    // trigger loading condiction
-    const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
-    
-    if (atBottom && !reachedBottom) {
-        reachedBottom = true; // lock until user scrolls up again
-
-        let start = getNumberOfGlAccountStartFrom;
-        let end = start + getNumberOfGlAccount;
-
-        try {
-            document.getElementById("loading_img").style.display = 'block';
-            await loadData(start, end);
-            getNumberOfGlAccountStartFrom += getNumberOfGlAccount;
-        } catch (error) {
-            console.error("Error loading data:", error);
-        } finally {
-            document.getElementById("loading_img").style.display = 'none';
-        }
-    }
-
-    if (!atBottom) {
-        reachedBottom = false; // unlock when scrolled up
-    }
-});
+let start = 0;
+let end = start + getNumberOfGlAccount;
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    
+document.addEventListener("DOMContentLoaded", async function () {
+    let reachedBottom = false;
+
+    const glAccountIdList = await getGlAccountIdList();
+
     document.getElementById("loading_img").style.display = 'none';
 
     initCustomizationForm(customization, tablePrefix);
@@ -72,25 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // on click customization form
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = async function () {
 
-        initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
-        initResizeColumn();
         document.getElementById("loading_img").style.display = 'block';
 
+        initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
+        initResizeColumn();
+
         const customizationData = handleAndGetCustomizationData();
+        const glAccountOrder = customizationData.selectedGlAccounts.length === 0 ?
+            glAccountIdList.slice(start, end) :
+            customizationData.selectedGlAccounts.map(item => item.glId);
 
         try {
-            const auth = window.firebaseAuth;
-            const db = window.firebaseFirestore;
 
-            const initGlAccountOrder = await getGlAccountOrder(db, getNumberOfGlAccountStartFrom);
-            
-            const [glAccountsData, payableBills, receipts] = await Promise.all([
-                getGlAccountMap(db),
-                getPayableBills(db),
-                getReceipts(db)
-            ]);
-
-            initTable(glAccountsData, billComponent, receiptsComponent);
+            loadData(glAccountOrder);
 
             // init hideable row
             document.querySelectorAll('.hideable_row_header').forEach(header => {
@@ -108,94 +79,56 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("loading_img").style.display = 'none';
         }
 
+        window.addEventListener("scroll", async () => {
+
+            // trigger loading condiction
+            const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+
+            if (atBottom && !reachedBottom && customizationData.selectedGlAccounts.length === 0) {
+                reachedBottom = true; // lock until user scrolls up again
+
+                try {
+                    document.getElementById("loading_img").style.display = 'block';
+                    const glAccountOrder = glAccountIdList.slice(start, end);
+                    await loadData(glAccountOrder);
+                } catch (error) {
+                    console.error("Error loading data:", error);
+                } finally {
+                    document.getElementById("loading_img").style.display = 'none';
+                }
+            }
+
+            if (!atBottom) {
+                reachedBottom = false; // unlock when scrolled up
+            }
+        });
+
     }
+
+
 
 });
 
-function initTable(glAccountsData, payableBills, receipts) {
-    const table = document.getElementById(`${tablePrefix}table_content`);
-    const fragment = document.createDocumentFragment(); // improves batch DOM insert
-    const merged = initData();
-    const keyList = Object.keys(merged);
+async function loadData(glAccountOrderIdList) {
 
-    const filteredGlAccounts = glAccountsData.filter(item => keyList.includes(item.id));
-
-    // loop by gl account
-    let totalNetBalance = 0;
-    for (const glAccount of filteredGlAccounts) {
-        if (glAccount.order.length !== 0) continue;
-
-        const glAccountBills = merged[glAccount.id];
-
-        // sum the net change, balance for each gl account
-        let startingBalanceByGlAccount = 100;
-        let totalNetChangeByGlAccount = glAccountBills.reduce((sum, entry) => sum + parseInt(entry.balance * 100), 0) / 100;
-        let totalBalanceByGlAccount = startingBalanceByGlAccount + totalNetChangeByGlAccount;
-
-        totalNetBalance += totalBalanceByGlAccount;
-
-        // Create wrapper
-        const wrapper = document.createElement('div');
-        wrapper.id = `hide_${glAccount.id}_btn`;
-        wrapper.setAttribute('data-gl-account-id', glAccount.id);
-        wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount);
-
-        fragment.appendChild(wrapper);
-    }
-
-    table.appendChild(fragment);
-
-    let totalCredit = 0;
-    let totalDebit = 0;
-    for (const records of Object.values(merged)) {
-        for (const item of records) {
-            const credit = parseFloat(item.credit.toString().replace(/,/g, '')) || 0;
-            const debit = parseFloat(item.debit.toString().replace(/,/g, '')) || 0;
-            totalDebit += debit;
-            totalCredit += credit;
-        }
-    }
-
-    // Get total length for each key
-    const totalResult = Object.values(merged).reduce((sum, arr) => sum + arr.length, 0);
-    table.innerHTML += getSummaryRow(displayedColumns, totalResult, totalDebit, totalCredit, totalNetBalance);
-}
-
-function initData() {
-    const groupedSources = [
-        groupByCashAccountForBill(billComponent.data),
-        groupByGLAccountForBill(billComponent.data),
-        groupByCashAccountForReceipt(receiptsComponent.data),
-        groupByGLAccountForReceipt(receiptsComponent.data),
-    ];
-
-    // Collect all unique keys
-    const allKeys = new Set();
-    groupedSources.forEach(group =>
-        Object.keys(group).forEach(key => allKeys.add(key))
-    );
-    // Merge values from all groups under each key
-    const merged = {};
-    for (const key of allKeys) {
-        merged[key] = groupedSources.flatMap(group => group[key] || []);
-    }
-    return merged;
-}
-
-async function loadData(start, end){
+    console.log('', glAccountOrderIdList)
     console.log(`get: ${start} - ${end}`);
-    const table = document.getElementById(`${tablePrefix}table_content`);
-    const fragment = document.createDocumentFragment(); // improves batch DOM insert
-    const merged = initData();
-    const keyList = Object.keys(merged);
 
-    const db = window.firebaseFirestore;
+    // get the order by gl account id
     const [glAccountsData, payableBills, receipts] = await Promise.all([
-        getGlAccountMap(db),
-        getPayableBills(db),
-        getReceipts(db)
+        getGlAccountMap(glAccountOrderIdList),
+        getPayableBills(glAccountOrderIdList),
+        getReceipts(glAccountOrderIdList)
     ]);
 
+    const table = document.getElementById(`${tablePrefix}table_content`);
+    const fragment = document.createDocumentFragment(); // improves batch DOM insert
+
+    // pass the transaction data
+    const merged = dataMapping(payableBills, receipts)
+    const keyList = Object.keys(merged);
+
+    // only generate the selected gl accounts needed, can ignore if we can query by gl account id
     const filteredGlAccounts = glAccountsData.filter(item => keyList.includes(item.id));
 
     // loop by gl account
@@ -222,4 +155,6 @@ async function loadData(start, end){
     }
 
     table.appendChild(fragment);
+    start = end;
+    end += getNumberOfGlAccount;
 }
