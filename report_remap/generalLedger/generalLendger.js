@@ -14,16 +14,12 @@ let getNumberOfGlAccountStartFrom = 0;
 
 let loading = false;
 
+let reachedBottom = false;
 window.addEventListener("scroll", async () => {
+    const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
 
-    const tableHeaderDiv = document.querySelector('.table_header');
-    const rect = tableHeaderDiv.getBoundingClientRect();
-    if(rect.top < 0) {
-        console.log('tableHeaderDiv.style.top = ')
-        tableHeaderDiv.style.top = '20';
-    }
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1) {
-        // Show loading image
+    if (atBottom && !reachedBottom) {
+        reachedBottom = true; // lock until user scrolls up again
 
         let start = getNumberOfGlAccountStartFrom;
         let end = start + getNumberOfGlAccount;
@@ -35,20 +31,22 @@ window.addEventListener("scroll", async () => {
         } catch (error) {
             console.error("Error loading data:", error);
         } finally {
-            // Hide loading image after loadData completes (success or failure)
             document.getElementById("loading_img").style.display = 'none';
-     
         }
     }
+
+    if (!atBottom) {
+        reachedBottom = false; // unlock when scrolled up
+    }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     
     document.getElementById("loading_img").style.display = 'none';
 
     initCustomizationForm(customization, tablePrefix);
-    initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
-    initResizeColumn();
+
 
     document.addEventListener('click', async function (event) {
 
@@ -74,8 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    // on click customization form
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = async function () {
-
+        
+        initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
+        initResizeColumn();
         document.getElementById("loading_img").style.display = 'block';
 
         const selectedPropertiesList = getSelectedProperties();

@@ -6,7 +6,7 @@
 
 .table_container {
     flex-grow: 1;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 .table_header > div {
     flex-shrink: 0;
