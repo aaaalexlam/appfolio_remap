@@ -214,3 +214,47 @@ const getSummaryRow = (columns, totalResult, totalDebit, totalCredit, totalBalan
         })
         .join('')}</div>`;
 };
+
+const handleAndGetCustomizationData = () => {
+    const selectedPropertiesList = getSelectedProperties();
+    const getSelectedGlAccountList = getSelectedGlAccount();
+
+    const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
+    const dateRange = getSelectedDateRange(tablePrefix);
+
+    const lastEditDateRange = getSelectedLastEditDateRange(tablePrefix);
+    const createdBy = document.getElementById(`${tablePrefix}created_by`).value;
+
+    const excludeZeroDollarReceiptsFromCashAccounts = getCheckBoxValueByKey(tablePrefix, "excludeZeroDollarReceiptsFromCashAccounts");
+    const showReversedTransactions = getCheckBoxValueByKey(tablePrefix, "showReversedTransactions");
+
+    document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
+    document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
+    document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList);
+    document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = `From: ${dateRange.startDate} To: ${dateRange.endDate}`;
+    document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
+    document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = `From: ${lastEditDateRange.startDate} To: ${lastEditDateRange.endDate}`;;
+    document.getElementById(`${tablePrefix}custom_search_summary_excludeZeroDollarReceiptsFromCashAccounts`).innerText = excludeZeroDollarReceiptsFromCashAccounts;
+    document.getElementById(`${tablePrefix}custom_search_summary_showReversedTransactions`).innerText = showReversedTransactions;
+    document.getElementById(`${tablePrefix}modal`).style.display = "none";
+    
+    return {
+        "properties": [selectedPropertiesList],
+        "createdBy": {
+            "id": 1,
+            "name": createdBy
+        },
+        "selectedGlAccounts": [getSelectedGlAccountList],
+        "dateRange": {
+            "startDate": dateRange.startDate,
+            "endDate": dateRange.endDate
+        },
+        "lastEditDateRange": {
+            "startDate": lastEditDateRange.startDate,
+            "endDate": lastEditDateRange.endDate
+        },
+        "accountingBasis": accountingBasis,
+        "excludeZeroDollarReceiptsFromCashAccounts": excludeZeroDollarReceiptsFromCashAccounts,
+        "showReversedTransactions": showReversedTransactions
+    }
+}

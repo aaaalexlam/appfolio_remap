@@ -12,12 +12,12 @@ const customization = generalLedgerObject.generalLedger.customization;
 let getNumberOfGlAccount = 10;
 let getNumberOfGlAccountStartFrom = 0;
 
-let loading = false;
-
 let reachedBottom = false;
 window.addEventListener("scroll", async () => {
+    
+    // trigger loading condiction
     const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
-
+    
     if (atBottom && !reachedBottom) {
         reachedBottom = true; // lock until user scrolls up again
 
@@ -47,12 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initCustomizationForm(customization, tablePrefix);
 
-
     document.addEventListener('click', async function (event) {
 
         // hide modal onClicked
-        // get data from google firestore
-
         const clickedElement = event.target;
         if (clickedElement.id !== '' && clickedElement.id === `${tablePrefix}modal`) {
             document.getElementById(`${tablePrefix}modal`).style.display = "none";
@@ -74,52 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // on click customization form
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = async function () {
-        
+
         initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
         initResizeColumn();
         document.getElementById("loading_img").style.display = 'block';
 
-        const selectedPropertiesList = getSelectedProperties();
-        const getSelectedGlAccountList = getSelectedGlAccount();
-
-        const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
-        const dateRange = getSelectedDateRange(tablePrefix);
-
-        const lastEditDateRange = getSelectedLastEditDateRange(tablePrefix);
-        const createdBy = document.getElementById(`${tablePrefix}created_by`).value;
-
-        const excludeZeroDollarReceiptsFromCashAccounts = getCheckBoxValueByKey(tablePrefix, "excludeZeroDollarReceiptsFromCashAccounts");
-        const showReversedTransactions = getCheckBoxValueByKey(tablePrefix, "showReversedTransactions");
-
-        const customization = {
-            "properties": [selectedPropertiesList],
-            "createdBy": {
-                "id": 1,
-                "name": createdBy
-            },
-            "selectedGlAccounts": [getSelectedGlAccountList],
-            "dateRange": {
-                "startDate": dateRange.startDate,
-                "endDate": dateRange.endDate
-            },
-            "lastEditDateRange": {
-                "startDate": lastEditDateRange.startDate,
-                "endDate": lastEditDateRange.endDate
-            },
-            "accountingBasis": accountingBasis,
-            "excludeZeroDollarReceiptsFromCashAccounts": excludeZeroDollarReceiptsFromCashAccounts,
-            "showReversedTransactions": showReversedTransactions
-        }
-
-        document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
-        document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
-        document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList);
-        document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = `From: ${dateRange.startDate} To: ${dateRange.endDate}`;
-        document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
-        document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = `From: ${lastEditDateRange.startDate} To: ${lastEditDateRange.endDate}`;;
-        document.getElementById(`${tablePrefix}custom_search_summary_excludeZeroDollarReceiptsFromCashAccounts`).innerText = excludeZeroDollarReceiptsFromCashAccounts;
-        document.getElementById(`${tablePrefix}custom_search_summary_showReversedTransactions`).innerText = showReversedTransactions;
-        document.getElementById(`${tablePrefix}modal`).style.display = "none";
+        const customizationData = handleAndGetCustomizationData();
 
         try {
             const auth = window.firebaseAuth;
@@ -266,4 +223,3 @@ async function loadData(start, end){
 
     table.appendChild(fragment);
 }
-
