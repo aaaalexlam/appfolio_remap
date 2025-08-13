@@ -14,7 +14,6 @@ let getNumberOfGlAccount = 10;
 let start = 0;
 let end = start + getNumberOfGlAccount;
 
-
 document.addEventListener("DOMContentLoaded", async function () {
     let reachedBottom = false;
 
@@ -103,9 +102,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         });
 
+        // Table summary
+        document.getElementById("general_lendger_table").innerHTML += getSummaryRow(displayedColumns, 0, 0, 0);
     }
-
-
 
 });
 
@@ -149,6 +148,8 @@ async function loadData(glAccountOrderIdList) {
         const wrapper = document.createElement('div');
         wrapper.id = `hide_${glAccount.id}_btn`;
         wrapper.setAttribute('data-gl-account-id', glAccount.id);
+
+        // create row
         wrapper.innerHTML = getHideableRow(glAccount, tablePrefix, glAccountBills, displayedColumns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount);
 
         fragment.appendChild(wrapper);

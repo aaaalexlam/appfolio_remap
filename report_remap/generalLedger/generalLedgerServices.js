@@ -138,8 +138,8 @@ function getContent(tablePrefix, contentData, columns, startingBalanceByGlAccoun
     // Starting balance row
     rows.push(renderRow(columns, column =>
         column.key === 'balance'
-            ? getRowBlockHTML(column, startingBalanceByGlAccount, { label: 'Starting Balance' })
-            : getRowBlockHTML(column, '')
+            ? getCellHTML(column, startingBalanceByGlAccount, { label: 'Starting Balance' })
+            : getCellHTML(column, '')
     ));
 
     // Main content rows
@@ -149,9 +149,9 @@ function getContent(tablePrefix, contentData, columns, startingBalanceByGlAccoun
                 if (column.key === 'balance') {
                     currentBalance += item.balance;
                     totalNetChange += item.balance;
-                    return getRowBlockHTML(column, currentBalance);
+                    return getCellHTML(column, currentBalance);
                 }
-                return getRowBlockHTML(column, item[column.key]);
+                return getCellHTML(column, item[column.key]);
             }));
         }
     }
@@ -159,8 +159,8 @@ function getContent(tablePrefix, contentData, columns, startingBalanceByGlAccoun
     // Net change row
     rows.push(renderRow(columns, column =>
         column.key === 'balance'
-            ? getRowBlockHTML(column, totalNetChangeByGlAccount, { label: 'Net Change' })
-            : getRowBlockHTML(column, '')
+            ? getCellHTML(column, totalNetChangeByGlAccount, { label: 'Net Change' })
+            : getCellHTML(column, '')
     ));
 
     // End balance row
@@ -169,51 +169,12 @@ function getContent(tablePrefix, contentData, columns, startingBalanceByGlAccoun
             ? `<div class="end_balance table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
                     ${formatCurrency(totalBalanceByGlAccount)}
                </div>`
-            : getRowBlockHTML(column, '')
+            : getCellHTML(column, '')
     ));
 
     return rows.join('');
 }
 
-const getRowBlockHTML = (column, data, options = {}) => {
-    const {
-        isCurrency = ['credit', 'debit', 'balance'].includes(column.key),
-        label = null
-    } = options;
-
-    const displayValue = isCurrency ? formatCurrency(data) : data ?? '';
-    const styles = [
-        `width:${column.width}`,
-        'flex-shrink:0',
-        isCurrency ? 'text-align: end' : ''
-    ].filter(Boolean).join('; ');
-
-    return `
-        <div class="column_${column.key} header_text table_column" style="${styles}">
-            ${displayValue}
-            ${label ? `<div style="color: #cacaca">${label}</div>` : ''}
-        </div>
-    `;
-};
-
-const getSummaryRow = (columns, totalResult, totalDebit, totalCredit, totalBalance) => {
-    return `<div class='table_row font-bold fixed bottom-0  w-full bg-white border-t-1 border-gray-100 '>${columns
-        .map(column => {
-            if (column.key === 'balance') {
-                return getRowBlockHTML(column, totalBalance);
-            } else if (column.key === 'credit') {
-                return getRowBlockHTML(column, totalCredit);
-            } else if (column.key === 'debit') {
-                return getRowBlockHTML(column, totalDebit);
-            } else if (column.key === 'property') {
-                return getRowBlockHTML(column, `Total (${totalResult} Results)`);
-            }
-            else {
-                return getRowBlockHTML(column, '');
-            }
-        })
-        .join('')}</div>`;
-};
 
 const handleAndGetCustomizationData = () => {
     const selectedPropertiesList = getSelectedProperties();

@@ -10602,7 +10602,7 @@ window.glAccountComponent = {
 async function getGlAccountMap(glAccountOrderIdList) {
   const db = window.firebaseFirestore;
 
-  // get the gl account where gl account id in
+  // get the gl account where gl account id in glAccountOrderIdList
   const snapshot = await db.collection("adminManagement")
     .doc("IIPMwsQfXSzrASo8qjFO")
     .collection("accounting")

@@ -151,7 +151,7 @@ window.billComponent = {
     ]
 }
 
-async function getPayableBills(getPayableBills) {
+async function getPayableBills(glAccountIdList) {
     const db = window.firebaseFirestore;
     const snapshot = await db.collection("adminManagement")
         .doc("IIPMwsQfXSzrASo8qjFO")
