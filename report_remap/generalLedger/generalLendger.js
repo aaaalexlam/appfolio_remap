@@ -54,14 +54,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         tableService_initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
 
-        const customizationData = generalLedgerServices_handleAndGetCustomizationData();
-        const glAccountOrder = customizationData.selectedGlAccounts.length === 0 ?
-            glAccountIdList.slice(start, end) :
-            customizationData.selectedGlAccounts.map(item => item.glId);
+        const customizationData = await generalLedgerServices_handleAndGetCustomizationData(start, end);
 
         try {
             // get the data by provided gl account id
-            generalLedgerServices_loadData(glAccountOrder);
+            generalLedgerServices_loadData(customizationData);
         } catch (error) {
             console.error("Error loading data:", error);
         } finally {
@@ -72,14 +69,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // trigger loading condiction
             const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
-            
-            if (atBottom && !reachedBottom && customizationData.selectedGlAccounts.length === 0) {
+
+            if (atBottom && !reachedBottom) {
                 reachedBottom = true; // lock until user scrolls up again
 
                 try {
                     document.getElementById("loading_img").style.display = 'block';
-                    const glAccountOrder = glAccountIdList.slice(start, end);
-                    await generalLedgerServices_loadData(glAccountOrder);
+                    const customizationData = await generalLedgerServices_handleAndGetCustomizationData(start, end);
+                    if(customizationData.selectedGlAccounts.length === 0){
+                        reachedBottom = true;
+                        return;
+                    }
+                    await generalLedgerServices_loadData(customizationData);
+
                 } catch (error) {
                     console.error("Error loading data:", error);
                 } finally {

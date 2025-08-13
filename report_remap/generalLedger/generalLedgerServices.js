@@ -116,10 +116,10 @@ function generalLedgerServices_groupByGLAccountForReceipt(recepitsList) {
 }
 
 
-const generalLedgerServices_handleAndGetCustomizationData = () => {
+const generalLedgerServices_handleAndGetCustomizationData = async  (start, end) => {
     const selectedPropertiesList = getSelectedProperties();
-    const getSelectedGlAccountList = getSelectedGlAccount();
-
+    const getSelectedGlAccountList = await getSelectedGlAccount(start, end);
+    console.log(getSelectedGlAccountList)
     const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
     const dateRange = getSelectedDateRange(tablePrefix);
 
@@ -131,7 +131,7 @@ const generalLedgerServices_handleAndGetCustomizationData = () => {
 
     document.getElementById(`${tablePrefix}custom_search_summary_properties`).innerText = formartPropertiesStr(selectedPropertiesList);
     document.getElementById(`${tablePrefix}custom_search_summary_createdBy`).innerText = createdBy;
-    document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList);
+    document.getElementById(`${tablePrefix}custom_search_summary_glAccounts`).innerText = formatSelectedGLAccount(getSelectedGlAccountList.displayName);
     document.getElementById(`${tablePrefix}custom_search_summary_dateRange`).innerText = `From: ${dateRange.startDate} To: ${dateRange.endDate}`;
     document.getElementById(`${tablePrefix}custom_search_summary_accountingBasis`).innerText = accountingBasis;
     document.getElementById(`${tablePrefix}custom_search_summary_lastEditedRange`).innerText = `From: ${lastEditDateRange.startDate} To: ${lastEditDateRange.endDate}`;;
@@ -184,25 +184,23 @@ const generalLedgerServices_dataMapping = (bills, receipt) => {
     return merged;
 }
 
-async function generalLedgerServices_loadData(glAccountOrderIdList) {
-
-    console.log('', glAccountOrderIdList)
-    console.log(`get: ${start} - ${end}`);
+async function generalLedgerServices_loadData(customizationData) {
+    console.log("customizationData:", customizationData)
 
     // get the order by gl account id
     const [glAccountsData, payableBills, receipts] = await Promise.all([
         // get gl account details
-        getGlAccountMap(glAccountOrderIdList),
-        getPayableBills(glAccountOrderIdList),
-        getReceipts(glAccountOrderIdList)
+        getGlAccountMap(customizationData.selectedGlAccounts.id),
+        getPayableBills(customizationData.selectedGlAccounts.id),
+        getReceipts(customizationData.selectedGlAccounts.id)
     ]);
-
-    const table = document.getElementById(`${tablePrefix}table_content`);
-    const fragment = document.createDocumentFragment(); // improves batch DOM insert
 
     // pass the transaction data here
     const merged = generalLedgerServices_dataMapping(payableBills, receipts)
     const keyList = Object.keys(merged);
+
+    const table = document.getElementById(`${tablePrefix}table_content`);
+    const fragment = document.createDocumentFragment(); // improves batch DOM insert
 
     // only generate the selected gl accounts needed, can ignore if we can query by gl account id
     const filteredGlAccounts = glAccountsData.filter(item => keyList.includes(item.id));

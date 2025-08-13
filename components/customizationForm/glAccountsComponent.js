@@ -71,10 +71,10 @@ const addGlAccountsEventListener = (tablePrefix) => {
 
             if (accountName.includes(keyword) || accountNumber.includes(keyword)) {
                 label.style.display = '';
-              } else {
+            } else {
                 label.style.display = 'none';
-              }
-          });
+            }
+        });
 
     });
 
@@ -142,34 +142,42 @@ const getData = (keyWord) => {
 
 }
 
-function getSelectedGlAccount() {
-    const selectedGlAccountsCheckboxs = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked'));
-    const selectedGlAccountList = [];
+async function getSelectedGlAccount(start, end) {
 
-    selectedGlAccountsCheckboxs.forEach(selectedGlAccountsCheckbox => {
-        if(selectedGlAccountsCheckbox.value === 'all'){
-            return;
-        }
-        selectedGlAccountList.push(
-            {
-                "glId": selectedGlAccountsCheckbox.value,
-                "accountNumber": selectedGlAccountsCheckbox.getAttribute('accountNumber'),
-                "accountName": selectedGlAccountsCheckbox.getAttribute('accountName')
-            }
-        )
-    });
-    return selectedGlAccountList;
-}
+    const glAccountIdList = await getGlAccountIdList();
+    const selectedGlAccountsCheckboxes = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked'));
+    
+    let selectedGlAccountList = {
+        id: [],
+        displayName: []
+    };
 
-function formatSelectedGLAccount(getSelectedGlAccountList) {
-    if (getSelectedGlAccountList.length === 0) {
-        return "All Gl Accounts"
+    if (selectedGlAccountsCheckboxes[0].value === 'all') {
+        selectedGlAccountList.id = glAccountIdList.slice(start, end);
+        selectedGlAccountList.displayName = ['All'];
+        return selectedGlAccountList;
     }
 
-    let formartStr = `${getSelectedGlAccountList[0].accountNumber} - ${getSelectedGlAccountList[0].accountName}`;
+    for (let i = start; i < end; i++) {
 
-    for (let i = 1; i < getSelectedGlAccountList.length; i++) {
-        formartStr += ` | ${getSelectedGlAccountList[i].accountNumber} - ${getSelectedGlAccountList[i].accountName}`
+        const checkbox = selectedGlAccountsCheckboxes[i];
+        if (!checkbox) continue; 
+
+        selectedGlAccountList.id.push(checkbox.value);
+        selectedGlAccountList.displayName.push(
+            `${checkbox.getAttribute('accountNumber')} - ${checkbox.getAttribute('accountName')}`
+        );
+    }
+
+    return selectedGlAccountList;
+
+}
+
+function formatSelectedGLAccount(getSelectedGlAccountListDisplayName) {
+    let formartStr = getSelectedGlAccountListDisplayName[0];
+
+    for (let i = 1; i < getSelectedGlAccountListDisplayName.length; i++) {
+        formartStr += ` | ${getSelectedGlAccountListDisplayName[i]}`
     }
 
     return formartStr;
