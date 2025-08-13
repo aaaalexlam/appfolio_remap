@@ -1,4 +1,4 @@
-function groupByCashAccountForBill(billList) {
+function generalLedgerServices_groupByCashAccountForBill(billList) {
     const grouped = {};
     billList.forEach(entry => {
         const glId = "2";
@@ -22,7 +22,7 @@ function groupByCashAccountForBill(billList) {
     return grouped;
 }
 
-function groupByGLAccountForBill(billList) {
+function generalLedgerServices_groupByGLAccountForBill(billList) {
     // Grouping logic
     const grouped = {};
     billList.forEach(entry => {
@@ -49,7 +49,7 @@ function groupByGLAccountForBill(billList) {
     return grouped;
 }
 
-function createReceipt(entry, detail) {
+function generalLedgerServices_createReceipt(entry, detail) {
     return {
         property: detail.propertyName,
         date: entry.billDate,
@@ -63,7 +63,7 @@ function createReceipt(entry, detail) {
     };
 }
 
-function groupByCashAccountForReceipt(recepitsList) {
+function generalLedgerServices_groupByCashAccountForReceipt(recepitsList) {
     const grouped = {};
     recepitsList.forEach(entry => {
         entry.charges.forEach(charge => {
@@ -90,7 +90,7 @@ function groupByCashAccountForReceipt(recepitsList) {
     return grouped;
 }
 
-function groupByGLAccountForReceipt(recepitsList) {
+function generalLedgerServices_groupByGLAccountForReceipt(recepitsList) {
     const grouped = {};
     recepitsList.forEach(entry => {
         entry.charges.forEach(charge => {
@@ -115,68 +115,8 @@ function groupByGLAccountForReceipt(recepitsList) {
     return grouped;
 }
 
-function getHideableRow(glAccount, tablePrefix, contentData, columns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount) {
-    return `
-        <div class="hideable_row_header">
-            <i class="fa fa-angle-down"></i>
-            <span>${glAccount.number} - ${glAccount.accountName}</span>
-        </div>
-        <div style="display:block;" id="content_${glAccount.id}">
-            ${getContent(tablePrefix, contentData, columns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount)}
-        </div>
-    `;
-}
 
-function getContent(tablePrefix, contentData, columns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount) {
-    let totalNetChange = 0;
-    let currentBalance = startingBalanceByGlAccount;
-    const rows = [];
-
-    const renderRow = (columns, cellCallback) =>
-        `<div class='table_row'>${columns.map(cellCallback).join('')}</div>`;
-
-    // Starting balance row
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? getCellHTML(column, startingBalanceByGlAccount, { label: 'Starting Balance' })
-            : getCellHTML(column, '')
-    ));
-
-    // Main content rows
-    if (Array.isArray(contentData)) {
-        for (const item of contentData) {
-            rows.push(renderRow(columns, column => {
-                if (column.key === 'balance') {
-                    currentBalance += item.balance;
-                    totalNetChange += item.balance;
-                    return getCellHTML(column, currentBalance);
-                }
-                return getCellHTML(column, item[column.key]);
-            }));
-        }
-    }
-
-    // Net change row
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? getCellHTML(column, totalNetChangeByGlAccount, { label: 'Net Change' })
-            : getCellHTML(column, '')
-    ));
-
-    // End balance row
-    rows.push(renderRow(columns, column =>
-        column.key === 'balance'
-            ? `<div class="end_balance table_column column_balance" style="font-weight: bold; text-align: end; width:${column.width};">
-                    ${formatCurrency(totalBalanceByGlAccount)}
-               </div>`
-            : getCellHTML(column, '')
-    ));
-
-    return rows.join('');
-}
-
-
-const handleAndGetCustomizationData = () => {
+const generalLedgerServices_handleAndGetCustomizationData = () => {
     const selectedPropertiesList = getSelectedProperties();
     const getSelectedGlAccountList = getSelectedGlAccount();
 
@@ -221,13 +161,13 @@ const handleAndGetCustomizationData = () => {
 }
 
 // main logic to transform data into desirable data strecture
-const dataMapping = (bills, receipt) => {
+const generalLedgerServices_dataMapping = (bills, receipt) => {
 
     const groupedSources = [
-        groupByCashAccountForBill(bills),
-        groupByGLAccountForBill(bills),
-        groupByCashAccountForReceipt(receipt),
-        groupByGLAccountForReceipt(receipt),
+        generalLedgerServices_groupByCashAccountForBill(bills),
+        generalLedgerServices_groupByGLAccountForBill(bills),
+        generalLedgerServices_groupByCashAccountForReceipt(receipt),
+        generalLedgerServices_groupByGLAccountForReceipt(receipt),
     ];
 
     // Collect all unique keys
@@ -242,4 +182,70 @@ const dataMapping = (bills, receipt) => {
         merged[key] = groupedSources.flatMap(group => group[key] || []);
     }
     return merged;
+}
+
+async function generalLedgerServices_loadData(glAccountOrderIdList) {
+
+    console.log('', glAccountOrderIdList)
+    console.log(`get: ${start} - ${end}`);
+
+    // get the order by gl account id
+    const [glAccountsData, payableBills, receipts] = await Promise.all([
+        // get gl account details
+        getGlAccountMap(glAccountOrderIdList),
+        getPayableBills(glAccountOrderIdList),
+        getReceipts(glAccountOrderIdList)
+    ]);
+
+    const table = document.getElementById(`${tablePrefix}table_content`);
+    const fragment = document.createDocumentFragment(); // improves batch DOM insert
+
+    // pass the transaction data here
+    const merged = generalLedgerServices_dataMapping(payableBills, receipts)
+    const keyList = Object.keys(merged);
+
+    // only generate the selected gl accounts needed, can ignore if we can query by gl account id
+    const filteredGlAccounts = glAccountsData.filter(item => keyList.includes(item.id));
+
+    // loop by gl account
+    let totalNetBalance = 0;
+    for (const glAccount of filteredGlAccounts) {
+        if (glAccount.order.length !== 0) continue;
+
+        const glAccountBills = merged[glAccount.id];
+
+        // sum the net change, balance for each gl account
+        let startingBalanceByGlAccount = 100;
+        let totalNetChangeByGlAccount = glAccountBills.reduce((sum, entry) => sum + parseInt(entry.balance * 100), 0) / 100;
+        let totalBalanceByGlAccount = startingBalanceByGlAccount + totalNetChangeByGlAccount;
+
+        totalNetBalance += totalBalanceByGlAccount;
+
+        // Create wrapper
+        const wrapper = document.createElement('div');
+        wrapper.id = `hide_${glAccount.id}_btn`;
+        wrapper.setAttribute('data-gl-account-id', glAccount.id);
+
+        // create hideable content
+        wrapper.innerHTML = tableService_createHideableContent(glAccount, tablePrefix, glAccountBills, displayedColumns, startingBalanceByGlAccount, totalNetChangeByGlAccount, totalBalanceByGlAccount);
+
+        fragment.appendChild(wrapper);
+    }
+
+    table.appendChild(fragment);
+    start = end;
+    end += getNumberOfGlAccount;
+
+
+    // make row to be hideable
+    document.querySelectorAll('.hideable_row_header').forEach(header => {
+        header.addEventListener('click', () => {
+            const glAcId = header.closest('[data-gl-account-id]').getAttribute('data-gl-account-id');
+            const content = document.getElementById(`content_${glAcId}`);
+            if (content) {
+                content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+            }
+        });
+    });
+    tableService_initResizeColumn();
 }

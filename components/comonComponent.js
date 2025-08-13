@@ -43,32 +43,6 @@ function getSearchSummaryTemplate(inputType, displayName, tablePrefix) {
     `
 }
 
-function initHeader(columns, checkBoxId, tableHeaderId) {
-    const tableHeaderEl = document.getElementById(tableHeaderId);
-    const checkboxEl = document.getElementById(checkBoxId);
-
-    // Use arrays to collect the HTML strings
-    const headerHTML = [];
-    const checkboxHTML = [];
-
-    // Build once, append once
-    for (const column of columns) {
-        headerHTML.push(getHeaderTemplate(column));
-        checkboxHTML.push(columnCheckboxTemplate(column));
-    }
-
-    // Add the extra end header div for styling
-    headerHTML.push(`
-        <div class="end_header">
-            &nbsp;
-        </div>
-    `);
-
-    // Assign the combined HTML to the elements once
-    tableHeaderEl.innerHTML = headerHTML.join('');
-    checkboxEl.innerHTML = checkboxHTML.join('');
-}
-
 function createAccountRow(account, level) {
     const row = document.createElement('div');
     row.style.display = 'flex';
@@ -148,7 +122,7 @@ function initCustomizationForm(customization, tablePrefix) {
         `;
 
     customization.forEach((column) => {
-        const html = getCustomSearchComponentByKey(column.inputType, column.displayName, tablePrefix);
+        const html = componentRouter_getCustomSearchComponentByKey(column.inputType, column.displayName, tablePrefix);
         const summary = getSearchSummaryTemplate(column.inputType, column.displayName, tablePrefix);
 
         if (html) {
@@ -173,7 +147,7 @@ function initCustomizationForm(customization, tablePrefix) {
     summaryReview.innerHTML = summaryReviewComponents;
 
     customization.forEach((obj) => {
-        addEventListenerBykey(obj.inputType, tablePrefix);
+        componentRouter_addEventListenerBykey(obj.inputType, tablePrefix);
     });
 
     document.getElementById(`${tablePrefix}post_form_btn_cancel`).onclick = function () {

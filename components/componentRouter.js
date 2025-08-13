@@ -1,4 +1,4 @@
-function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
+function componentRouter_getCustomSearchComponentByKey(key, displayName, tablePrefix) {
     switch (key) {
         case "properties":
             return createPropertiesHTML(displayName, tablePrefix);
@@ -36,7 +36,7 @@ function getCustomSearchComponentByKey(key, displayName, tablePrefix) {
     }
 }
 
-function addEventListenerBykey(key, tablePrefix) {
+function componentRouter_addEventListenerBykey(key, tablePrefix) {
     switch (key) {
         case "properties":
             addPropertiesEventListener(tablePrefix);
