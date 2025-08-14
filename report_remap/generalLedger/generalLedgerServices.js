@@ -184,7 +184,7 @@ const generalLedgerServices_dataMapping = (bills, receipt) => {
     return merged;
 }
 
-async function generalLedgerServices_loadData(customizationData) {
+async function generalLedgerServices_loadData(customizationData, refreshPage) {
     console.log("customizationData:", customizationData)
 
     // get the order by gl account id
@@ -196,10 +196,14 @@ async function generalLedgerServices_loadData(customizationData) {
     ]);
 
     // pass the transaction data here
+    const table = document.getElementById(`${tablePrefix}table_content`);
+    if(refreshPage){
+        table.replaceChildren();
+
+    }
     const merged = generalLedgerServices_dataMapping(payableBills, receipts)
     const keyList = Object.keys(merged);
 
-    const table = document.getElementById(`${tablePrefix}table_content`);
     const fragment = document.createDocumentFragment(); // improves batch DOM insert
 
     // only generate the selected gl accounts needed, can ignore if we can query by gl account id
@@ -245,5 +249,6 @@ async function generalLedgerServices_loadData(customizationData) {
             }
         });
     });
+
     tableService_initResizeColumn();
 }

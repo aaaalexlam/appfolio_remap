@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         try {
             // get the data by provided gl account id
-            generalLedgerServices_loadData(customizationData);
+            generalLedgerServices_loadData(customizationData, true);
         } catch (error) {
             console.error("Error loading data:", error);
         } finally {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                         reachedBottom = true;
                         return;
                     }
-                    await generalLedgerServices_loadData(customizationData);
+                    await generalLedgerServices_loadData(customizationData, false);
 
                 } catch (error) {
                     console.error("Error loading data:", error);
