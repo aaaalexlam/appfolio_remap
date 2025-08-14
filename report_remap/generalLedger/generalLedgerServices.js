@@ -199,6 +199,8 @@ async function generalLedgerServices_loadData(customizationData, refreshPage) {
     if(refreshPage){
         table.replaceChildren();
     }
+
+    // To Andrew: Have to pass the transaction over here
     const merged = generalLedgerServices_dataMapping(payableBills, receipts)
     const keyList = Object.keys(merged);
 
