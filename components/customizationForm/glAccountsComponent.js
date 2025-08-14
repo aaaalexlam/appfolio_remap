@@ -146,15 +146,12 @@ async function getSelectedGlAccount(start, end) {
 
     const glAccountIdList = await getGlAccountIdList();
     const selectedGlAccountsCheckboxes = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked'));
-    
     let selectedGlAccountList = {
-        id: [],
-        displayName: []
+        id: []
     };
 
     if (selectedGlAccountsCheckboxes[0].value === 'all') {
         selectedGlAccountList.id = glAccountIdList.slice(start, end);
-        selectedGlAccountList.displayName = ['All'];
         return selectedGlAccountList;
     }
 
@@ -164,20 +161,19 @@ async function getSelectedGlAccount(start, end) {
         if (!checkbox) continue; 
 
         selectedGlAccountList.id.push(checkbox.value);
-        selectedGlAccountList.displayName.push(
-            `${checkbox.getAttribute('accountNumber')} - ${checkbox.getAttribute('accountName')}`
-        );
     }
 
     return selectedGlAccountList;
 
 }
 
-function formatSelectedGLAccount(getSelectedGlAccountListDisplayName) {
-    let formartStr = getSelectedGlAccountListDisplayName[0];
+function formatSelectedGLAccount() {
+    const selectedGlAccountsCheckboxes = Array.from(document.querySelectorAll('input[name="gl_account_checkbox"]:checked'));
 
-    for (let i = 1; i < getSelectedGlAccountListDisplayName.length; i++) {
-        formartStr += ` | ${getSelectedGlAccountListDisplayName[i]}`
+    let formartStr = selectedGlAccountsCheckboxes[0].value === 'all' ? 'All' : `${selectedGlAccountsCheckboxes[0].getAttribute('accountnumber')} - ${selectedGlAccountsCheckboxes[0].getAttribute('accountname')}`;
+    
+    for (let i = 1; i < selectedGlAccountsCheckboxes.length; i++) {
+        formartStr += ` | ${selectedGlAccountsCheckboxes[i].getAttribute('accountnumber')} - ${selectedGlAccountsCheckboxes[i].getAttribute('accountname')}`
     }
 
     return formartStr;

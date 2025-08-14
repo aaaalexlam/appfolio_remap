@@ -119,7 +119,6 @@ function generalLedgerServices_groupByGLAccountForReceipt(recepitsList) {
 const generalLedgerServices_handleAndGetCustomizationData = async  (start, end) => {
     const selectedPropertiesList = getSelectedProperties();
     const getSelectedGlAccountList = await getSelectedGlAccount(start, end);
-    console.log(getSelectedGlAccountList)
     const accountingBasis = document.getElementById(`${tablePrefix}accounting_basis`).value;
     const dateRange = getSelectedDateRange(tablePrefix);
 
