@@ -198,7 +198,6 @@ async function generalLedgerServices_loadData(customizationData, refreshPage) {
     const table = document.getElementById(`${tablePrefix}table_content`);
     if(refreshPage){
         table.replaceChildren();
-
     }
     const merged = generalLedgerServices_dataMapping(payableBills, receipts)
     const keyList = Object.keys(merged);

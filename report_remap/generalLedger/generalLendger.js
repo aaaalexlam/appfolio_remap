@@ -50,12 +50,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     // on click customization form
     document.getElementById(`${tablePrefix}post_form_btn`).onclick = async function () {
 
+        // reset loading logic
+        start = 0;
+        end = start + getNumberOfGlAccount
+
         document.getElementById("loading_img").style.display = 'block';
 
         tableService_initHeader(columns, `${tablePrefix}checkbox`, `${tablePrefix}table_header`);
 
         const customizationData = await generalLedgerServices_handleAndGetCustomizationData(start, end);
-
         try {
             // get the data by provided gl account id
             generalLedgerServices_loadData(customizationData, true);
@@ -76,7 +79,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 try {
                     document.getElementById("loading_img").style.display = 'block';
                     const customizationData = await generalLedgerServices_handleAndGetCustomizationData(start, end);
-                    if(customizationData.selectedGlAccounts.length === 0){
+                    
+                    // condiction for stop loading
+                    if(customizationData.selectedGlAccounts.id.length === 0){
                         reachedBottom = true;
                         return;
                     }
