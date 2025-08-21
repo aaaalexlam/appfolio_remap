@@ -102,3 +102,9 @@ const radioTemplate = (result, isChecked, tablePrefix) => {
         `
     )
 }
+
+const getSelectedPayee = (tablePrefix) =>{
+    
+    return document.getElementById(`${tablePrefix}payee_input`).value;
+
+}

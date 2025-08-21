@@ -61,20 +61,25 @@
 
     </div>
 
-
+    <!-- Firebase SDKs (Compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
     <!-- Data -->
     <script src="../../data/glAccountComponent.js"></script>
     <script src="../../data/billData.js"></script>
     <script src="../../data/receiptsData.js"></script>
     <script src="../../data/reportComponent.js"></script>
+    <script src="../../data/propertiesData.js"></script>
 
     <!-- customization form -->
     <script src="../../components/customizationForm/propertiesComponent.js"></script>
     <script src="../../components/customizationForm/payeeComponent.js"></script>
-    <script src="../../components/customizationForm/billDateRangeComponent.js"></script>
-    <script src="../../components/customizationForm/checkBoxComponent.js"></script>
-    <script src="../../components/customizationForm/dateRangeComponent.js"></script>
+    <script src="../../components/customizationForm/dateRangeComponent/dateRangeCommon.js"></script>
+    <script src="../../components/customizationForm/dateRangeComponent/dateRangeComponent.js"></script>
+    <script src="../../components/customizationForm/dateRangeComponent/billDateRangeComponent.js"></script>
+    <script src="../../components/customizationForm/checkBoxComponent.js"></script> 
 
     <!-- Report Componet -->
     <script src="../../components/componentRouter.js"></script>
@@ -83,8 +88,11 @@
 
     <!-- Services -->
     <script src="vendorLedgerService.js"></script>
-    <script src="../../service/receiptServices.js"></script>
     <script src="vendorLedger.js"></script>
+    <script src="../../service/getFirestoreService.js"></script>
+    <script src="../../service/tableService.js"></script>
+
+
 
 
 </body>
